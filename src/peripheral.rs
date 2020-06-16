@@ -17,8 +17,17 @@ pub struct Peripheral {
 
 impl Peripheral {
     pub fn get_svd(self) -> SvdPeripheral {
-        // TODO: add test.
+        let mut builder = PeripheralBuilder::default();
+        let name = self.name;
+        builder = builder.name(name);
+
+        // peripheral address.
+        // TODO: add test for hex str.
         let base_address = u32::from_str_radix(&self.base_address[2..], 16).unwrap();
+        builder = builder.base_address(base_address);
+
+        // peripheral address block.
+        // TODO: offset, length,must be Some.
         let offset = u32::from_str_radix(&self.offset[2..], 16).unwrap();
         let size = u32::from_str_radix(&self.length[2..], 16).unwrap();
         let address_block = AddressBlock {
@@ -26,12 +35,10 @@ impl Peripheral {
             size,
             usage: "registers".to_string(),
         };
-        PeripheralBuilder::default()
-            .name(self.name)
-            .base_address(base_address)
-            .address_block(Some(address_block))
-            .build()
-            .unwrap()
+        builder = builder.address_block(Some(address_block));
+
+        // create peripheral.
+        builder.build().unwrap()
     }
 }
 
