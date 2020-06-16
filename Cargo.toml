@@ -1,0 +1,11 @@
+[package]
+name = "w60x2svd"
+version = "0.1.0"
+authors = ["tiannian <dtiannian@aliyun.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+svd-parser = { git = "https://github.com/rust-embedded/svd.git", rev = "9a979456cbb64d86f0f5da855440d320ee99aa58", features = ["unproven"] }
+
