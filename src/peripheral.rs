@@ -18,8 +18,8 @@ mod tests {
     use std::fs::File;
     #[test]
     fn load_json() {
-        let file = File::open("svdjson/clk/registers.json").unwrap();
-        let registers: Vec<Peripheral> = serde_json::from_reader(file).unwrap();
+        let file = File::open("svdjson/clk/peripheral.json").unwrap();
+        let registers: Peripheral = serde_json::from_reader(file).unwrap();
         println!("{:?}", registers);
     }
 }

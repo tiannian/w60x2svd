@@ -18,10 +18,6 @@
         "fields": "@fields/sw_clk_mask.json"
     },
     {
-        "offset":"0x0008",
-        "description":"保留"
-    },
-    {
         "offset":"0x000C",
         "description":"软件复位控制寄存器",
         "name":"SW_RST_CTRL",
