@@ -2,91 +2,91 @@
     {
         "bit": 14,
         "access": "RW",
-        "description": "soft_7816_gate_en",
+        "name": "soft_7816_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 13,
         "access": "RW",
-        "description": "soft_gpsec_gate_en",
+        "name": "soft_gpsec_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 12,
         "access": "RW",
-        "description": "soft_rsa_gate_en",
+        "name": "soft_rsa_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 11,
         "access": "RW",
-        "description": "soft_i2s_gate_en",
+        "name": "soft_i2s_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 10,
         "access": "RW",
-        "description": "soft_lcd_gate_en",
+        "name": "soft_lcd_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 9,
         "access": "RW",
-        "description": "soft_pwm_gate_en",
+        "name": "soft_pwm_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 8,
         "access": "RW",
-        "description": "soft_sd_adc_gate_en",
+        "name": "soft_sd_adc_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 7,
         "access": "RW",
-        "description": "soft_gpio_gate_en",
+        "name": "soft_gpio_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 6,
         "access": "RW",
-        "description": "soft_timer_gate_en",
+        "name": "soft_timer_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 5,
         "access": "RW",
-        "description": "soft_rf_cfg_gate_en",
+        "name": "soft_rf_cfg_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 4,
         "access": "RW",
-        "description": "soft_dma_gate_en",
+        "name": "soft_dma_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 3,
         "access": "RW",
-        "description": "soft_ls_spi_gate_en",
+        "name": "soft_ls_spi_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 2,
         "access": "RW",
-        "description": "soft_uart1_gate_en",
+        "name": "soft_uart1_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 1,
         "access": "RW",
-        "description": "soft_uart0_gate_en",
+        "name": "soft_uart0_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 0,
         "access": "RW",
-        "description": "soft_i2c_gate_en",
+        "name": "soft_i2c_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     }
 ]

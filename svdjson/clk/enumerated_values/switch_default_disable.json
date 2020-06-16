@@ -1,6 +1,6 @@
 {
-    "name": "Disable."
-    "access": "read-write"
+    "name": "Disable.",
+    "access": "RW",
     "values":[
         {
             "name": "Enable",
@@ -12,6 +12,6 @@
             "description": "Disable clock.",
             "value": 0,
             "is_default": true
-        },
+        }
     ]
 }

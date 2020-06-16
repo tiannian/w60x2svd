@@ -28,59 +28,59 @@
         "description":"保留"
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 0
+            "index": "0"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 1
+            "index": "1"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 2
+            "index": "2"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 3
+            "index": "3"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 4
+            "index": "4"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 5
+            "index": "5"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 6
+            "index": "6"
         }
     },
     {
-        "_op":"include",
+        "type":"include",
         "file":"@repeater.json",
         "args": {
-            "index": 7
+            "index": "7"
         }
     }
 ]
