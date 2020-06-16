@@ -1,0 +1,13 @@
+[
+    {
+        "description":"JTAG",
+        "bit":5,
+        "access":"RW",
+        "enumerated_value":"@switch_default_disable.json"
+    },
+    {
+        "description":"Resverd",
+        "range":"[4:0]",
+        "access":"RW"
+    }
+]

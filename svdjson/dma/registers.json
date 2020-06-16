@@ -1,0 +1,78 @@
+[
+    {
+        "offset":"0X0000",
+        "description":"中断屏蔽寄存器",
+        "name":"INT_MASK",
+        "mode":"RW",
+        "detail":"设置需要屏蔽的DMA中断",
+        "reset":"0X0000FFFF"
+    },
+    {
+        "offset":"0X0004",
+        "description":"中断状态寄存器",
+        "name":"INT_SRC",
+        "mode":"RW",
+        "detail":"指示当前DMA的中断状态",
+        "reset":"0X00000000"
+    },
+    {
+        "offset":"0X0008",
+        "description":"UART选择寄存器",
+        "name":"UART_CH",
+        "mode":"RW",
+        "detail":"UART外设时选择哪个UART",
+        "reset":"0X00000000"
+    },
+    {
+        "offset":"0X000C",
+        "description":"保留"
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 0
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 1
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 2
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 3
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 4
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 5
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 6
+        }
+    },
+    {
+        "repeat": {
+            "operator": "@repeater.json",
+            "index": 7
+        }
+    }
+]

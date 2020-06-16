@@ -1,0 +1,24 @@
+[
+    {
+        "description":"BCLKDIV",
+        "range":"[17: 8]",
+        "access":"RW"
+    },
+    {
+        "description":"MCLKDIV",
+        "range":"[7 : 2]",
+        "access":"RW"
+    },
+    {
+        "description":"MCLKEN",
+        "bit":1,
+        "access":"RW",
+        "enumerated_value":"@switch_default_disable.json"
+    },
+    {
+        "description":"EXTAL_EN",
+        "bit":0,
+        "access":"RW",
+        "enumerated_value":"@switch_default_disable.json"
+    }
+]
