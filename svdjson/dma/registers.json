@@ -28,50 +28,58 @@
         "description":"保留"
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 0
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 1
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 2
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 3
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 4
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 5
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 6
         }
     },
     {
-        "repeat": {
-            "operator": "@repeater.json",
+        "_op":"include",
+        "file":"@repeater.json",
+        "args": {
             "index": 7
         }
     }

@@ -6,6 +6,9 @@
         "mode":"RW",
         "detail":"DMA传输的源地址",
         "reset":"0X00000000"
+        "fields": {
+            "file": "@fields/sw_clkg_en.json"
+        }
     },
     {
         "offset":"0x0014+0x30*$index",
