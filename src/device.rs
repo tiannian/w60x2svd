@@ -1,7 +1,7 @@
-use serde::{Serialize, Deserialize};
 use crate::op::Op;
-use svd_parser::{Device as SvdDevice, device::DeviceBuilder};
 use crate::peripheral::Peripheral;
+use serde::{Deserialize, Serialize};
+use svd_parser::{device::DeviceBuilder, Device as SvdDevice};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Device {
@@ -18,7 +18,6 @@ impl Device {
         let mut peripherals = Vec::new();
         for peripheral in self.peripherals {
             let p: Peripheral = peripheral.load();
-            println!("{:?}", p);
             peripherals.push(p.get_svd());
         }
         DeviceBuilder::default()
@@ -31,5 +30,3 @@ impl Device {
             .unwrap()
     }
 }
-
-

@@ -24,10 +24,6 @@
         "reset":"0X00000000"
     },
     {
-        "offset":"0X000C",
-        "description":"保留"
-    },
-    {
         "type":"include",
         "file":"repeater.json",
         "args": {

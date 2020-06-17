@@ -1,3 +1,5 @@
+use crate::op;
+use crate::register::Register;
 use serde::{Deserialize, Serialize};
 use svd_parser::{
     addressblock::AddressBlock, peripheral::PeripheralBuilder, Peripheral as SvdPeripheral,
@@ -11,8 +13,8 @@ pub struct Peripheral {
     pub base_address: String,
     pub offset: String,
     pub length: String,
-    pub registers: Option<String>,
-    pub interrupt: Option<String>,
+    pub registers: Option<op::Op>,
+    pub interrupt: Option<op::Op>,
 }
 
 impl Peripheral {
@@ -38,6 +40,23 @@ impl Peripheral {
         builder = builder.address_block(Some(address_block));
 
         builder = builder.description(self.description);
+
+        let registers = match self.registers {
+            Some(v) => {
+                let rs: Vec<Register> = v.load();
+
+                let mut registers = Vec::new();
+
+                for register in rs {
+                    let r = register.get_svd();
+                    registers.push(r);
+                }
+
+                Some(registers)
+            }
+            None => None,
+        };
+        builder = builder.registers(registers);
 
         // create peripheral.
         builder.build().unwrap()

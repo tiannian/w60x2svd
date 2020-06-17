@@ -1,7 +1,9 @@
 use crate::mode::AccessMode;
 use crate::op;
 use serde::{Deserialize, Serialize};
-use svd_parser::{Register as SvdRegister, RegisterCluster, registerinfo::RegisterInfoBuilder, access:Access};
+use svd_parser::{
+    access::Access, registerinfo::RegisterInfoBuilder, Register as SvdRegister, RegisterCluster,
+};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Register {
@@ -17,17 +19,30 @@ pub struct Register {
 
 impl Register {
     pub fn get_svd(self) -> RegisterCluster {
+        println!("{:?}", self);
         let offset = u32::from_str_radix(&self.offset.unwrap()[2..], 16).unwrap();
         let reset_value = match self.reset {
             Some(v) => Some(u32::from_str_radix(&v[2..], 16).unwrap()),
-            None => None
+            None => None,
         };
+        let access = match self.mode {
+            Some(v) => match v {
+                AccessMode::Unknown => None,
+                AccessMode::RW => Some(Access::ReadWrite),
+                AccessMode::RO => Some(Access::ReadOnly),
+                AccessMode::WO => Some(Access::WriteOnly),
+            },
+            None => None,
+        };
+
+        // TODO: Load registers.
+
         let info = RegisterInfoBuilder::default()
             .name(self.name.unwrap())
             .address_offset(offset)
             .description(self.description)
             .reset_value(reset_value)
-            .access(self.mode)
+            .access(access)
             .build()
             .unwrap();
         RegisterCluster::Register(SvdRegister::Single(info))

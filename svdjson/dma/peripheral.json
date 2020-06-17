@@ -5,5 +5,8 @@
     "base_address":"0x40000000",
     "offset":"0x400",
     "length": "0x180",
-    "registers": "@registers.json"
+    "registers": {
+        "type": "include",
+        "file": "dma/registers.json"
+    }
 }
