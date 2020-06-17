@@ -1,12 +1,78 @@
 {
-    "name":"DMA",
-    "version":"0.1",
-    "description":"Timer and Reset",
-    "base_address":"0x40000000",
-    "offset":"0x400",
+    "name": "DMA",
+    "version": "0.1",
+    "description": "Direct Memory Access",
+    "base_address": "0x40000000",
+    "offset": "0x400",
     "length": "0x180",
-    "registers": {
-        "type": "include",
-        "file": "dma/registers.json"
-    }
+    "registers": [
+        {
+            "type": "include",
+            "file": "dma/registers.json"
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH0\"",
+                "dma_index": "0"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH1\"",
+                "dma_index": "1"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH2\"",
+                "dma_index": "2"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH3\"",
+                "dma_index": "3"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH4\"",
+                "dma_index": "4"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH5\"",
+                "dma_index": "5"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH6\"",
+                "dma_index": "6"
+            }
+        },
+        {
+            "type": "include",
+            "file": "dma/repeater.json",
+            "args": {
+                "dma_name": "\"CH7\"",
+                "dma_index": "7"
+            }
+        }
+    ]
 }

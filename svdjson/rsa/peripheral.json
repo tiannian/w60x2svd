@@ -1,0 +1,14 @@
+{
+    "name": "RSA",
+    "version": "0.1",
+    "description": "RAS Accelerator",
+    "base_address": "0x40002200",
+    "offset": "0",
+    "length": "0x40C",
+    "registers": [
+        {
+            "type": "include",
+            "file": "clk/registers.json"
+        }
+    ]
+}

@@ -15,7 +15,8 @@ pub struct Op {
     #[serde(rename = "type")]
     t: Option<Operator>,
     file: Option<String>,
-    args: Option<HashMap<String, String>>,
+    #[serde(default)]
+    pub args: HashMap<String, String>,
 }
 
 impl Op {

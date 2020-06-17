@@ -1,24 +1,56 @@
 use crate::mode::AccessMode;
-use crate::op;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use svd_parser::{
     access::Access, registerinfo::RegisterInfoBuilder, Register as SvdRegister, RegisterCluster,
 };
+use v_eval::{Eval, Value};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Register {
-    #[serde(flatten)]
-    pub op: op::Op,
     pub name: Option<String>,   // Notice: This file is required in svd file.
     pub offset: Option<String>, // Notice: This file is required in svd file.
     pub description: Option<String>,
     pub mode: Option<AccessMode>,
     pub reset: Option<String>,
     pub fields: Option<String>,
+    // Need svd_parser support.
+    pub data_type: Option<String>,
+    pub expressions: Option<HashMap<String, String>>,
 }
 
 impl Register {
-    pub fn get_svd(self) -> RegisterCluster {
+    fn eval(&mut self, args: &HashMap<String, String>) {
+        // init eval context.
+        let mut context = Eval::default();
+        for (k, v) in args {
+            context = context.insert(k.as_str(), v.as_str()).unwrap();
+        }
+
+        if let Some(expressions) = &self.expressions {
+            if let Some(exp) = expressions.get("offset") {
+                if let Value::Int(v) = context.eval(exp).unwrap() {
+                    let s = format!("{:#x}", v);
+                    self.offset = Some(s.to_string());
+                }
+            }
+
+            if let Some(exp) = expressions.get("name") {
+                if let Value::Str(s) = context.eval(exp).unwrap() {
+                    self.name = Some(s);
+                }
+            }
+
+            if let Some(exp) = expressions.get("description") {
+                if let Value::Str(s) = context.eval(exp).unwrap() {
+                    self.description = Some(s);
+                }
+            }
+        }
+    }
+
+    pub fn get_svd(mut self, args: &HashMap<String, String>) -> RegisterCluster {
+        self.eval(args);
         println!("{:?}", self);
         let offset = u32::from_str_radix(&self.offset.unwrap()[2..], 16).unwrap();
         let reset_value = match self.reset {

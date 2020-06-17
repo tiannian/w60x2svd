@@ -3,6 +3,7 @@
     "actix",
     "addressblock",
     "listenfd",
+    "registerinfo",
     "svdjson"
   ]
 }

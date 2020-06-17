@@ -5,8 +5,8 @@
     "base_address":"0x40000000",
     "offset":"0x700",
     "length": "0x20",
-    "registers": {
+    "registers": [{
         "type": "include",
         "file": "clk/registers.json"
-    }
+    }]
 }

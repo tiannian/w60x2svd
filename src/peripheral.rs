@@ -13,7 +13,7 @@ pub struct Peripheral {
     pub base_address: String,
     pub offset: String,
     pub length: String,
-    pub registers: Option<op::Op>,
+    pub registers: Vec<op::Op>,
     pub interrupt: Option<op::Op>,
 }
 
@@ -41,22 +41,18 @@ impl Peripheral {
 
         builder = builder.description(self.description);
 
-        let registers = match self.registers {
-            Some(v) => {
-                let rs: Vec<Register> = v.load();
+        let mut registers = Vec::new();
 
-                let mut registers = Vec::new();
+        for register_group in self.registers {
+            let rs: Vec<Register> = register_group.load();
 
-                for register in rs {
-                    let r = register.get_svd();
-                    registers.push(r);
-                }
-
-                Some(registers)
+            for r in rs {
+                let register = r.get_svd(&register_group.args);
+                registers.push(register);
             }
-            None => None,
-        };
-        builder = builder.registers(registers);
+        }
+
+        builder = builder.registers(Some(registers));
 
         // create peripheral.
         builder.build().unwrap()
