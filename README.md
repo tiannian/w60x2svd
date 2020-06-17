@@ -15,6 +15,7 @@ This tool is required because official SVD files are not available for these dev
   - [X] DMA
   - [ ] GPIO
   - [X] RSA
+  - [ ] Crypto
   - [ ] HSPI
   - [ ] SDIO
   - [ ] Wrapper
