@@ -60,7 +60,7 @@
     </peripheral>
     <peripheral>
       <name>DMA</name>
-      <description>Timer and Reset</description>
+      <description>Direct Memory Access</description>
       <baseAddress>0x40000000</baseAddress>
       <addressBlock>
         <offset>1024</offset>
