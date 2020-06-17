@@ -51,7 +51,6 @@ impl Register {
 
     pub fn get_svd(mut self, args: &HashMap<String, String>) -> RegisterCluster {
         self.eval(args);
-        println!("{:?}", self);
         let offset = u32::from_str_radix(&self.offset.unwrap()[2..], 16).unwrap();
         let reset_value = match self.reset {
             Some(v) => Some(u32::from_str_radix(&v[2..], 16).unwrap()),
