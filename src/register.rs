@@ -1,10 +1,11 @@
+use crate::dim::Dim;
 use crate::mode::AccessMode;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::fs::File;
 use svd_parser::{
     access::Access, registerinfo::RegisterInfoBuilder, Register as SvdRegister, RegisterCluster,
 };
-use v_eval::{Eval, Value};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Register {
@@ -17,40 +18,17 @@ pub struct Register {
     // Need svd_parser support.
     pub data_type: Option<String>,
     pub expressions: Option<HashMap<String, String>>,
+    pub dim_file: Option<String>,
 }
 
 impl Register {
-    fn eval(&mut self, args: &HashMap<String, String>) {
-        // init eval context.
-        let mut context = Eval::default();
-        for (k, v) in args {
-            context = context.insert(k.as_str(), v.as_str()).unwrap();
-        }
-
-        if let Some(expressions) = &self.expressions {
-            if let Some(exp) = expressions.get("offset") {
-                if let Value::Int(v) = context.eval(exp).unwrap() {
-                    let s = format!("{:#x}", v);
-                    self.offset = Some(s.to_string());
-                }
-            }
-
-            if let Some(exp) = expressions.get("name") {
-                if let Value::Str(s) = context.eval(exp).unwrap() {
-                    self.name = Some(s);
-                }
-            }
-
-            if let Some(exp) = expressions.get("description") {
-                if let Value::Str(s) = context.eval(exp).unwrap() {
-                    self.description = Some(s);
-                }
-            }
-        }
+    pub fn load(path: &str) -> Vec<Self> {
+        println!("load device definition.\nReading {}", path);
+        let file = File::open(path).unwrap();
+        serde_json::from_reader(file).unwrap()
     }
 
-    pub fn get_svd(mut self, args: &HashMap<String, String>) -> RegisterCluster {
-        self.eval(args);
+    pub fn get_svd(self) -> RegisterCluster {
         let offset = u32::from_str_radix(&self.offset.unwrap()[2..], 16).unwrap();
         let reset_value = match self.reset {
             Some(v) => Some(u32::from_str_radix(&v[2..], 16).unwrap()),
@@ -66,7 +44,7 @@ impl Register {
             None => None,
         };
 
-        // TODO: Load registers.
+        // TODO: Load fields.
 
         let info = RegisterInfoBuilder::default()
             .name(self.name.unwrap())
@@ -76,7 +54,12 @@ impl Register {
             .access(access)
             .build()
             .unwrap();
-        RegisterCluster::Register(SvdRegister::Single(info))
+        if let Some(dim) = self.dim_file {
+            let de = Dim::load(&dim);
+            RegisterCluster::Register(SvdRegister::Array(info, de.get_svd()))
+        } else {
+            RegisterCluster::Register(SvdRegister::Single(info))
+        }
     }
 }
 

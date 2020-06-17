@@ -1,0 +1,10 @@
+{
+    "name": "w600",
+    "version": "1.0",
+    "schema_version": "1.0",
+    "width": 32,
+    "peripherals_files": [
+        "svdjson/clk/peripheral.json",
+        "svdjson/dma/peripheral.json"
+    ]
+}

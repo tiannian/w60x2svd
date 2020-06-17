@@ -3,110 +3,99 @@
         "mode": "RW",
         "detail": "DMA传输的源地址",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x0010+0x30*dma_index",
-            "description": "dma_name+\"源地址寄存器\"",
-            "name": "\"SRC_ADDR_\"+dma_name"
-        }
+        "offset": "0x0010",
+        "description": "DMA源地址寄存器",
+        "name": "CH%s_SRC_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "DMA传输的目的地址",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x0014+0x30*dma_index",
-            "description": "dma_name + \"目的地址寄存器\"",
-            "name": "\"DEST_ADDR_\" + dma_name"
-        }
+        "offset": "0x0014",
+        "description": "DMA目的地址寄存器",
+        "name": "CH%s_DEST_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "循环模式下DMA传输源地址",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x18+0x30*dma_index",
-            "description": "dma_name + \"循环源起始地址寄存器\"",
-            "name": "\"SRC_WRAP_ADDR_\" + dma_name"
-        }
+        "offset": "0x18",
+        "description": "DMA循环源起始地址寄存器",
+        "name": "CH%s_SRC_WRAP_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "循环模式下DMA 传输目的地址",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x001C+0x30*dma_index",
-            "description": "dma_name + \"循环目的起始地址寄存器\"",
-            "name": "\"DEST_WRAP_ADDR_\" + dma_name"
-        }
+        "offset": "0x1C",
+        "description": "DMA循环目的起始地址寄存器",
+        "name": "CH%s_DEST_WRAP_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "循环模式下DMA循环边界",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x0020+0x30*dma_index",
-            "description": "dma_name + \"循环长度寄存器\"",
-            "name": "\"WRAP_SIZE_\" + dma_name"
-        }
+        "offset": "0x20",
+        "description": "DMA循环长度寄存器",
+        "name": "CH%s_WRAP_SIZE",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "当前通道DMA启动和停止",
         "reset": "0X00000000",
-        "expressions": {
-            "offset": "0x0024+0x30*dma_index",
-            "description": "dma_name + \"通道控制寄存器\"",
-            "name": "\"CHNL_CTRL_\" + dma_name"
-        }
+        "offset": "0x0024",
+        "description": "DMA通道控制寄存器",
+        "name": "CH%s_CHNL_CTRL",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "设置DMA的工作方式",
         "reset": "0x00000000",
-        "expressions": {
-            "offset": "0x0028+0x30*dma_index",
-            "description": "dma_name + \"模式选择寄存器\"",
-            "name": "\"DMA_MODE_\" + dma_name"
-        }
+        "offset": "0x0028",
+        "description": "DMA模式选择寄存器",
+        "name": "CH%s_DMA_MODE",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "设置DMA传输数据流",
         "reset": "0x00000000",
-        "expressions": {
-            "offset": "0x002C+0x30*dma_index",
-            "description": "dma_name + \"数据流控制寄存器\"",
-            "name": "\"DMA_CTRL_\" + dma_name"
-        }
+        "offset": "0x002C",
+        "description": "DMA数据流控制寄存器",
+        "name": "CH%s_DMA_CTRL",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RO",
         "detail": "获取当前已传输的字节数",
         "reset": "0x00000000",
-        "expressions": {
-            "offset": "0x0030+0x30*dma_index",
-            "description": "dma_name + \"传输字节数寄存器\"",
-            "name": "\"DMA_STATUS_\" + dma_name"
-        }
+        "offset": "0x0030",
+        "description": "DMA传输字节数寄存器",
+        "name": "CH%s_DMA_STATUS",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RW",
         "detail": "DMA链表地址入口地址设置",
         "reset": "0x00000000",
-        "expressions": {
-            "offset": "0x0034+0x30*dma_index",
-            "description": "dma_name + \"链表入口地址寄存器\"",
-            "name": "\"DESC_ADDR_\" + dma_name"
-        }
+        "offset": "0x0034",
+        "description": "DMA链表入口地址寄存器",
+        "name": "CH%s_DESC_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     },
     {
         "mode": "RO",
         "detail": "当前DMA操作的地址",
         "reset": "0x00000000",
-        "expressions": {
-            "offset": "0x0038+0x30*dma_index",
-            "description": "dma_name + \"当前目的地址寄存器\"",
-            "name": "\"CUR_DEST_ADDR_\" + dma_name"
-        }
+        "offset": "0x0038",
+        "description": "DMA当前目的地址寄存器",
+        "name": "CH%s_CUR_DEST_ADDR",
+        "dim_file": "svdjson/dma/dim.json"
     }
 ]

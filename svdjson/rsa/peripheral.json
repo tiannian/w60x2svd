@@ -6,9 +6,6 @@
     "offset": "0",
     "length": "0x40C",
     "registers": [
-        {
-            "type": "include",
-            "file": "clk/registers.json"
-        }
+        "clk/registers.json"
     ]
 }

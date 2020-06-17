@@ -1,6 +1,6 @@
-use crate::op;
 use crate::register::Register;
 use serde::{Deserialize, Serialize};
+use std::fs::File;
 use svd_parser::{
     addressblock::AddressBlock, peripheral::PeripheralBuilder, Peripheral as SvdPeripheral,
 };
@@ -13,11 +13,16 @@ pub struct Peripheral {
     pub base_address: String,
     pub offset: String,
     pub length: String,
-    pub registers: Vec<op::Op>,
-    pub interrupt: Option<op::Op>,
+    pub registers_files: Vec<String>,
 }
 
 impl Peripheral {
+    pub fn load(path: &str) -> Self {
+        println!("load peripherals definition\nReading {}", path);
+        let file = File::open(path).unwrap();
+        serde_json::from_reader(file).unwrap()
+    }
+
     pub fn get_svd(self) -> SvdPeripheral {
         let mut builder = PeripheralBuilder::default();
         let name = self.name;
@@ -43,11 +48,12 @@ impl Peripheral {
 
         let mut registers = Vec::new();
 
-        for register_group in self.registers {
-            let rs: Vec<Register> = register_group.load();
+        for register_group in self.registers_files {
+            let rs: Vec<Register> = Register::load(&register_group);
 
             for r in rs {
-                let register = r.get_svd(&register_group.args);
+                let register = r.get_svd();
+                println!("{:?}", register);
                 registers.push(register);
             }
         }

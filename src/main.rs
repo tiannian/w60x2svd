@@ -1,8 +1,8 @@
 mod device;
+mod dim;
 mod enumerated_values;
 mod field;
 mod mode;
-mod op;
 mod peripheral;
 mod register;
 
@@ -12,8 +12,7 @@ use std::io::BufWriter;
 use svd_parser::encode::Encode;
 
 fn main() {
-    let file = File::open("svdjson/devices.json").unwrap();
-    let device: Device = serde_json::from_reader(file).unwrap();
+    let device = Device::load("svdjson/device.json");
 
     let d = device.get_svd();
 
