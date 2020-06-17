@@ -4,6 +4,31 @@ A tool for generating SVD files for the `w60x`.
 
 This tool is required because official SVD files are not available for these devices at this time.  The generated SVD files are used for generating the `w60x`peripheral access crates using [svd2rust].
 
+## Status
+
+- [X] Generate `Device` from json.
+- [X] Generate `Peripheral` from json.
+- [ ] Generate `Register` from json.
+- [ ] Generate `Field` from json.
+- [ ] Extract definitions from official registers description document.
+  - [X] CLK
+  - [X] DMA
+  - [ ] GPIO
+  - [ ] Crypto
+  - [ ] HSPI
+  - [ ] SDIO
+  - [ ] Wrapper
+  - [ ] SPI
+  - [ ] I2C
+  - [ ] UART
+  - [ ] 7816
+  - [ ] Timer
+  - [ ] PMU
+  - [ ] RTC
+  - [ ] WDG
+  - [ ] PWM
+  - [ ] QFLASH
+
 ## Building
 
 ```bash
@@ -11,7 +36,7 @@ $ git clone https://github.com/tiannian/w60x2svd
 $ cd w60x2svd/ && cargo build
 ```
 
-### For w600.
+### For w600
 
 ```bash
 $ cargo run w600

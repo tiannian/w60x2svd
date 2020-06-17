@@ -1,5 +1,8 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de};
 use std::collections::HashMap;
+use std::fs::File;
+
+static ROOT_PATH: &'static str = "svdjson/";
 
 #[derive(Serialize, Deserialize, Debug)]
 pub enum Operator {
@@ -14,3 +17,13 @@ pub struct Op {
     file: Option<String>,
     args: Option<HashMap<String, String>>,
 }
+
+impl Op {
+    pub fn load<'a, T>(&'a self) -> T where T: de::DeserializeOwned {
+        let path = ROOT_PATH.to_string() + self.file.as_ref().unwrap().as_str();
+        let file = File::open(path).unwrap();
+        let t: T = serde_json::from_reader(file).unwrap();
+        t
+    }
+}
+

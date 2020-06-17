@@ -29,56 +29,56 @@
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "0"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "1"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "2"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "3"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "4"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "5"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "6"
         }
     },
     {
         "type":"include",
-        "file":"@repeater.json",
+        "file":"repeater.json",
         "args": {
             "index": "7"
         }

@@ -37,6 +37,8 @@ impl Peripheral {
         };
         builder = builder.address_block(Some(address_block));
 
+        builder = builder.description(self.description);
+
         // create peripheral.
         builder.build().unwrap()
     }
