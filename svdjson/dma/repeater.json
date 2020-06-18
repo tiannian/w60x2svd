@@ -7,7 +7,7 @@
         "description": "DMA源地址寄存器",
         "size": 32,
         "name": "CH%s_SRC_ADDR",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -17,7 +17,7 @@
         "description": "DMA目的地址寄存器",
         "size": 32,
         "name": "CH%s_DEST_ADDR",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -27,7 +27,7 @@
         "size": 32,
         "description": "DMA循环源起始地址寄存器",
         "name": "CH%s_SRC_WRAP_ADDR",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -37,7 +37,7 @@
         "offset": "0x1C",
         "description": "DMA循环目的起始地址寄存器",
         "name": "CH%s_DEST_WRAP_ADDR",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -47,7 +47,10 @@
         "offset": "0x20",
         "description": "DMA循环长度寄存器",
         "name": "CH%s_WRAP_SIZE",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json",
+        "fields_files": [
+            "svdjson/dma/fields/wrap_size.json"
+        ]
     },
     {
         "mode": "RW",
@@ -57,7 +60,7 @@
         "description": "DMA通道控制寄存器",
         "size": 32,
         "name": "CH%s_CHNL_CTRL",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -67,7 +70,7 @@
         "size": 32,
         "description": "DMA模式选择寄存器",
         "name": "CH%s_DMA_MODE",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -77,7 +80,7 @@
         "description": "DMA数据流控制寄存器",
         "size": 32,
         "name": "CH%s_DMA_CTRL",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RO",
@@ -87,7 +90,7 @@
         "description": "DMA传输字节数寄存器",
         "size": 32,
         "name": "CH%s_DMA_STATUS",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RW",
@@ -97,7 +100,7 @@
         "description": "DMA链表入口地址寄存器",
         "name": "CH%s_DESC_ADDR",
         "size": 32,
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     },
     {
         "mode": "RO",
@@ -107,6 +110,6 @@
         "size": 32,
         "description": "DMA当前目的地址寄存器",
         "name": "CH%s_CUR_DEST_ADDR",
-        "dim_file": "svdjson/dma/dim.json"
+        "dim_file": "svdjson/dma/dims/registers.json"
     }
 ]

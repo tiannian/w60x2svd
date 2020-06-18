@@ -1,0 +1,22 @@
+{
+    "name": "UARTDmaChannel",
+    "access": "RW",
+    "values": [
+        {
+            "name": "UART0",
+            "description": "uart0 模块dma通道接入dma",
+            "value": 0,
+            "is_default": true
+        },
+        {
+            "name": "UART1",
+            "description": "uart1 模块dma通道接入dma",
+            "value": 1
+        },
+        {
+            "name": "UART2",
+            "description": "uart2/7816 模块dma通道接入dma",
+            "value": 2
+        }
+    ]
+}

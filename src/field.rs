@@ -1,6 +1,6 @@
+use crate::dim::Dim;
 use crate::mode::AccessMode;
 use serde::{Deserialize, Serialize};
-
 use std::fs::File;
 use svd_parser::{
     bitrange::BitRange, bitrange::BitRangeType, field::Field as SvdField,
@@ -15,7 +15,7 @@ pub struct Field {
     pub access: Option<AccessMode>,
     pub description: Option<String>,
     pub enumerated_value: Option<String>,
-    pub dim: Option<String>,
+    pub dim_file: Option<String>,
 }
 
 impl Field {
@@ -37,16 +37,19 @@ impl Field {
             range_type: BitRangeType::BitRange,
         };
 
-        println!("{}:{},{}", self.name, bit_range.lsb(), bit_range.msb());
+        let field_info = FieldInfoBuilder::default()
+            .name(self.name)
+            .description(self.description)
+            .access(access)
+            .bit_range(bit_range)
+            .build()
+            .unwrap();
 
-        SvdField::Single(
-            FieldInfoBuilder::default()
-                .name(self.name)
-                .description(self.description)
-                .access(access)
-                .bit_range(bit_range)
-                .build()
-                .unwrap(),
-        )
+        if let Some(p) = self.dim_file {
+            let dim = Dim::load(&p).get_svd();
+            SvdField::Array(field_info, dim)
+        } else {
+            SvdField::Single(field_info)
+        }
     }
 }

@@ -1,0 +1,16 @@
+[
+    {
+        "description": "循环模式下，DMA源地址循环长度。",
+        "name": "dma_wrap_src_size",
+        "offset": 0,
+        "width": 16,
+        "access": "RW"
+    },
+    {
+        "description": "循环模式下，DMA目的地址循环长度。",
+        "name": "dma_wrap_dest_size",
+        "offset": 16,
+        "width": 31,
+        "access": "RW"
+    }
+]

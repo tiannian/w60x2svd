@@ -2,7 +2,11 @@
 
 A tool for generating SVD files for the `w60x`.
 
-This tool is required because official SVD files are not available for these devices at this time.  The generated SVD files are used for generating the `w60x`peripheral access crates using [svd2rust].
+This tool is required because official SVD files are not available for these devices at this time.
+The generated SVD files are used for generating the `w60x`peripheral access crates using [svd2rust].
+
+Register definitions from w60x official documents:
+- [w600 registers manual](https://download.w600.fun/document/W600_寄存器手册.pdf)
 
 ## Status
 

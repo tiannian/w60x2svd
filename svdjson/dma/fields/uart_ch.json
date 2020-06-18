@@ -1,0 +1,10 @@
+[
+    {
+        "description": "uart dma channel 选择",
+        "name": "uart_dma_channel",
+        "offset": 0,
+        "width": 2,
+        "access": "RW",
+        "enumerated_value": "svdjson/dma/enumerated_values/uart_ch.json"
+    }
+]
