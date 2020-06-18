@@ -2,24 +2,24 @@
     {
         "bit": 6,
         "access": "RW",
-        "description": "soft_cpu_clk_gt_mask",
+        "name": "soft_cpu_clk_gt_mask",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "range": "[5:2]",
         "access": "RW",
-        "description": "internel use"
+        "name": "internel use"
     },
     {
         "bit": 1,
         "access": "RW",
-        "description": "soft_sdioahb_clk_gt_mask",
+        "name": "soft_sdioahb_clk_gt_mask",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
         "bit": 0,
         "access": "RW",
-        "description": "soft_pmu_clk_gt_mask",
+        "name": "soft_pmu_clk_gt_mask",
         "enumerated_value": "@switch_default_disable.json"
     }
 ]

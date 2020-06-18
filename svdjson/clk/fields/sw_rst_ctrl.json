@@ -1,150 +1,150 @@
 [
     {
-        "description":"soft_rst_7816_n",
+        "name":"soft_rst_7816_n",
         "bit":24,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_gpsec_n",
+        "name":"soft_rst_gpsec_n",
         "bit":23,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_rsa_n",
+        "name":"soft_rst_rsa_n",
         "bit":22,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_i2s_n",
+        "name":"soft_rst_i2s_n",
         "bit":21,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_lcd_n",
+        "name":"soft_rst_lcd_n",
         "bit":20,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_pwm_n",
+        "name":"soft_rst_pwm_n",
         "bit":19,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_io_ctrl_n",
+        "name":"soft_rst_io_ctrl_n",
         "bit":18,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_sar_adc_n",
+        "name":"soft_rst_sar_adc_n",
         "bit":17,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_timer_n",
+        "name":"soft_rst_timer_n",
         "bit":16,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_gpio_n",
+        "name":"soft_rst_gpio_n",
         "bit":15,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_rf_cfg_n",
+        "name":"soft_rst_rf_cfg_n",
         "bit":14,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_spis_n",
+        "name":"soft_rst_spis_n",
         "bit":13,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_spim_n",
+        "name":"soft_rst_spim_n",
         "bit":12,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_uart1_n",
+        "name":"soft_rst_uart1_n",
         "bit":11,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_uart0_n",
+        "name":"soft_rst_uart0_n",
         "bit":10,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_i2c_n",
+        "name":"soft_rst_i2c_n",
         "bit":9,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_bus2_n",
+        "name":"soft_rst_bus2_n",
         "bit":8,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_bus1_n",
+        "name":"soft_rst_bus1_n",
         "bit":7,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_apb_n",
+        "name":"soft_rst_apb_n",
         "bit":6,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_mem_mng_n",
+        "name":"soft_rst_mem_mng_n",
         "bit":5,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_dma_n",
+        "name":"soft_rst_dma_n",
         "bit":4,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_sdio_ahb_n",
+        "name":"soft_rst_sdio_ahb_n",
         "bit":3,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_sec_n",
+        "name":"soft_rst_sec_n",
         "bit":2,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_mac_n",
+        "name":"soft_rst_mac_n",
         "bit":1,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"soft_rst_bbp_n",
+        "name":"soft_rst_bbp_n",
         "bit":0,
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"

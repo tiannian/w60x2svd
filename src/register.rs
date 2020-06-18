@@ -1,4 +1,5 @@
 use crate::dim::Dim;
+use crate::field::Field;
 use crate::mode::AccessMode;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -15,10 +16,12 @@ pub struct Register {
     pub mode: Option<AccessMode>,
     pub reset: Option<String>,
     pub fields: Option<String>,
+    pub size: Option<u32>,
     // Need svd_parser support.
     pub data_type: Option<String>,
     pub expressions: Option<HashMap<String, String>>,
     pub dim_file: Option<String>,
+    pub fields_files: Option<Vec<String>>,
 }
 
 impl Register {
@@ -45,13 +48,24 @@ impl Register {
         };
 
         // TODO: Load fields.
+        let mut fields = Vec::new();
+
+        if let Some(fields_files) = self.fields_files {
+            for fs in fields_files {
+                for f in Field::load(&fs) {
+                    fields.push(f.get_svd());
+                }
+            }
+        }
 
         let info = RegisterInfoBuilder::default()
             .name(self.name.unwrap())
             .address_offset(offset)
             .description(self.description)
             .reset_value(reset_value)
+            .size(self.size)
             .access(access)
+            .fields(Some(fields))
             .build()
             .unwrap();
         if let Some(dim) = self.dim_file {

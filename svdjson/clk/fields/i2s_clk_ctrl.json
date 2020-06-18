@@ -1,23 +1,27 @@
 [
     {
-        "description":"BCLKDIV",
+        "name":"BCLKDIV",
+        "offset":8,
+        "width": 9,
         "range":"[17: 8]",
         "access":"RW"
     },
     {
-        "description":"MCLKDIV",
+        "name":"MCLKDIV",
+        "offset":2,
+        "width": 5,
         "range":"[7 : 2]",
         "access":"RW"
     },
     {
-        "description":"MCLKEN",
-        "bit":1,
+        "name":"MCLKEN",
+        "offset":1,
         "access":"RW",
         "enumerated_value":"@switch_default_disable.json"
     },
     {
-        "description":"EXTAL_EN",
-        "bit":0,
+        "name":"EXTAL_EN",
+        "offset":0,
         "access":"RW",
         "enumerated_value":"@switch_default_disable.json"
     }

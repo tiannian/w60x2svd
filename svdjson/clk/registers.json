@@ -6,7 +6,10 @@
         "mode": "RW",
         "detail": "软件配置模块是否关断时钟",
         "reset": "0x00007FFF",
-        "fields": "@fields/sw_clkg_en.json"
+        "size": 32,
+        "fields_files": [
+            "svdjson/clk/fields/sw_clkg_en.json"
+        ]
     },
     {
         "offset": "0x0004",
@@ -15,7 +18,10 @@
         "mode": "RW",
         "detail": "软件配置模块是否自适应关断时钟",
         "reset": "0x0000007E",
-        "fields": "@fields/sw_clk_mask.json"
+        "size": 32,
+        "fields_files": [
+            "svdjson/clk/fields/sw_clk_mask.json"
+        ]
     },
     {
         "offset": "0x000C",
@@ -24,7 +30,10 @@
         "mode": "RW",
         "detail": "软件配置复位模块",
         "reset": "0x01FFFFFF",
-        "fields": "@fields/sw_rst_ctrl.json"
+        "size": 32,
+        "fields_files": [
+            "svdjson/clk/fields/sw_rst_ctrl.json"
+        ]
     },
     {
         "offset": "0x0010",
@@ -33,7 +42,10 @@
         "mode": "RW",
         "detail": "配置时钟分频比",
         "reset": "0x00002212",
-        "fields": "@fields/sys_clk_div.json"
+        "size": 32,
+        "fields_files": [
+            "svdjson/clk/fields/sys_clk_div.json"
+        ]
     },
     {
         "offset": "0x0014",
@@ -42,7 +54,10 @@
         "mode": "RW",
         "detail": "配置ADC/DAC回环测试",
         "reset": "0x00000000",
-        "fields": "@fields/debug_ctrl.json"
+        "size": 32,
+        "fields_files": [
+            "svdjson/clk/fields/debug_ctrl.json"
+        ]
     },
     {
         "offset": "0x0018",
@@ -50,6 +65,7 @@
         "name": "I2S_CLK_CTRL",
         "mode": "RW",
         "detail": "配置I2S时钟",
+        "size": 32,
         "reset": "0x00000000"
     }
 ]

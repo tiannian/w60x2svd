@@ -5,6 +5,7 @@
         "reset": "0X00000000",
         "offset": "0x0010",
         "description": "DMA源地址寄存器",
+        "size": 32,
         "name": "CH%s_SRC_ADDR",
         "dim_file": "svdjson/dma/dim.json"
     },
@@ -14,6 +15,7 @@
         "reset": "0X00000000",
         "offset": "0x0014",
         "description": "DMA目的地址寄存器",
+        "size": 32,
         "name": "CH%s_DEST_ADDR",
         "dim_file": "svdjson/dma/dim.json"
     },
@@ -22,6 +24,7 @@
         "detail": "循环模式下DMA传输源地址",
         "reset": "0X00000000",
         "offset": "0x18",
+        "size": 32,
         "description": "DMA循环源起始地址寄存器",
         "name": "CH%s_SRC_WRAP_ADDR",
         "dim_file": "svdjson/dma/dim.json"
@@ -30,6 +33,7 @@
         "mode": "RW",
         "detail": "循环模式下DMA 传输目的地址",
         "reset": "0X00000000",
+        "size": 32,
         "offset": "0x1C",
         "description": "DMA循环目的起始地址寄存器",
         "name": "CH%s_DEST_WRAP_ADDR",
@@ -38,6 +42,7 @@
     {
         "mode": "RW",
         "detail": "循环模式下DMA循环边界",
+        "size": 32,
         "reset": "0X00000000",
         "offset": "0x20",
         "description": "DMA循环长度寄存器",
@@ -50,6 +55,7 @@
         "reset": "0X00000000",
         "offset": "0x0024",
         "description": "DMA通道控制寄存器",
+        "size": 32,
         "name": "CH%s_CHNL_CTRL",
         "dim_file": "svdjson/dma/dim.json"
     },
@@ -58,6 +64,7 @@
         "detail": "设置DMA的工作方式",
         "reset": "0x00000000",
         "offset": "0x0028",
+        "size": 32,
         "description": "DMA模式选择寄存器",
         "name": "CH%s_DMA_MODE",
         "dim_file": "svdjson/dma/dim.json"
@@ -68,6 +75,7 @@
         "reset": "0x00000000",
         "offset": "0x002C",
         "description": "DMA数据流控制寄存器",
+        "size": 32,
         "name": "CH%s_DMA_CTRL",
         "dim_file": "svdjson/dma/dim.json"
     },
@@ -77,6 +85,7 @@
         "reset": "0x00000000",
         "offset": "0x0030",
         "description": "DMA传输字节数寄存器",
+        "size": 32,
         "name": "CH%s_DMA_STATUS",
         "dim_file": "svdjson/dma/dim.json"
     },
@@ -87,6 +96,7 @@
         "offset": "0x0034",
         "description": "DMA链表入口地址寄存器",
         "name": "CH%s_DESC_ADDR",
+        "size": 32,
         "dim_file": "svdjson/dma/dim.json"
     },
     {
@@ -94,6 +104,7 @@
         "detail": "当前DMA操作的地址",
         "reset": "0x00000000",
         "offset": "0x0038",
+        "size": 32,
         "description": "DMA当前目的地址寄存器",
         "name": "CH%s_CUR_DEST_ADDR",
         "dim_file": "svdjson/dma/dim.json"

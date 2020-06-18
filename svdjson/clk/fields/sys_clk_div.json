@@ -1,39 +1,39 @@
 [
     {
-        "description":"divide_freq_en",
+        "name":"divide_freq_en",
         "bit":31,
         "access":"RW",
         "enumerated_value":"@switch_default_disable.json"
     },
     {
-        "description":"soft_rst_gpsec_n",
+        "name":"soft_rst_gpsec_n",
         "range":"[30:29]",
         "access":"RW"
     },
     {
-        "description":"rsa_clk_sel",
+        "name":"rsa_clk_sel",
         "bit":28,
         "access":"RW",
         "enumerated_value":"@switch_default_disable.json"
     },
     {
-        "description":"sdadc_fdiv",
+        "name":"sdadc_fdiv",
         "range": "[27:12]",
         "access":"RW"
     },
     {
-        "description":"bus2_syncdn_factor",
+        "name":"bus2_syncdn_factor",
         "range":"[11:8]",
         "access":"RW",
         "enumerated_value":"@switch_default_enable.json"
     },
     {
-        "description":"wlan_clk_divider",
+        "name":"wlan_clk_divider",
         "range":"[7:4]",
         "access":"RW"
     },
     {
-        "description":"cpu_clk_divider",
+        "name":"cpu_clk_divider",
         "range":"[3:0]",
         "access":"RW"
     }

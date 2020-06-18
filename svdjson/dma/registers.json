@@ -5,6 +5,7 @@
         "name":"INT_MASK",
         "mode":"RW",
         "detail":"设置需要屏蔽的DMA中断",
+        "size": 32,
         "reset":"0X0000FFFF"
     },
     {
@@ -13,6 +14,7 @@
         "name":"INT_SRC",
         "mode":"RW",
         "detail":"指示当前DMA的中断状态",
+        "size": 32,
         "reset":"0X00000000"
     },
     {
@@ -21,6 +23,7 @@
         "name":"UART_CH",
         "mode":"RW",
         "detail":"UART外设时选择哪个UART",
+        "size": 32,
         "reset":"0X00000000"
     }
 ]
