@@ -48,15 +48,19 @@ impl Register {
         };
 
         // TODO: Load fields.
-        let mut fields = Vec::new();
 
-        if let Some(fields_files) = self.fields_files {
-            for fs in fields_files {
-                for f in Field::load(&fs) {
-                    fields.push(f.get_svd());
+        let fields = match self.fields_files {
+            Some(fields_files) => {
+                let mut fields = Vec::new();
+                for fs in fields_files {
+                    for f in Field::load(&fs) {
+                        fields.push(f.get_svd());
+                    }
                 }
+                Some(fields)
             }
-        }
+            None => None,
+        };
 
         let info = RegisterInfoBuilder::default()
             .name(self.name.unwrap())
@@ -65,7 +69,7 @@ impl Register {
             .reset_value(reset_value)
             .size(self.size)
             .access(access)
-            .fields(Some(fields))
+            .fields(fields)
             .build()
             .unwrap();
         if let Some(dim) = self.dim_file {

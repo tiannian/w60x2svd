@@ -1,90 +1,90 @@
 [
     {
-        "bit": 14,
+        "offset": 14,
         "access": "RW",
         "name": "soft_7816_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 13,
+        "offset": 13,
         "access": "RW",
         "name": "soft_gpsec_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 12,
+        "offset": 12,
         "access": "RW",
         "name": "soft_rsa_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 11,
+        "offset": 11,
         "access": "RW",
         "name": "soft_i2s_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 10,
+        "offset": 10,
         "access": "RW",
         "name": "soft_lcd_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 9,
+        "offset": 9,
         "access": "RW",
         "name": "soft_pwm_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 8,
+        "offset": 8,
         "access": "RW",
         "name": "soft_sd_adc_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 7,
+        "offset": 7,
         "access": "RW",
         "name": "soft_gpio_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 6,
+        "offset": 6,
         "access": "RW",
         "name": "soft_timer_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 5,
+        "offset": 5,
         "access": "RW",
         "name": "soft_rf_cfg_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 4,
+        "offset": 4,
         "access": "RW",
         "name": "soft_dma_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 3,
+        "offset": 3,
         "access": "RW",
         "name": "soft_ls_spi_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 2,
+        "offset": 2,
         "access": "RW",
         "name": "soft_uart1_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 1,
+        "offset": 1,
         "access": "RW",
         "name": "soft_uart0_gate_en",
         "enumerated_value": "@switch_default_enable.json"
     },
     {
-        "bit": 0,
+        "offset": 0,
         "access": "RW",
         "name": "soft_i2c_gate_en",
         "enumerated_value": "@switch_default_enable.json"

@@ -53,7 +53,6 @@ impl Peripheral {
 
             for r in rs {
                 let register = r.get_svd();
-                println!("{:?}", register);
                 registers.push(register);
             }
         }

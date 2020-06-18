@@ -9,7 +9,7 @@ This tool is required because official SVD files are not available for these dev
 - [X] Generate `Device` from json.
 - [X] Generate `Peripheral` from json.
 - [X] Generate `Register` from json.
-- [ ] Generate `Field` from json.
+- [X] Generate `Field` from json.
 - [ ] Extract definitions from official registers description document.
   - [X] CLK
   - [X] DMA

@@ -2,7 +2,10 @@ use crate::mode::AccessMode;
 use serde::{Deserialize, Serialize};
 
 use std::fs::File;
-use svd_parser::{field::Field as SvdField, fieldinfo::FieldInfoBuilder, bitrange::BitRange, bitrange::BitRangeType};
+use svd_parser::{
+    bitrange::BitRange, bitrange::BitRangeType, field::Field as SvdField,
+    fieldinfo::FieldInfoBuilder,
+};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Field {
@@ -30,9 +33,11 @@ impl Field {
 
         let bit_range = BitRange {
             offset: self.offset.unwrap(),
-            width: self.offset.unwrap_or(0),
+            width: self.width.unwrap_or(1),
             range_type: BitRangeType::BitRange,
         };
+
+        println!("{}:{},{}", self.name, bit_range.lsb(), bit_range.msb());
 
         SvdField::Single(
             FieldInfoBuilder::default()
