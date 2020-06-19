@@ -1,0 +1,163 @@
+[
+    {
+        "offset": "0x0000",
+        "description": "Source address register",
+        "name": "SRC_ADDR",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0004",
+        "description": "Destination address register",
+        "name": "DEST_ADDR",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0008",
+        "description": "Configuration register",
+        "name": "GPSEC_CFG",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW",
+        "fields_files": [
+            "svdjson/crypto/fields/gpsec_cfg.json"
+        ]
+    },
+    {
+        "offset": "0x000C",
+        "description": "Control register",
+        "name": "GPSEC_CTRL",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW",
+        "fields_files": [
+            "svdjson/crypto/fields/gpsec_ctrl.json"
+        ]
+    },
+    {
+        "offset": "0x0010",
+        "description": "Secret key 0 low register",
+        "name": "KEY00",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0014",
+        "description": "Secret key 0 high register",
+        "name": "KEY01",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0018",
+        "description": "Secret key 1 low register",
+        "name": "KEY10",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x001C",
+        "description": "Secret key 1 high register",
+        "name": "KEY11",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0020",
+        "description": "Secret key 2 low register",
+        "name": "KEY20",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0024",
+        "description": "Secret key 2 high register",
+        "name": "KEY21",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0028",
+        "description": "Initial vector low register",
+        "name": "IV00",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x002C",
+        "description": "Initial vector high register",
+        "name": "IV00",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0030",
+        "description": "Status register",
+        "name": "GPSEC_STS",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW",
+        "fields_files": [
+            "svdjson/crypto/fields/gpsec_sts.json"
+        ]
+    },
+    {
+        "offset": "0x0034",
+        "description": "Digest 0 register",
+        "name": "DIGEST0",
+        "size": 32,
+        "reset": "0x67452301",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0038",
+        "description": "Digest 1 register",
+        "name": "DIGEST1",
+        "size": 32,
+        "reset": "0xEFCDAB89",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x003C",
+        "description": "Digest 2 register",
+        "name": "DIGEST2",
+        "size": 32,
+        "reset": "0x98BADCFE",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0040",
+        "description": "Digest 3 register",
+        "name": "DIGEST3",
+        "size": 32,
+        "reset": "0x10325476",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0044",
+        "description": "Digest 4 register",
+        "name": "DIGEST4",
+        "size": 32,
+        "reset": "0xC3D2E1F0",
+        "mode": "RW"
+    },
+    {
+        "offset": "0x0048",
+        "description": "RNG output",
+        "name": "RNG_RESULT",
+        "size": 32,
+        "reset": "0x00000000",
+        "mode": "RW"
+    }
+]

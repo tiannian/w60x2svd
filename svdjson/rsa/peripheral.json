@@ -1,11 +1,11 @@
 {
     "name": "RSA",
     "version": "0.1",
-    "description": "RAS Accelerator",
+    "description": "RSA Accelerator",
     "base_address": "0x40002200",
-    "offset": "0",
+    "offset": "0x0",
     "length": "0x40C",
-    "registers": [
-        "clk/registers.json"
+    "registers_files": [
+        "svdjson/clk/registers.json"
     ]
 }

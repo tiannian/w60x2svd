@@ -1,0 +1,31 @@
+[
+    {
+        "description": "start multiple and mod operator",
+        "name": "MM_START",
+        "offset": 5,
+        "access": "RW",
+        "enumerated_value": "svdjson/enumerated_values/switch_default_disable.json"
+    },
+    {
+        "description": "soft reset",
+        "name": "RSA_RST",
+        "offset": 4,
+        "access": "RW",
+        "enumerated_value": "svdjson/enumerated_values/switch_default_disable.json"
+    },
+    {
+        "description": "select multiple and mod operator mode.",
+        "name": "MM_MODE",
+        "offset": 2,
+        "width": 2,
+        "access": "RW",
+        "enumerated_value": "svdjson/rsa/enumerated_values/mm_mode.json"
+    },
+    {
+        "description": "complete operator",
+        "name": "MM_COMP",
+        "offset": 0,
+        "access": "RW",
+        "enumerated_value": "svdjson/enumerated_values/switch_default_disable.json"
+    }
+]

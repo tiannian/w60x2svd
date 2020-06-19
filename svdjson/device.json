@@ -5,6 +5,8 @@
     "width": 32,
     "peripherals_files": [
         "svdjson/clk/peripheral.json",
-        "svdjson/dma/peripheral.json"
+        "svdjson/dma/peripheral.json",
+        "svdjson/crypto/peripheral.json",
+        "svdjson/rsa/peripheral.json"
     ]
 }

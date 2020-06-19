@@ -19,7 +19,7 @@ Register definitions from w60x official documents:
   - [X] DMA
   - [ ] GPIO
   - [X] RSA
-  - [ ] Crypto
+  - [X] Crypto
   - [ ] HSPI
   - [ ] SDIO
   - [ ] Wrapper

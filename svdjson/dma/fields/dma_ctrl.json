@@ -1,0 +1,47 @@
+[
+    {
+        "description": "总共需要操作的byte个数。需要与data_size配置相一致，即若果为字操作，则应该为配置为4的整数倍；如果为半字操作，则应该配置为2的整数倍。",
+        "name": "total_byte",
+        "offset": 8,
+        "width": 16,
+        "access": "RW"
+    },
+    {
+        "description": "设置DMA每次搬运多少个单位的数据",
+        "name": "burst_size",
+        "offset": 7,
+        "access": "RW",
+        "enumerated_value": "svdjson/dma/enumerated_values/burst_size.json"
+    },
+    {
+        "description": "设置DMA的搬运单位",
+        "name": "data_size",
+        "offset": 5,
+        "width": 2,
+        "access": "RW",
+        "enumerated_value": "svdjson/dma/enumerated_values/data_size.json"
+    },
+    {
+        "description": "目的地址增加模式",
+        "name": "dest_addr_inc",
+        "offset": 3,
+        "width": 2,
+        "access": "RW",
+        "enumerated_value": "svdjson/dma/enumerated_values/dest_addr_inc.json"
+    },
+    {
+        "description": "源地址增加模式",
+        "name": "src_addr_inc",
+        "offset": 1,
+        "width": 2,
+        "access": "RW",
+        "enumerated_value": "svdjson/dma/enumerated_values/src_addr_inc.json"
+    },
+    {
+        "description": "当完成当前DMA搬运后，是否自动按当前DMA配置重新下一次DMA搬运",
+        "name": "auto_reload",
+        "offset": 0,
+        "access": "RW",
+        "enumerated_value": "svdjson/enumerated_values/switch_default_disable.json"
+    }
+]
