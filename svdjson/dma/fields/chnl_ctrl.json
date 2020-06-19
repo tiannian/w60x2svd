@@ -1,0 +1,15 @@
+[
+    {
+        "description": "停止dma操作，高有效。",
+        "name": "dma_stop",
+        "offset": 1,
+        "access": "RW",
+        "enumerated_value": "svdjson/enumerated_values/switch_default_disable.json"
+    },
+    {
+        "description": "启动当前通道DMA转换，高有效。",
+        "name": "chnl_on",
+        "offset": 0,
+        "access": "RW"
+    }
+]
