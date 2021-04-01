@@ -1,5 +1,5 @@
 位,访问,操作说明,复位值
-[31: 2],,保留,
+[31: 2],,reserved保留,
 [1],RW,"dma_stop
 停止dma 操作，高有效。
 DMA 会在完成当前burst 操作后停止，并同时清除chnl_on。软件应根据chnl_on

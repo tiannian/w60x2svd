@@ -1,0 +1,642 @@
+{
+  "name": "crypto",
+  "version": "0.1",
+  "description": "GPSEC配置",
+  "base_address": 1073754624,
+  "address_block": {
+    "offset": 0,
+    "size": 512,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "src_addr",
+      "offset": 0,
+      "description": "RC4/SHA1/AES/DES/3DES/CRC/MD5\n复用源地址",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "dest_addr",
+      "offset": 4,
+      "description": "RC4/AES/DES/3DES 复用目的地址",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "gpsec_cfg",
+      "offset": 8,
+      "description": "通用硬件加密模块配置寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 1,
+          "description": "保留"
+        },
+        {
+          "name": "rng_start",
+          "offset": 30,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "rng_start",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rng_start_0",
+                "description": "不启动RNG",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rng_start_1",
+                "description": "启动RNG",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rng_load_seed",
+          "offset": 29,
+          "width": 1,
+          "access": "RW",
+          "description": "硬件自动清 0",
+          "enumerated_value": {
+            "name": "rng_load_seed",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rng_load_seed_0",
+                "description": "随机数发生器会默认以零为种子，产生相应位数的随机数",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rng_load_seed_1",
+                "description": "种子加载完成以后开始生成随机数",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rng_switch",
+          "offset": 28,
+          "width": 1,
+          "access": "RW",
+          "description": "控制生成随机数的位数，",
+          "enumerated_value": {
+            "name": "rng_switch",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rng_switch_0",
+                "description": "16 位",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rng_switch_1",
+                "description": "32 位",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "des_soft_reset",
+          "offset": 27,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "des_soft_reset",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "des_soft_reset_0",
+                "description": "不产生软复位且不改变当前状态",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "des_soft_reset_1",
+                "description": "加密算法被软件复位为初始状态",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "aes_soft_reset",
+          "offset": 26,
+          "width": 1,
+          "access": "RW",
+          "description": "aes 软复位完成后硬件自动清 0",
+          "enumerated_value": {
+            "name": "aes_soft_reset",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "aes_soft_reset_0",
+                "description": "不产生软复位且不改变当前状态",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "aes_soft_reset_1",
+                "description": "加密算法被软件复位为初始状态",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rc4_soft_reset",
+          "offset": 25,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "rc4_soft_reset",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rc4_soft_reset_0",
+                "description": "不产生软复位且不改变当前状态",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rc4_soft_reset_1",
+                "description": "加密算法被软件复位为初始状态",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "crc_datarev",
+          "offset": 24,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "crc_datarev",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "crc_datarev_0",
+                "description": "CRC 输入数据不反向",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "crc_datarev_1",
+                "description": "CRC 输入数据反向",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "crc_chksrev",
+          "offset": 23,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "crc_chksrev",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "crc_chksrev_0",
+                "description": "CRC 输出结果不反向",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "crc_chksrev_1",
+                "description": "CRC 输出结果反向",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "sub_mode",
+          "offset": 22,
+          "width": 1,
+          "access": "RW",
+          "description": "算法类型子模式选择：",
+          "enumerated_value": {
+            "name": "sub_mode",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "sub_mode_00",
+                "description": "DES/AES 密码算法的ECB 模式，可复用 CRC 算法的 CRC8 模式",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "sub_mode_01",
+                "description": "3DES/AES 密码算法的 CBC，可复用 CRC 算法的CRC16_0 模式",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "sub_mode_10",
+                "description": "AES 密码算法的CTR 模式，可复用 CRC 算法的CRC16_1 模式",
+                "value": 16,
+                "default": false
+              },
+              {
+                "name": "sub_mode_11",
+                "description": "CRC 算法的CRC32",
+                "value": 17,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "encrypt_decrypt",
+          "offset": 20,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "encrypt_decrypt",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "encrypt_decrypt_0",
+                "description": "加密",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "encrypt_decrypt_1",
+                "description": "解密",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "gpsec_int_mask",
+          "offset": 19,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "gpsec_int_mask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "gpsec_int_mask_0",
+                "description": "不屏蔽加/解密完成中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "gpsec_int_mask_1",
+                "description": "屏蔽加/解密完成中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "cypher_mode",
+          "offset": 18,
+          "width": 2,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "cypher_mode",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "cypher_mode_000",
+                "description": "RSV",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_001",
+                "description": "RC4",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_010",
+                "description": "SHA1",
+                "value": 16,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_011",
+                "description": "AES",
+                "value": 17,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_100",
+                "description": "DES",
+                "value": 256,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_101",
+                "description": "3DES",
+                "value": 257,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_110",
+                "description": "CRC",
+                "value": 272,
+                "default": false
+              },
+              {
+                "name": "cypher_mode_111",
+                "description": "MD5",
+                "value": 273,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "total_byte",
+          "offset": 15,
+          "width": 15,
+          "access": "RW",
+          "description": "总共需要加解密操作的byte 个数。"
+        }
+      ]
+    },
+    {
+      "name": "gpsec_ctrl",
+      "offset": 12,
+      "description": "通用硬件加密模块控制寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 29,
+          "description": "保留"
+        },
+        {
+          "name": "sec_stop",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "停止当前正在进行的加解密操作",
+          "enumerated_value": {
+            "name": "sec_stop",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "sec_stop_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "sec_stop_1",
+                "description": "加/解密停止",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "sec_strt",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "sec_strt",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "sec_strt_0",
+                "description": "不启动加/解密",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "sec_strt_1",
+                "description": "启动加/解密",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "key00",
+      "offset": 16,
+      "description": "Key0 低 32 位第一个输入key\n（RC4/AES/DES/3DES），复用 CRC Ci",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "key01",
+      "offset": 20,
+      "description": "Key0 高 32 位第一个输入key\n（RC4/AES/DES/3DES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "key10",
+      "offset": 24,
+      "description": "Key1 低 32 位第二个输入key\n（RC4/AES//3DES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "key11",
+      "offset": 28,
+      "description": "Key1 高 32 位第二个输入key\n（RC4/AES//3DES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "key20",
+      "offset": 32,
+      "description": "Key2 低 32 位第三个输入key（3DES），\n复用iv1 低 32 位输入初始向量（AES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "key21",
+      "offset": 36,
+      "description": "Key2 高 32 位第三个输入key（3DES），\n复用iv1 高 32 位输入初始向量（AES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "iv00",
+      "offset": 40,
+      "description": "IV0 低 32 位输入初始向量\n（AES/DES/3DES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "iv01",
+      "offset": 44,
+      "description": "IV0 高 32 位输入初始向量\n（AES/DES/3DES）",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "gpsec_sts",
+      "offset": 48,
+      "description": "通用硬件加密模块状态寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 14,
+          "description": "保留"
+        },
+        {
+          "name": "int_flag",
+          "offset": 16,
+          "width": 1,
+          "access": "RW",
+          "description": "软件写 1 清零",
+          "enumerated_value": {
+            "name": "int_flag",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "int_flag_0",
+                "description": "不产生加/解密完成中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "int_flag_1",
+                "description": "产生加/解密完成中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "transfer_cnt",
+          "offset": 15,
+          "width": 15,
+          "access": "RO",
+          "description": "当前加密完成的字节个数。每次重新开启加解密时清 0，并重新开始计数。"
+        }
+      ]
+    },
+    {
+      "name": "sha1-digest0",
+      "offset": 52,
+      "description": "sha1-digest0/MD5-digest0",
+      "mode": "RW",
+      "reset": 1732584193,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "sha1-digest1",
+      "offset": 56,
+      "description": "sha1-digest1/MD5-digest1",
+      "mode": "RW",
+      "reset": 4023233417,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "sha1-digest2",
+      "offset": 60,
+      "description": "sha1-digest2/MD5-digest2",
+      "mode": "RW",
+      "reset": 2562383102,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "sha1-digest3",
+      "offset": 64,
+      "description": "sha1-digest3/MD5-digest3",
+      "mode": "RW",
+      "reset": 271733878,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "sha1-digest4",
+      "offset": 68,
+      "description": "sha1-digest4/CRC",
+      "mode": "RW",
+      "reset": 3285377520,
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "rng_result",
+      "offset": 72,
+      "description": "RNG 输出",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": []
+    }
+  ]
+}

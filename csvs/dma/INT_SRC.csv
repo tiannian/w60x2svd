@@ -1,18 +1,18 @@
 位,访问,操作说明,复位值
-[31:16],,保留,
-[15],RW,channel7 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[14],RW,channel7 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[13],RW,channel6 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[12],RW,channel6 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[11],RW,channel5 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[10],RW,channel5 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[9],RW,channel4 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[8],RW,channel4 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[7],RW,channel3 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[6],RW,channel3 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[5],RW,channel2 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[4],RW,channel2 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[3],RW,channel1 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[2],RW,channel1 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
-[1],RW,channel0 transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
-[0],RW,channel0 burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[31:16],,reserved保留,
+[15],RW,channel7_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[14],RW,channel7_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[13],RW,channel6_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[12],RW,channel6_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[11],RW,channel5_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[10],RW,channel5_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[9],RW,channel4_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[8],RW,channel4_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[7],RW,channel3_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[6],RW,channel3_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[5],RW,channel2_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[4],RW,channel2_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[3],RW,channel1_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[2],RW,channel1_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0
+[1],RW,channel0_transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。,1’b0
+[0],RW,channel0_burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。,1’b0

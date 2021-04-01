@@ -18,122 +18,122 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 15,
           "description": "保留"
         },
         {
-          "name": "channel7",
+          "name": "channel7_transfer_done",
           "offset": 15,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel7",
+          "name": "channel7_burst_done",
           "offset": 14,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel6",
+          "name": "channel6_transfer_done",
           "offset": 13,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel6",
+          "name": "channel6_burst_done",
           "offset": 12,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel5",
+          "name": "channel5_transfer_done",
           "offset": 11,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel5",
+          "name": "channel5_burst_done",
           "offset": 10,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel4",
+          "name": "channel4_transfer_done",
           "offset": 9,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel4",
+          "name": "channel4_burst_done",
           "offset": 8,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel3",
+          "name": "channel3_transfer_done",
           "offset": 7,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel3",
+          "name": "channel3_burst_done",
           "offset": 6,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel2",
+          "name": "channel2_transfer_done",
           "offset": 5,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel2",
+          "name": "channel2_burst_done",
           "offset": 4,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel1",
+          "name": "channel1_transfer_done",
           "offset": 3,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel1",
+          "name": "channel1_burst_done",
           "offset": 2,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel0",
+          "name": "channel0_transfer_done",
           "offset": 1,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         },
         {
-          "name": "channel0",
+          "name": "channel0_burst_done",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断屏蔽，高有效。"
+          "description": "中断屏蔽，高有效。"
         }
       ]
     },
@@ -146,122 +146,122 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 15,
           "description": "保留"
         },
         {
-          "name": "channel7",
+          "name": "channel7_transfer_done",
           "offset": 15,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel7",
+          "name": "channel7_burst_done",
           "offset": 14,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel6",
+          "name": "channel6_transfer_done",
           "offset": 13,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel6",
+          "name": "channel6_burst_done",
           "offset": 12,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel5",
+          "name": "channel5_transfer_done",
           "offset": 11,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel5",
+          "name": "channel5_burst_done",
           "offset": 10,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel4",
+          "name": "channel4_transfer_done",
           "offset": 9,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel4",
+          "name": "channel4_burst_done",
           "offset": 8,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel3",
+          "name": "channel3_transfer_done",
           "offset": 7,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel3",
+          "name": "channel3_burst_done",
           "offset": 6,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel2",
+          "name": "channel2_transfer_done",
           "offset": 5,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel2",
+          "name": "channel2_burst_done",
           "offset": 4,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel1",
+          "name": "channel1_transfer_done",
           "offset": 3,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel1",
+          "name": "channel1_burst_done",
           "offset": 2,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         },
         {
-          "name": "channel0",
+          "name": "channel0_transfer_done",
           "offset": 1,
           "width": 1,
           "access": "RW",
-          "description": " transfer_done 中断状态，写 1 清 0。DMA 传输完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA 传输完成产生中断。"
         },
         {
-          "name": "channel0",
+          "name": "channel0_burst_done",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": " burst_done 中断状态，写 1 清 0。DMA burst 完成产生中断。"
+          "description": "中断状态，写 1 清 0。DMA burst 完成产生中断。"
         }
       ]
     },
@@ -274,25 +274,43 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 29,
           "description": "保留"
         },
         {
-          "name": "uart",
+          "name": "uart_dma_channel",
           "offset": 1,
           "width": 1,
           "access": "RW",
-          "description": " dma channel  选择：",
+          "description": "选择：",
           "enumerated_value": {
-            "name": "uart",
+            "name": "uart_dma_channel",
             "usage": "RW",
             "values": [
               {
-                "name": "uart_0",
-                "description": ": uart0  模块dma 通道 接入dma 2’h1: uart1  模块dma 通道 接入dma 2’h2: uart2/7816  模块dma 通道 接入dma 2’h3:  保留",
+                "name": "uart_dma_channel_0",
+                "description": ": uart0  模块dma 通道 接入dma",
                 "value": 0,
+                "default": false
+              },
+              {
+                "name": "uart_dma_channel_1",
+                "description": ": uart1  模块dma 通道 接入dma",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "uart_dma_channel_2",
+                "description": ": uart2/7816  模块dma 通道 接入dma",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "uart_dma_channel_3",
+                "description": ":  保留",
+                "value": 3,
                 "default": false
               }
             ]
@@ -301,7 +319,7 @@
       ]
     },
     {
-      "name": "",
+      "name": "reserved",
       "offset": 12,
       "size": 32,
       "fields": []
@@ -315,7 +333,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "src_addr",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -332,7 +350,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "dest_addr",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -341,22 +359,38 @@
       ]
     },
     {
-      "name": "src_wrap_add\nr",
+      "name": "src_wrap_addr",
       "offset": 24,
       "description": "循环模式下DMA 传输源地址",
       "mode": "RW",
       "reset": 0,
       "size": 32,
-      "fields": []
+      "fields": [
+        {
+          "name": "src_wrap_addr",
+          "offset": 31,
+          "width": 31,
+          "access": "RW",
+          "description": "循环模式下，DMA 搬运的源地址的起始地址，外设地址或内存地址"
+        }
+      ]
     },
     {
-      "name": "dest_wrap_ad\ndr",
+      "name": "dest_wrap_addr",
       "offset": 28,
-      "description": "循环模式下DMA 传输目的地\n址",
+      "description": "循环模式下DMA 传输目的地址",
       "mode": "RW",
       "reset": 0,
       "size": 32,
-      "fields": []
+      "fields": [
+        {
+          "name": "dest_wrap_addr",
+          "offset": 31,
+          "width": 31,
+          "access": "RW",
+          "description": "循环模式下，DMA 搬运的目的地址的起始地址，外设地址或内存地址"
+        }
+      ]
     },
     {
       "name": "wrap_size",
@@ -367,14 +401,14 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "dest_size",
           "offset": 31,
           "width": 15,
           "access": "RW",
           "description": "循环模式下，DMA 目的地址循环长度。DMA 从起始地址依次递增搬运数据，当搬运数据字节数达到此设定值之后，会跳转到循环起始地址，从起始地址开始继续搬运数据"
         },
         {
-          "name": "",
+          "name": "src_size",
           "offset": 15,
           "width": 15,
           "access": "RW",
@@ -391,7 +425,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 29,
           "description": "保留"
@@ -421,7 +455,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 24,
           "description": "保留"
@@ -438,15 +472,105 @@
           "offset": 5,
           "width": 3,
           "access": "RW",
-          "description": "外设传输时，选择当前DMA 通道的外设类型。4’hf:    I2S TX req",
+          "description": "外设传输时，选择当前DMA 通道的外设类型。16 个dma_req 的选择。",
           "enumerated_value": {
             "name": "dma_sel",
             "usage": "RW",
             "values": [
               {
                 "name": "dma_sel_0",
-                "description": "uart rx dma req 4’h1uart tx dma req 4’h2pwm_cap0_req 4’h3pwm_cap1_req 4’h4LS_SPI rx dma req 4’h5LS_SPI tx dma req 4’h6SD_ADC chnl0 req 4’h7SD_ADC chnl1 req 4’h8SD_ADC chnl2 req 4’h9SD_ADC chnl3 req 4’haSD_ADC chnl4 req 4’hbSD_ADC chnl5 req 4’hcSD_ADC chnl6 req 4’hdSD_ADC chnl7 req 4’he:    I2S RX req",
+                "description": "uart rx dma req",
                 "value": 0,
+                "default": false
+              },
+              {
+                "name": "dma_sel_1",
+                "description": "uart tx dma req",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "dma_sel_2",
+                "description": "pwm_cap0_req",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "dma_sel_3",
+                "description": "pwm_cap1_req",
+                "value": 3,
+                "default": false
+              },
+              {
+                "name": "dma_sel_4",
+                "description": "LS_SPI rx dma req",
+                "value": 4,
+                "default": false
+              },
+              {
+                "name": "dma_sel_5",
+                "description": "LS_SPI tx dma req",
+                "value": 5,
+                "default": false
+              },
+              {
+                "name": "dma_sel_6",
+                "description": "SD_ADC chnl0 req",
+                "value": 6,
+                "default": false
+              },
+              {
+                "name": "dma_sel_7",
+                "description": "SD_ADC chnl1 req",
+                "value": 7,
+                "default": false
+              },
+              {
+                "name": "dma_sel_8",
+                "description": "SD_ADC chnl2 req",
+                "value": 8,
+                "default": false
+              },
+              {
+                "name": "dma_sel_9",
+                "description": "SD_ADC chnl3 req",
+                "value": 9,
+                "default": false
+              },
+              {
+                "name": "dma_sel_a",
+                "description": "SD_ADC chnl4 req",
+                "value": 10,
+                "default": false
+              },
+              {
+                "name": "dma_sel_b",
+                "description": "SD_ADC chnl5 req",
+                "value": 11,
+                "default": false
+              },
+              {
+                "name": "dma_sel_c",
+                "description": "SD_ADC chnl6 req",
+                "value": 12,
+                "default": false
+              },
+              {
+                "name": "dma_sel_d",
+                "description": "SD_ADC chnl7 req",
+                "value": 13,
+                "default": false
+              },
+              {
+                "name": "dma_sel_e",
+                "description": ": I2S RX req",
+                "value": 14,
+                "default": false
+              },
+              {
+                "name": "dma_sel_f",
+                "description": ": I2S TX req",
+                "value": 15,
                 "default": false
               }
             ]
@@ -513,7 +637,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 7,
           "description": "保留"
@@ -555,15 +679,27 @@
           "offset": 6,
           "width": 1,
           "access": "RW",
-          "description": "",
+          "description": "设置DMA 的搬运单位",
           "enumerated_value": {
             "name": "data_size",
             "usage": "RW",
             "values": [
               {
                 "name": "data_size_0",
-                "description": "byte 2’h1half_word 2’h2word",
+                "description": "byte",
                 "value": 0,
+                "default": false
+              },
+              {
+                "name": "data_size_1",
+                "description": "half_word",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "data_size_2",
+                "description": "word",
+                "value": 2,
                 "default": false
               },
               {
@@ -667,7 +803,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 15,
           "description": "保留"
@@ -699,13 +835,21 @@
       ]
     },
     {
-      "name": "cur_dest_add\nr",
+      "name": "cur_dest_addr",
       "offset": 56,
       "description": "当前DMA 操作的地址",
       "mode": "RO",
       "reset": 0,
       "size": 32,
-      "fields": []
+      "fields": [
+        {
+          "name": "current_dest_addr",
+          "offset": 31,
+          "width": 31,
+          "access": "RO",
+          "description": "当前DMA 操作目的地址。当软件停止dma 时，可以通过查看此寄存器获悉dma 将要操作的目的地址。"
+        }
+      ]
     }
   ]
 }

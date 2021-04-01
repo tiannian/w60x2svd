@@ -1,0 +1,166 @@
+{
+  "name": "rsa",
+  "version": "0.1",
+  "description": "RSA配置",
+  "base_address": 1073750528,
+  "address_block": {
+    "offset": 0,
+    "size": 1792,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "xbuf",
+      "offset": 0,
+      "description": "数据X 寄存器",
+      "mode": "RW",
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "ybuf",
+      "offset": 256,
+      "description": "数据Y 寄存器",
+      "mode": "RW",
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "mbuf",
+      "offset": 512,
+      "description": "数据M 寄存器",
+      "mode": "RW",
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "dbuf",
+      "offset": 768,
+      "description": "数据D 寄存器",
+      "mode": "RW",
+      "size": 32,
+      "fields": []
+    },
+    {
+      "name": "rsacon",
+      "offset": 1024,
+      "description": "RSA  控制寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 25,
+          "description": "保留"
+        },
+        {
+          "name": "mul_start",
+          "offset": 5,
+          "width": 1,
+          "access": "RW",
+          "description": "模乘启动控制位。软件写“1”启动模乘运算，运算结束后，硬件自动清“0”。"
+        },
+        {
+          "name": "soft_reset",
+          "offset": 4,
+          "width": 1,
+          "access": "RW",
+          "description": "提供软复位功能，高有效。软件写“1”进行软复位，复位完成后，硬件自动清“0”。1.设置参数MC 和N  为 0。2.启动模乘后（bit5 置 1），将此位置“1”，会终止当前的运算（当 bit0 变高，表示软复位命令执行完成，运算被终止），但内部数据缓冲区（X，Y，M，D）中已经完成的部分运算结果会保留。"
+        },
+        {
+          "name": "mul_mode",
+          "offset": 3,
+          "width": 1,
+          "access": "RW",
+          "description": "模乘模式选择。",
+          "enumerated_value": {
+            "name": "mul_mode",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "mul_mode_00",
+                "description": "X = D*D mod M",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "mul_mode_01",
+                "description": "D = X*Y mod M",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "mul_mode_10",
+                "description": "X = D*Y mod M",
+                "value": 16,
+                "default": false
+              },
+              {
+                "name": "mul_mode_11",
+                "description": "D = X*X mod M",
+                "value": 17,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "reserved",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "保留"
+        },
+        {
+          "name": "mul_complete",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "模乘运算完成标识，高有效。硬件置“1”，软件清“0”。软件写“1”无效。"
+        }
+      ]
+    },
+    {
+      "name": "rsamc",
+      "offset": 1028,
+      "description": "参数MC 寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsamc",
+          "offset": 31,
+          "width": 31,
+          "access": "RW",
+          "description": "对应参数MC（32bit）。复位值全 0。读出值为全 0。"
+        }
+      ]
+    },
+    {
+      "name": "rsan",
+      "offset": 1032,
+      "description": "参数N 寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "rsan",
+          "offset": 6,
+          "width": 6,
+          "access": "RW",
+          "description": "对应参数 N（7bit）。N 值为模乘长度除以 32 的值。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,5 @@
 name,begin,end,description
 timer,0x40000700,0x400007FF,Clock与Reset配置
 dma,0x40000400,0x400005FF,DMA配置
+crypto,0x40003200,0x400033FF,GPSEC配置
+rsa,0x40002200,0x400028FF,RSA配置

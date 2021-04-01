@@ -17,17 +17,6 @@ pub struct FieldCsv {
 
 impl FieldCsv {
     pub fn to_field(self) -> Field {
-        let re = Regex::new(r"\[(\d{0,2})(\s?:\s?\d{0,2})?\]").unwrap();
-        let caps = re.captures(&self.bit).unwrap();
-        let begin = caps.get(1).unwrap().as_str();
-        let offset: u32 = begin.parse().unwrap();
-        let width = if let Some(end) = caps.get(2) {
-            let end_str = &end.as_str().replace(":", "").replace(" ", "");
-            let end: u32 = end_str.parse().unwrap();
-            offset - end
-        } else {
-            1
-        };
         let access = utils::from_string_to_access(&self.access);
         let re = Regex::new(r"([a-z0-9_A-Z]*)\n?([\s\S]*)").unwrap();
         let caps = re.captures(&self.description).unwrap();
@@ -39,15 +28,30 @@ impl FieldCsv {
             usage: access.clone(),
             values: Vec::new(),
         };
+        println!("{}", name);
+
+        let re = Regex::new(r"\[(\d{0,2})(\s?:\s?\d{0,2})?\]").unwrap();
+        let caps = re.captures(&self.bit).unwrap();
+        let begin = caps.get(1).unwrap().as_str();
+        let offset: u32 = begin.parse().unwrap();
+        // println!("{}", name);
+        let width = if let Some(end) = caps.get(2) {
+            let end_str = &end.as_str().replace(":", "").replace(" ", "");
+            let end: u32 = end_str.parse().unwrap();
+            offset - end
+        } else {
+            1
+        };
 
         let mut mdescription = String::new();
 
         for desc in splited_desc {
-            let re = Regex::new(r"\d’[bh](\d+)([\s\S]*)").unwrap();
+            let re = Regex::new(r"\d’[bh]([0-9A-Fa-f]+)([\s\S]*)").unwrap();
             if let Some(caps) = re.captures(desc) {
                 let value_str = caps.get(1).unwrap().as_str();
                 let description = caps.get(2).unwrap().as_str().replace("：", "");
-                let value: u32 = value_str.parse().unwrap();
+                // println!("{}", value_str);
+                let value = u32::from_str_radix(value_str, 16).unwrap();
                 let v = Value {
                     name: String::from(name.clone()) + "_" + value_str,
                     description: Some(String::from(description.trim())),
@@ -66,7 +70,7 @@ impl FieldCsv {
                 offset,
                 width,
                 access,
-                description: Some(mdescription),
+                description: Some(String::from(mdescription.trim())),
                 enumerated_value: None,
             }
         } else {
@@ -75,7 +79,7 @@ impl FieldCsv {
                 offset,
                 width,
                 access,
-                description: Some(mdescription),
+                description: Some(String::from(mdescription.trim())),
                 enumerated_value: Some(enumerated_value),
             }
         }

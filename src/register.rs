@@ -26,7 +26,7 @@ impl RegisterCsv {
         let description = if desc == "" {
             None
         } else {
-            Some(String::from(desc))
+            Some(String::from(desc.trim()))
         };
         let mode = utils::from_string_to_access(&self.access);
         let reset = utils::from_radix_to_u32(&self.reset);

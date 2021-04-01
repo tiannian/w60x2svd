@@ -1,5 +1,5 @@
 位,访问,操作说明,复位值
-[31:24],,保留,
+[31:24],,reserved保留,
 [23: 8],RW,"total_byte
 总共需要操作的byte 个数。需要与data_size 配置相一致，即若果为字操作，则应该为配置为 4 的整数倍；如果为半字操作，则应该配置为 2 的整数倍。",16’h0
 [7],RW,"burst_size
@@ -8,7 +8,10 @@
 1’b1：burst 为 4
 当最后一次burst 大小超过剩余传输的个数时，使用burst 大小为剩余数据的大小。",1’b0
 [6 : 5],RW,"data_size
-设置DMA 的搬运单位 2’h0：byte 2’h1：half_word 2’h2：word
+设置DMA 的搬运单位
+2’h0：byte
+2’h1：half_word
+2’h2：word
 2’h3：保留",2’h0
 [4 : 3],RW,"dest_addr_inc
 2’h0：每次操作后目的地址不变；

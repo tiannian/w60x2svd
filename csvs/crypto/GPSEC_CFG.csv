@@ -1,13 +1,13 @@
 位,访问,操作说明,复位值
-[31],,保留,
-[30],RW,"RNG start
+[31],,reserved保留,
+[30],RW,"RNG_start
 1’b0：不启动RNG
 1’b1：启动RNG",1’b0
-[29],RW,"RNG Load_seed
+[29],RW,"RNG_Load_seed
 硬件自动清 0
 1’b0：随机数发生器会默认以零为种子，产生相应位数的随机数
 1’b1：种子加载完成以后开始生成随机数",1’b0
-[28],RW,"RNG switch
+[28],RW,"RNG_switch
 控制生成随机数的位数，
 1’b0：16 位
 1’b1：32 位",1’b0

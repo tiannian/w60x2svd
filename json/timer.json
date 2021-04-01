@@ -1246,7 +1246,7 @@
           "offset": 5,
           "width": 1,
           "access": "RW",
-          "description": " 使能",
+          "description": "使能",
           "enumerated_value": {
             "name": "jtag",
             "usage": "RW",
