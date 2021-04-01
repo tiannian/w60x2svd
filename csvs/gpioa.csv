@@ -1,0 +1,20 @@
+偏移地址,名称,缩写,访问,描述,复位值
+0X0000,GPIO 数据寄存器,GPIO_DATA,RW,读写GPIO 当前数据,0X180B
+0X0004,GPIO 数据使能寄存器,"GPIO_DATA_E
+N",RW,配置GPIO_DATA 的使能位,0XFFFF
+0X0008,GPIO 方向控制寄存器,GPIO_DIR,RW,配置GPIO 方向,0X0000
+0X000C,GPIO 上下拉控制寄存器,"GPIO_PULL_E
+N",RW,配置GPIO 上下拉,0XFFFF
+0X0010,GPIO 复用选择寄存器,GPIO_AF_SEL,RW,配置GPIO 复用功能使能位,0XFFFF
+0X0014,GPIO 复用选择寄存器 1,GPIO_SF_S1,RW,GPIO 复用功能选择位高地址位,0X0000
+0X0018,GPIO 复用选择寄存器 0,GPIO_AF_S0,RW,GPIO 复用功能选择位低地址位,0X0000
+0X0020,GPIO 中断触发方式配置寄存器,GPIO_IS,RW,配置GPIO 的中断触发方式,0X0000
+0X0024,"GPIO 中断边沿触发模式配置寄
+存器",GPIO_IBE,RW,配置GPIO 中断边沿触发模式,0X0000
+0X0028,GPIO 中断上下边沿触发配置寄存器,GPIO_IEV,RW,"配置 GPIO  中断上下边沿触发或高低
+电平触发",0X0000
+0X002C,GPIO 中断使能配置寄存器,GPIO_IE,RW,配置GPIO 中断使能,0X0000
+0X0030,GPIO 裸中断状态寄存器,GPIO_RIS,RO,查询GPIO 裸中断状态（MASK 前）,0X0000
+0X0034,GPIO 屏蔽后中断状态寄存器,GPIO_MIS,RO,"查询 GPIO  屏蔽后中断状态（MASK
+后）",0X0000
+0X0038,GPIO 中断清除控制寄存器,GPIO_IC,WO,控制GPIO 中断清除,0X0000

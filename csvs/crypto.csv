@@ -1,0 +1,30 @@
+"偏移
+地址",名称,缩写,访问,描述,复位值
+0X0000,源地址寄存器,SRC_ADDR,RW,"RC4/SHA1/AES/DES/3DES/CRC/MD5
+复用源地址",0X0000_0000
+0X0004,目的地址寄存器,DEST_ADDR,RW,RC4/AES/DES/3DES 复用目的地址,0X0000_0000
+0X0008,配置寄存器,GPSEC_CFG,RW,通用硬件加密模块配置寄存器,0X0000_0000
+0X000C,控制寄存器,GPSEC_CTRL,RW,通用硬件加密模块控制寄存器,0X0000_0000
+0X0010,秘钥 0 低位寄存器,KEY00,RW,"Key0 低 32 位第一个输入key
+（RC4/AES/DES/3DES），复用 CRC Ci",0X0000_0000
+0X0014,秘钥 0 高位寄存器,KEY01,RW,"Key0 高 32 位第一个输入key
+（RC4/AES/DES/3DES）",0X0000_0000
+0X0018,秘钥 1 低位寄存器,KEY10,RW,"Key1 低 32 位第二个输入key
+（RC4/AES//3DES）",0X0000_0000
+0X001C,秘钥 1 高位寄存器,KEY11,RW,"Key1 高 32 位第二个输入key
+（RC4/AES//3DES）",0X0000_0000
+0X0020,秘钥 2 低位寄存器,KEY20,RW,"Key2 低 32 位第三个输入key（3DES），
+复用iv1 低 32 位输入初始向量（AES）",0X0000_0000
+0X0024,秘钥 2 高位寄存器,KEY21,RW,"Key2 高 32 位第三个输入key（3DES），
+复用iv1 高 32 位输入初始向量（AES）",0X0000_0000
+0X0028,初始向量0 低位寄存器,IV00,RW,"IV0 低 32 位输入初始向量
+（AES/DES/3DES）",0X0000_0000
+0X002C,初始向量0 高位寄存器,IV01,RW,"IV0 高 32 位输入初始向量
+（AES/DES/3DES）",0X0000_0000
+0X0030,状态寄存器,GPSEC_STS,RW,通用硬件加密模块状态寄存器,0X0000_0000
+0X0034,摘要 0 寄存器,SHA1-DIGEST0,RW,sha1-digest0/MD5-digest0,0X6745_2301
+0X0038,摘要 1 寄存器,SHA1-DIGEST1,RW,sha1-digest1/MD5-digest1,0XEFCD_AB89
+0X003C,摘要 2 寄存器,SHA1-DIGEST2,RW,sha1-digest2/MD5-digest2,0X98BA_DCFE
+0X0040,摘要 3 寄存器,SHA1-DIGEST3,RW,sha1-digest3/MD5-digest3,0X1032_5476
+0X0044,摘要 4 寄存器,SHA1-DIGEST4,RW,sha1-digest4/CRC,0XC3D2_E1F0
+0X0048,RNG_result,RNG_RESULT,RW,RNG 输出,0X0000_0000

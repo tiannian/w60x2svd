@@ -1,0 +1,12 @@
+位,访问,操作说明,复位值
+[31: 7],,保留,
+[6],RW,"chain_link_en
+链表方式下有效，表示 dma 在处理完第一个链表后，是否继续读取和处理后续链表。如果为 1，则更新链表中的next_desc_addr，并继续读取下一个链表，直到链表中 vld 为 0；如果为 0，则处理完成当前链表后即停止。",1’b0
+[5 : 2],RW,"dma_sel
+外设传输时，选择当前DMA 通道的外设类型。
+16 个dma_req 的选择。 4’h0：uart rx dma req 4’h1：uart tx dma req 4’h2：pwm_cap0_req 4’h3：pwm_cap1_req 4’h4：LS_SPI rx dma req 4’h5：LS_SPI tx dma req 4’h6：SD_ADC chnl0 req 4’h7：SD_ADC chnl1 req 4’h8：SD_ADC chnl2 req 4’h9：SD_ADC chnl3 req 4’ha：SD_ADC chnl4 req 4’hb：SD_ADC chnl5 req 4’hc：SD_ADC chnl6 req 4’hd：SD_ADC chnl7 req 4’he:    I2S RX req
+4’hf:    I2S TX req",4’h0
+[1],RW,"chain_mode     1’b0：使用普通模式
+1’b1：使用链表模式",1’b0
+[0],RW,"dma_mode   1’b0：软件方式。
+1’b1：硬件方式。",1’b0

@@ -1,0 +1,8 @@
+位,访问,操作说明,复位值
+[15: 0],RW,"对应GPIO_DATA 的BIT 使能位，只有对应 BIT 为 1 时，对 GPIO_DATA 相应位的操作才有效，每BIT 与相应的GPIO 线对应，1’bx：
+[x] = 0, GPIO_DATA[x]不可读写
+[x] = 1, GPIO_DATA[x]可读写",16’hffff
+[31: 0],RW,"对应GPIO_DATA 的BIT 使能位，只有对应 BIT 为 1 时，对 GPIO_DATA 相应位的
+操作才有效，每BIT 与相应的GPIO 线对应，
+1’bx：[x] = 0, GPIO_DATA[x]不可读写
+[x] = 1, GPIO_DATA[x]可读写",32’h7fff_ffff

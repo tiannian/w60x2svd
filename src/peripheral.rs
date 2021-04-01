@@ -1,77 +1,104 @@
-use crate::register::Register;
+use crate::field::FieldCsv;
+use crate::register::{Register, RegisterCsv};
 use serde::{Deserialize, Serialize};
-use std::fs::File;
-use svd_parser::{
-    addressblock::AddressBlock, peripheral::PeripheralBuilder, Peripheral as SvdPeripheral,
-};
+use std::path;
+use crate::utils;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub enum Usage {
+    Registers,
+    Buffer,
+    Resverd,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct AddressBlock {
+    pub offset: u32,
+    pub size: u32,
+    pub usage: Usage,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct PeripheralCsv {
+    pub name: String,
+    pub begin: String,
+    pub end: String,
+    pub description: String,
+}
+
+impl PeripheralCsv {
+    pub fn to_peripheral(self) -> Peripheral {
+        let base_address = utils::from_radix_to_u32(&self.begin).unwrap();
+        let end_address = utils::from_radix_to_u32(&self.end).unwrap();
+        let offset = 0;
+        let size = end_address - base_address + 1;
+        let mut p = Peripheral {
+            name: self.name,
+            version: String::from("0.1"),
+            description: self.description,
+            base_address,
+            address_block: AddressBlock {
+                offset,
+                size,
+                usage: Usage::Registers,
+            },
+            registers: Vec::new(),
+        };
+        p.read_csv();
+        p
+    }
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Peripheral {
     pub name: String,
-    pub version: Option<String>,
-    pub description: Option<String>,
-    pub base_address: String,
-    pub offset: String,
-    pub length: String,
-    pub registers_files: Vec<String>,
+    pub version: String,
+    pub description: String,
+    pub base_address: u32,
+    pub address_block: AddressBlock,
+    pub registers: Vec<Register>,
 }
 
 impl Peripheral {
-    pub fn load(path: &str) -> Self {
-        println!("load peripherals definition\nReading {}", path);
-        let file = File::open(path).unwrap();
-        serde_json::from_reader(file).unwrap()
-    }
-
-    pub fn get_svd(self) -> SvdPeripheral {
-        let mut builder = PeripheralBuilder::default();
-        let name = self.name;
-        builder = builder.name(name);
-
-        // peripheral address.
-        // TODO: add test for hex str.
-        let base_address = u32::from_str_radix(&self.base_address[2..], 16).unwrap();
-        builder = builder.base_address(base_address);
-
-        // peripheral address block.
-        // TODO: offset, length,must be Some.
-        let offset = u32::from_str_radix(&self.offset[2..], 16).unwrap();
-        let size = u32::from_str_radix(&self.length[2..], 16).unwrap();
-        let address_block = AddressBlock {
-            offset,
-            size,
-            usage: "registers".to_string(),
-        };
-        builder = builder.address_block(Some(address_block));
-
-        builder = builder.description(self.description);
-
-        let mut registers = Vec::new();
-
-        for register_group in self.registers_files {
-            let rs: Vec<Register> = Register::load(&register_group);
-
-            for r in rs {
-                let register = r.get_svd();
-                registers.push(register);
+    fn read_csv(&mut self) {
+        let path = String::from("./csvs/") + &self.name + ".csv";
+        let mut rdr = csv::Reader::from_path(path).unwrap();
+        for r in rdr.deserialize() {
+            let record: RegisterCsv = r.unwrap();
+            let mut reg = record.to_register();
+            let p = format!("./csvs/{}/{}.csv", &self.name, &reg.name.to_uppercase());
+            let path = path::Path::new(&p);
+            if path.exists() {
+                let mut rdr = csv::Reader::from_path(path).unwrap();
+                for f in rdr.deserialize() {
+                    let field_csv: FieldCsv = f.unwrap();
+                    let field = field_csv.to_field();
+                    reg.fields.push(field);
+                }
             }
+            self.registers.push(reg);
         }
-
-        builder = builder.registers(Some(registers));
-
-        // create peripheral.
-        builder.build().unwrap()
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::Peripheral;
-    use std::fs::File;
+    use super::*;
     #[test]
-    fn load_json() {
-        let file = File::open("svdjson/clk/peripheral.json").unwrap();
-        let registers: Peripheral = serde_json::from_reader(file).unwrap();
-        println!("{:?}", registers);
+    fn test_csv_de() {
+        let mut p = Peripheral {
+            name: String::from("timer"),
+            version: String::from("1.0"),
+            description: String::from(""),
+            base_address: 0,
+            address_block: AddressBlock {
+                offset: 0,
+                size: 0,
+                usage: Usage::Resverd,
+            },
+            registers: Vec::new(),
+        };
+        p.read_csv();
+        println!("{:#?}", p);
     }
 }

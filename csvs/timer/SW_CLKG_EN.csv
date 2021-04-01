@@ -1,0 +1,62 @@
+位,访问,操作说明,复位值
+[31:15],,reserved保留,
+[14],RW,"soft_7816_gate_en
+配置 7816/uart2 模块时钟的门控，默认 7816 模块门控开启
+1’b0：7816 模块时钟关闭
+1’b1：7816 时钟开启",1’b1
+[13],RW,"soft_gpsec_gate_en
+配置gpsec 模块时钟的门控，默认gpsec 模块门控开启
+1’b0：gpsec 模块时钟关闭
+1’b1：gpsec 时钟开启",1’b1
+[12],RW,"soft_rsa_gate_en
+配置RSA 时钟的门控，默认RSA 门控开启
+1’b0：RSA 模块时钟关闭
+1’b1：RSA 时钟开启",1’b1
+[11],RW,"soft_i2s_gate_en
+配置i2s 时钟的门控，默认i2s 门控开启
+1’b0：i2s 时钟关闭
+1’b1：i2s 时钟开启",1’b1
+[10],RW,"soft_lcd_gate_en
+配置lcd 时钟的门控，默认lcd 门控开启
+1’b0：lcd 时钟关闭
+1’b1：lcd 时钟开启",1’b1
+[9],RW,"Soft_pwm_gate_en
+配置pwm 时钟的门控，默认pwm 门控开启
+1’b0：pwm 时钟关闭
+1’b1：pwm 时钟开启",1’b1
+[8],RW,"soft_sd_adc_gate_en
+配置sd_adc_时钟的门控，默认sd_adc_门控开启
+1’b0：sd_adc_时钟关闭
+1’b1：sd_adc_时钟开启",1’b1
+[7],RW,"soft_gpio_gate_en
+配置GPIO 时钟的门控，默认GPIO 门控开启
+1’b0：GPIO 时钟关闭
+1’b1：GPIO 时钟开启",1’b1
+[6],RW,"soft_timer_gate_en
+配置timer 时钟的门控，默认timer 门控开启
+1’b0：timer 时钟关闭
+1’b1：timer 时钟开启",1’b1
+[5],RW,"soft_rf_cfg_gate_en
+内部使用，请勿修改。配置rf_cfg 时钟的门控，默认rf_cfg 门控开启
+1’b0：rf_cfg 时钟关闭
+1’b1：rf_cfg 时钟开启",1’b1
+[4],RW,"soft_dma_gate_en
+表示供给dma 时钟域的时钟是否关断
+1’b0：dma 时钟关闭
+1’b1：dma 时钟开启",1’b1
+[3],RW,"soft_ls_spi_gate_en
+配置低速spi 时钟的门控，默认低速spi 门控开启
+1’b0：低速spi 时钟关闭
+1’b1：低速spi 时钟开启",1’b1
+[2],RW,"soft_uart1_gate_en
+配置uart1 时钟的门控，默认uart1 门控开启
+1’b0：uart1 时钟关闭
+1’b1：uart1 时钟开启",1’b1
+[1],RW,"soft_uart0_gate_en
+配置uart0 时钟的门控，默认uart0 门控开启
+1’b0：uart0 时钟关闭
+1’b1：uart0 时钟开启",1’b1
+[0],RW,"soft_i2c_gate_en
+配置i2c 时钟的门控，默认i2c 门控开启
+1’b0：i2c 时钟关闭
+1’b1：i2c 时钟开启",1’b1

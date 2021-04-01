@@ -1,0 +1,4 @@
+位,访问,操作说明,复位值
+[31: 2],,保留,
+[1 : 0],RW,"uart dma channel  选择：
+2’h0: uart0  模块dma 通道 接入dma 2’h1: uart1  模块dma 通道 接入dma 2’h2: uart2/7816  模块dma 通道 接入dma 2’h3:  保留",2’h0

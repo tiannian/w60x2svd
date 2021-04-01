@@ -1,0 +1,18 @@
+位,访问,操作说明,复位值
+[31:16],,保留,
+[15],RW,channel7 transfer_done 中断屏蔽，高有效。,1’b1
+[14],RW,channel7 burst_done 中断屏蔽，高有效。,1’b1
+[13],RW,channel6 transfer_done 中断屏蔽，高有效。,1’b1
+[12],RW,channel6 burst_done 中断屏蔽，高有效。,1’b1
+[11],RW,channel5 transfer_done 中断屏蔽，高有效。,1’b1
+[10],RW,channel5 burst_done 中断屏蔽，高有效。,1’b1
+[9],RW,channel4 transfer_done 中断屏蔽，高有效。,1’b1
+[8],RW,channel4 burst_done 中断屏蔽，高有效。,1’b1
+[7],RW,channel3 transfer_done 中断屏蔽，高有效。,1’b1
+[6],RW,channel3 burst_done 中断屏蔽，高有效。,1’b1
+[5],RW,channel2 transfer_done 中断屏蔽，高有效。,1’b1
+[4],RW,channel2 burst_done 中断屏蔽，高有效。,1’b1
+[3],RW,channel1 transfer_done 中断屏蔽，高有效。,1’b1
+[2],RW,channel1 burst_done 中断屏蔽，高有效。,1’b1
+[1],RW,channel0 transfer_done 中断屏蔽，高有效。,1’b1
+[0],RW,channel0 burst_done 中断屏蔽，高有效。,1’b1

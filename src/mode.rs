@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
-use svd_parser::access::Access;
+// use svd_parser::access::Access;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum AccessMode {
     Unknown,
     RW,
@@ -15,13 +15,13 @@ impl Default for AccessMode {
     }
 }
 
-impl AccessMode {
-    pub fn get_svd(self) -> Option<Access> {
-        match self {
-            AccessMode::Unknown => None,
-            AccessMode::RW => Some(Access::ReadWrite),
-            AccessMode::RO => Some(Access::ReadOnly),
-            AccessMode::WO => Some(Access::WriteOnly),
-        }
-    }
-}
+// impl AccessMode {
+// pub fn get_svd(self) -> Option<Access> {
+//     match self {
+//         AccessMode::Unknown => None,
+//         AccessMode::RW => Some(Access::ReadWrite),
+//         AccessMode::RO => Some(Access::ReadOnly),
+//         AccessMode::WO => Some(Access::WriteOnly),
+//     }
+// }
+// }

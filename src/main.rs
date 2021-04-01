@@ -1,22 +1,21 @@
-mod device;
-mod dim;
-mod enumerated_values;
 mod field;
 mod mode;
 mod peripheral;
 mod register;
+mod utils;
 
-use device::Device;
+use peripheral::PeripheralCsv;
 use std::fs::File;
-use std::io::BufWriter;
-use svd_parser::encode::Encode;
+use std::io::Write;
 
 fn main() {
-    let device = Device::load("svdjson/device.json");
-
-    let d = device.get_svd();
-
-    let file = File::create("svd/w600.base.svd").unwrap();
-    let f = BufWriter::new(file);
-    d.encode().unwrap().write(f).unwrap();
+    let mut rdr = csv::Reader::from_path("./csvs/index.csv").unwrap();
+    for r in rdr.deserialize() {
+        let pcsv: PeripheralCsv = r.unwrap();
+        let p = pcsv.to_peripheral();
+        let json = serde_json::to_string_pretty(&p).unwrap();
+        let path = String::from("./json/") + &p.name + ".json";
+        let mut f = File::create(path).unwrap();
+        f.write(json.as_bytes()).unwrap();
+    }
 }

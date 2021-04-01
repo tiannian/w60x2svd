@@ -1,0 +1,24 @@
+位,访问,操作说明,复位值
+[31:18],,reserved保留,
+[17: 8],RW,"BCLKDIV
+BCLK 分配器：F_BCLK = F_I2SCLK / BCLKDIV
+注意：如果未选择EXTAL_EN 而使用内部PLL 则F_I2SCLK  =F_CPU  (与CPU 频率相同)。
+假设F_CPU = 160MHz，启用WXTAL_EN 时F_I2SCLK =  外部晶振频率，
+BCLKDIV = round (F_I2SCLK/(Fs*W*F)) 其中 Fs 是音频数据的采样频率，W 是字宽；数据为单声道时F = 1；
+当数据为立体声时F = 2。
+例如，如果使用内部 PLL 且数据宽度为 24 位，则格式为立体声格式，采样频率为
+128KHz，BCLKDIV 应配置为（160 * 10e6 / 128 * 10e3 * 24 * 2）= 10'h1a。",10’b0
+[7 : 2],RW,"MCLKDIV
+如果选择外部时钟，则该MCLK 分频器用于产生适当的MCLK 频率。
+F_mclk = F_I2SCLK / (2 * MCLKDIV)；
+当MCLKDIV = 0 时F_I2SCLK 是外部时钟；当MCLKDIV >= 1 时F_mclk = F_I2SCLK；
+注意：F_mclk 应配置为 256 * fs，其中 fs 是采样频率。",6’b0
+[1],RW,"MCLKEN
+MCLK 使能开关
+1’b0：禁止MCLK
+1’b1：使能MCLK",1’b0
+[0],RW,"EXTAL_EN
+外部时钟选择，选择使用内部I2S 块时钟还是外部时钟
+1’b0：内部时钟
+1’b1：外部时钟
+注意：使用外部时钟时，外部时钟必须为 2 * N * 256 fs，其中 fs 为采样频率，N 必须为整数。",1’b0
