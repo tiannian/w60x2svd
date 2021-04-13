@@ -1,0 +1,11 @@
+位,访问,操作说明,复位值
+[31: 5],,保留,
+[4 : 2],RW,"RTS trigger level（UART 模式）
+在afc_enable 有效时，决定何时需要将RTS 置无效。
+3’h0：rxfifo 有 4 个以上字节 3’h1：rxfifo 有 8 个以上字节 3’h2：rxfifo 有 12 个以上字节 3’h3：rxfifo 有 16 个以上字节 3’h4：rxfifo 有 20 个以上字节 3’h5：rxfifo 有 24 个以上字节 3’h6：rxfifo 有 28 个以上字节
+3’h7：rxfifo 有 31 个以上字节",3’h5
+[1],RW,"RTS set（UART 模式）
+当AFC_enable 无效时，软件可以通过设置此位来完成接收流量控制。当 AFC_enable
+有效时，此位不关心。",1’b0
+[0],RW,"afc enable（UART 模式）
+接收条件rts 使用rts_trigger_level 控制产生，高有效。",1’b0

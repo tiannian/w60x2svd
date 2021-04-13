@@ -1,0 +1,18 @@
+位,访问,操作说明,复位值
+[31: 8],,保留,
+[7],RW,"uart_rx_enable
+接收使能，高有效",1’b0
+[6],RW,"uart_tx_enable
+发送使能，高有效。",1’b0
+[5],RW,"send break enable
+发送break 数据包。Uart 会在该为被置位后发送完一个break 数据包，发送完成后自动清 0。",1’b0
+[4],RW,"parity 极性
+1’b0：偶校验
+1’b1：奇校验",1’b0
+[3],RW,"parity en
+奇偶检验使能，高有效",1’b1
+[2],RW,"stop bit 个数
+1’b0：1 个停止位
+1’b1：2 个停止位",1’b0
+[1 : 0],RW,"uart 比特长度。 2’h0：5bit 2’h1：6bit 2’h2：7bit
+2’h3：8bit",2’h3

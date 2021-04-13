@@ -405,7 +405,7 @@
           "offset": 31,
           "width": 15,
           "access": "RW",
-          "description": "循环模式下，DMA 目的地址循环长度。DMA 从起始地址依次递增搬运数据，当搬运数据字节数达到此设定值之后，会跳转到循环起始地址，从起始地址开始继续搬运数据"
+          "description": "循环模式下，DMA 目的地址循环长度。\rDMA 从起始地址依次递增搬运数据，当搬运数据字节数达到此设定值之后，会跳转到循环起始地址，从起始地址开始继续搬运数据"
         },
         {
           "name": "src_size",
@@ -435,14 +435,14 @@
           "offset": 1,
           "width": 1,
           "access": "RW",
-          "description": "停止dma 操作，高有效。DMA 会在完成当前burst 操作后停止，并同时清除chnl_on。软件应根据chnl_on为 0 确定dma 已经完全停止。"
+          "description": "停止dma 操作，高有效。\rDMA 会在完成当前burst 操作后停止，并同时清除chnl_on。软件应根据chnl_on\r为 0 确定dma 已经完全停止。"
         },
         {
           "name": "chnl_on",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "启动当前通道DMA 转换，高有效。Dma 完成后转换或设置停止后，自动清 0。"
+          "description": "启动当前通道DMA 转换，高有效。\rDma 完成后转换或设置停止后，自动清 0。"
         }
       ]
     },
@@ -472,7 +472,7 @@
           "offset": 5,
           "width": 3,
           "access": "RW",
-          "description": "外设传输时，选择当前DMA 通道的外设类型。16 个dma_req 的选择。",
+          "description": "外设传输时，选择当前DMA 通道的外设类型。\r16 个dma_req 的选择。",
           "enumerated_value": {
             "name": "dma_sel",
             "usage": "RW",
@@ -654,7 +654,7 @@
           "offset": 7,
           "width": 1,
           "access": "RW",
-          "description": "设置DMA 每次搬运多少个单位的数据当最后一次burst 大小超过剩余传输的个数时，使用burst 大小为剩余数据的大小。",
+          "description": "设置DMA 每次搬运多少个单位的数据\r当最后一次burst 大小超过剩余传输的个数时，使用burst 大小为剩余数据的大小。",
           "enumerated_value": {
             "name": "burst_size",
             "usage": "RW",
@@ -813,7 +813,7 @@
           "offset": 15,
           "width": 15,
           "access": "RW",
-          "description": "当前传输的字节个数。每次重新开启dma（chnl_on 置 1）清 0，并重新开始计数。"
+          "description": "当前传输的字节个数。\r每次重新开启dma（chnl_on 置 1）清 0，并重新开始计数。"
         }
       ]
     },
@@ -847,7 +847,7 @@
           "offset": 31,
           "width": 31,
           "access": "RO",
-          "description": "当前DMA 操作目的地址。当软件停止dma 时，可以通过查看此寄存器获悉dma 将要操作的目的地址。"
+          "description": "当前DMA 操作目的地址。\r当软件停止dma 时，可以通过查看此寄存器获悉dma 将要操作的目的地址。"
         }
       ]
     }

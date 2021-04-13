@@ -12,7 +12,7 @@
     {
       "name": "src_addr",
       "offset": 0,
-      "description": "RC4/SHA1/AES/DES/3DES/CRC/MD5\n复用源地址",
+      "description": "RC4/SHA1/AES/DES/3DES/CRC/MD5\r\n复用源地址",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -467,7 +467,7 @@
     {
       "name": "key00",
       "offset": 16,
-      "description": "Key0 低 32 位第一个输入key\n（RC4/AES/DES/3DES），复用 CRC Ci",
+      "description": "Key0 低 32 位第一个输入key\r\n（RC4/AES/DES/3DES），复用 CRC Ci",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -476,7 +476,7 @@
     {
       "name": "key01",
       "offset": 20,
-      "description": "Key0 高 32 位第一个输入key\n（RC4/AES/DES/3DES）",
+      "description": "Key0 高 32 位第一个输入key\r\n（RC4/AES/DES/3DES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -485,7 +485,7 @@
     {
       "name": "key10",
       "offset": 24,
-      "description": "Key1 低 32 位第二个输入key\n（RC4/AES//3DES）",
+      "description": "Key1 低 32 位第二个输入key\r\n（RC4/AES//3DES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -494,7 +494,7 @@
     {
       "name": "key11",
       "offset": 28,
-      "description": "Key1 高 32 位第二个输入key\n（RC4/AES//3DES）",
+      "description": "Key1 高 32 位第二个输入key\r\n（RC4/AES//3DES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -503,7 +503,7 @@
     {
       "name": "key20",
       "offset": 32,
-      "description": "Key2 低 32 位第三个输入key（3DES），\n复用iv1 低 32 位输入初始向量（AES）",
+      "description": "Key2 低 32 位第三个输入key（3DES），\r\n复用iv1 低 32 位输入初始向量（AES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -512,7 +512,7 @@
     {
       "name": "key21",
       "offset": 36,
-      "description": "Key2 高 32 位第三个输入key（3DES），\n复用iv1 高 32 位输入初始向量（AES）",
+      "description": "Key2 高 32 位第三个输入key（3DES），\r\n复用iv1 高 32 位输入初始向量（AES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -521,7 +521,7 @@
     {
       "name": "iv00",
       "offset": 40,
-      "description": "IV0 低 32 位输入初始向量\n（AES/DES/3DES）",
+      "description": "IV0 低 32 位输入初始向量\r\n（AES/DES/3DES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -530,7 +530,7 @@
     {
       "name": "iv01",
       "offset": 44,
-      "description": "IV0 高 32 位输入初始向量\n（AES/DES/3DES）",
+      "description": "IV0 高 32 位输入初始向量\r\n（AES/DES/3DES）",
       "mode": "RW",
       "reset": 0,
       "size": 32,
@@ -580,7 +580,7 @@
           "offset": 15,
           "width": 15,
           "access": "RO",
-          "description": "当前加密完成的字节个数。每次重新开启加解密时清 0，并重新开始计数。"
+          "description": "当前加密完成的字节个数。\r每次重新开启加解密时清 0，并重新开始计数。"
         }
       ]
     },

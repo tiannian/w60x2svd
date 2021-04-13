@@ -1,0 +1,4 @@
+位,访问,操作说明,复位值
+[31:0],RW,"向Tx FIFO 写数据的窗口地址
+注：master/slave 都有效
+Motorola/TI/microwire 模式有效",32’h0

@@ -1,0 +1,12 @@
+位,访问,操作说明,复位值
+[31:13],,RSV,19’h0
+[12],RO,"SPI Busy
+1’b0：SPI 没有发送和接收任务
+1’b1：SPI 处于发送或者接收过程
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[11:6],RO,"RX FIFO fill level
+Rx FIFO 中数据量，单位为字节
+注：master/slave 都有效Motorola/TI/microwire 模式有效",6’h0
+[5:0],RO,"Tx FIFO fill level
+Tx FIFO 中数据量，单位为字节
+注：master/slave 都有效Motorola/TI/microwire 模式有效",6’h0
