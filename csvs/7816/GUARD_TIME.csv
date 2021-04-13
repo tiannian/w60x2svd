@@ -1,4 +1,4 @@
 位,访问,操作说明,复位值
-[31: 8],,保留,
+[31: 8],,reserved保留,
 [7 : 0],RW,"ex_gt_num
 7816 模式下，guard time 计算：10+stop 位+配置值ex_gt_num",8’h0

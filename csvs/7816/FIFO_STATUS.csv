@@ -1,8 +1,8 @@
 位,访问,操作说明,复位值
-[31:13],,保留,
-[12],RW,"cts status（UART 模式）
+[31:13],,reserved保留,
+[12],RW,"cts_status（UART 模式）
 当前cts 的状态",1’b0
-[11: 6],RW,"rxfifo count（UART&7816 模式）
+[11: 6],RW,"rxfifo_count（UART&7816 模式）
 rxfifo 中数据个数",6’h0
-[5 : 0],RW,"txfifo count（UART&7816 模式）
+[5 : 0],RW,"txfifo_count（UART&7816 模式）
 txfifo 中数据个数",6’h0

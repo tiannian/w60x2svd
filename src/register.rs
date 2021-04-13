@@ -30,8 +30,10 @@ impl RegisterCsv {
         };
         let mode = utils::from_string_to_access(&self.access);
         let reset = utils::from_radix_to_u32(&self.reset);
-        Register {
-            name: self.name.to_lowercase(),
+        let name = self.name.to_lowercase();
+        println!("register name: {}", name);
+            Register {
+            name,
             offset,
             description,
             mode,

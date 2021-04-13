@@ -1,7 +1,7 @@
 {
   "name": "dma",
   "version": "0.1",
-  "description": "DMA配置",
+  "description": "DMA",
   "base_address": 1073742848,
   "address_block": {
     "offset": 0,

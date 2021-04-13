@@ -1,7 +1,7 @@
 {
   "name": "rsa",
   "version": "0.1",
-  "description": "RSA配置",
+  "description": "RSA",
   "base_address": 1073750528,
   "address_block": {
     "offset": 0,

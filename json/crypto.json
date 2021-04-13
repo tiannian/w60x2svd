@@ -1,7 +1,7 @@
 {
   "name": "crypto",
   "version": "0.1",
-  "description": "GPSEC配置",
+  "description": "GPSEC",
   "base_address": 1073754624,
   "address_block": {
     "offset": 0,

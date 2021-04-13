@@ -1,30 +1,30 @@
 {
   "name": "timer",
   "version": "0.1",
-  "description": "Clock与Reset配置",
-  "base_address": 1073743616,
+  "description": "Timer",
+  "base_address": 1073810944,
   "address_block": {
     "offset": 0,
-    "size": 256,
+    "size": 512,
     "usage": "Registers"
   },
   "registers": [
     {
       "name": "tmr_config",
       "offset": 0,
-      "description": "标准us 定时分频值，由总线时钟分频得到标准us 定时，该值等于 APB  总线频率（MHz）\n减一",
+      "description": "标准us 定时分频值，由总线时钟分频得到标准us 定时，该值等于 APB  总线频率（MHz）减一",
       "mode": "RW",
       "reset": 39,
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 24,
           "description": "保留"
         },
         {
-          "name": "",
+          "name": "prescale",
           "offset": 6,
           "width": 6,
           "access": "RW",
@@ -41,7 +41,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "reserved",
           "offset": 31,
           "width": 1,
           "access": "RW",
@@ -83,23 +83,23 @@
           "description": "，同TMR1_CSR"
         },
         {
-          "name": "",
+          "name": "tmr_int_status",
           "offset": 4,
           "width": 1,
           "access": "RW",
-          "description": "[4]：中断状态寄存器，写 1 清除",
+          "description": "中断状态寄存器，写 1 清除",
           "enumerated_value": {
-            "name": "",
+            "name": "tmr_int_status",
             "usage": "RW",
             "values": [
               {
-                "name": "_0",
+                "name": "tmr_int_status_0",
                 "description": "Timer 无中断产生；",
                 "value": 0,
                 "default": false
               },
               {
-                "name": "_1",
+                "name": "tmr_int_status_1",
                 "description": "Timer 产生中断；",
                 "value": 1,
                 "default": false
@@ -108,23 +108,23 @@
           }
         },
         {
-          "name": "",
+          "name": "tmr_int_en",
           "offset": 3,
           "width": 1,
           "access": "RW",
-          "description": "[3]：中断使能寄存器",
+          "description": "中断使能寄存器",
           "enumerated_value": {
-            "name": "",
+            "name": "tmr_int_en",
             "usage": "RW",
             "values": [
               {
-                "name": "_0",
+                "name": "tmr_int_en_0",
                 "description": "定时时间完成后不产生中断；",
                 "value": 0,
                 "default": false
               },
               {
-                "name": "_1",
+                "name": "tmr_int_en_1",
                 "description": "定时时间完成后产生中断；",
                 "value": 1,
                 "default": false
@@ -133,23 +133,23 @@
           }
         },
         {
-          "name": "",
+          "name": "tmr_en",
           "offset": 2,
           "width": 1,
           "access": "RW",
           "description": "",
           "enumerated_value": {
-            "name": "",
+            "name": "tmr_en",
             "usage": "RW",
             "values": [
               {
-                "name": "_0",
+                "name": "tmr_en_0",
                 "description": "定时器不工作；",
                 "value": 0,
                 "default": false
               },
               {
-                "name": "_1",
+                "name": "tmr_en_1",
                 "description": "使能定时器",
                 "value": 1,
                 "default": false
@@ -158,23 +158,23 @@
           }
         },
         {
-          "name": "",
+          "name": "tmr_mode",
           "offset": 1,
           "width": 1,
           "access": "RW",
           "description": "",
           "enumerated_value": {
-            "name": "",
+            "name": "tmr_mode",
             "usage": "RW",
             "values": [
               {
-                "name": "_0",
+                "name": "tmr_mode_0",
                 "description": "定时器重复定时；",
                 "value": 0,
                 "default": false
               },
               {
-                "name": "_1",
+                "name": "tmr_mode_1",
                 "description": "定时器只定时一次，定时完成后自动关闭；",
                 "value": 1,
                 "default": false
@@ -183,23 +183,23 @@
           }
         },
         {
-          "name": "",
+          "name": "tmr_unit",
           "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
           "enumerated_value": {
-            "name": "",
+            "name": "tmr_unit",
             "usage": "RW",
             "values": [
               {
-                "name": "_0",
+                "name": "tmr_unit_0",
                 "description": "定时单位为 us；",
                 "value": 0,
                 "default": false
               },
               {
-                "name": "_1",
+                "name": "tmr_unit_1",
                 "description": "定时单位为 ms；",
                 "value": 1,
                 "default": false
@@ -218,7 +218,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr1_value",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -235,7 +235,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr2_value",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -252,7 +252,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr3_value",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -269,7 +269,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr4_value",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -286,7 +286,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr5_value",
           "offset": 31,
           "width": 31,
           "access": "RW",
@@ -303,7 +303,7 @@
       "size": 32,
       "fields": [
         {
-          "name": "",
+          "name": "tmr6_value",
           "offset": 31,
           "width": 31,
           "access": "RW",

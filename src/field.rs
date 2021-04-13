@@ -28,7 +28,7 @@ impl FieldCsv {
             usage: access.clone(),
             values: Vec::new(),
         };
-        println!("{}", name);
+        println!("field name: {}", name);
 
         let re = Regex::new(r"\[(\d{0,2})(\s?:\s?\d{0,2})?\]").unwrap();
         let caps = re.captures(&self.bit).unwrap();
