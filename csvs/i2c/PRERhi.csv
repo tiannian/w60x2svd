@@ -1,6 +1,6 @@
 位,访问,操作说明,复位值
-[31: 8],,保留,
-[7 : 0],RW,"时钟分频配置prescale 的高 8bit。例如：
+[31: 8],,reserved保留,
+[7 : 0],RW,"prescale_hi时钟分频配置prescale 的高 8bit。例如：
 apb_clk=40MHz, SCL=100KHz
 prescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400K
 prescale=(40*1000)/(5*400) – 1 = 16’d19",8’hff

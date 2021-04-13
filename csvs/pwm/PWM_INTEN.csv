@@ -1,18 +1,18 @@
-Î»,·ÃÎÊ,²Ù×÷ËµÃ÷,¸´Î»Öµ
-[31:8],--,±£Áô,24¡¯h0
-[7],RW,"DMA_request_EN DMA_request Ê¹ÄÜ
-1¡¯b0£ºDMA_request ÎÞÐ§",1¡¯b0
-,,1¡¯b1£ºDMA_request ÓÐÐ§,
+ä½,è®¿é—®,æ“ä½œè¯´æ˜Ž,å¤ä½å€¼
+[31:8],--,reservedä¿ç•™,24â€™h0
+[7],RW,"DMA_request_EN DMA_request ä½¿èƒ½
+1â€™b0ï¼šDMA_request æ— æ•ˆ
+1â€™b1ï¼šDMA_request æœ‰æ•ˆ",1â€™b0
 [6],RW,"FLIEN
-ÏÂ½µÑØ»º´æÖÐ¶ÏÊ¹ÄÜÎ»
-1¡¯b0£ºÏÂ½µÑØ»º´æÖÐ¶ÏÎÞÐ§
-1¡¯b1£ºÏÂ½µÑØ»º´æÖÐ¶ÏÓÐÐ§×¢Òâ£ºÕë¶ÔCH0 ¶øÑÔ",1¡¯b0
+ä¸‹é™æ²¿ç¼“å­˜ä¸­æ–­ä½¿èƒ½ä½
+1â€™b0ï¼šä¸‹é™æ²¿ç¼“å­˜ä¸­æ–­æ— æ•ˆ
+1â€™b1ï¼šä¸‹é™æ²¿ç¼“å­˜ä¸­æ–­æœ‰æ•ˆæ³¨æ„ï¼šé’ˆå¯¹CH0 è€Œè¨€",1â€™b0
 [5],RW,"RLIEN
-ÉÏÉýÑØ»º´æÖÐ¶ÏÊ¹ÄÜÎ»
-1¡¯b0£ºÉÏÉý»º´æÖÐ¶ÏÎÞÐ§
-1¡¯b1£ºÉÏÉýÑØ»º´æÖÐ¶ÏÓÐÐ§×¢Òâ£ºÕë¶ÔCH0 ¶øÑÔ",1¡¯b0
+ä¸Šå‡æ²¿ç¼“å­˜ä¸­æ–­ä½¿èƒ½ä½
+1â€™b0ï¼šä¸Šå‡ç¼“å­˜ä¸­æ–­æ— æ•ˆ
+1â€™b1ï¼šä¸Šå‡æ²¿ç¼“å­˜ä¸­æ–­æœ‰æ•ˆæ³¨æ„ï¼šé’ˆå¯¹CH0 è€Œè¨€",1â€™b0
 [4:0],RW,"PIEN
-PWM ÖÜÆÚÖÐ¶ÏÊ¹ÄÜÎ»
-1¡¯b0£ºÖÜÆÚÖÐ¶ÏÎÞÐ§
-1¡¯b1£ºÖÜÆÚÖÐ¶ÏÓÐÐ§
-×¢Òâ£ºµ±¼ÆÊýÆ÷¼ÆÊýµ½ 0£¬ÇÒ PWM ÖÜÆÚ¸öÊýÂú×ãPWM_PNUM ºó£¬´¥·¢ÖÐ¶Ï¡£",5¡¯b0
+PWM å‘¨æœŸä¸­æ–­ä½¿èƒ½ä½
+1â€™b0ï¼šå‘¨æœŸä¸­æ–­æ— æ•ˆ
+1â€™b1ï¼šå‘¨æœŸä¸­æ–­æœ‰æ•ˆ
+æ³¨æ„ï¼šå½“è®¡æ•°å™¨è®¡æ•°åˆ° 0ï¼Œä¸” PWM å‘¨æœŸä¸ªæ•°æ»¡è¶³PWM_PNUM åŽï¼Œè§¦å‘ä¸­æ–­ã€‚",5â€™b0

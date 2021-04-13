@@ -1,0 +1,14 @@
+位,访问,操作说明,复位值
+[31: 6],,reserved保留,
+[5 : 4],RW,"rxfifo_trigger_level
+当rxfifo 中数据字节数大于等于该值时，触发中断，或者触发rxdma req。 2’h0：1byte
+2’h1：4byte
+2’h2：8byte 2’h3：16byte",2’h1
+[3 : 2],RW,"txfifo_trigger_level
+当txfifo 中数据字节数小于等于该值时，触发中断，或者触发txdma req。 2’h0：empty
+2’h1：4byte 2’h2：8byte
+2’h3：16byte",2’h1
+[1],RW,"rxfifo_reset
+复位rxfifo，将rxfifo 状态清空",1’b0
+[0],RW,"txfifo_reset
+复位txfifo，将txfifo 状态清空",1’b0

@@ -1,8 +1,8 @@
-Î»,·ÃÎÊ,²Ù×÷ËµÃ÷,¸´Î»Öµ
-[31: 2],RO,±£Áô,
-[1],RW,"IntEnRxOverrun£¬RxOverrun ÖĞ¶ÏÊ¹ÄÜ
-0£ºRx FIFO overflow  ÖĞ¶ÏÊ¹ÄÜ
-1£ºRx FIFO overflow  ÖĞ¶Ï²»Ê¹",1¡¯b1
-[0],RW,"IntEnTxUnderrun£¬TxUnderrun ÖĞ¶ÏÊ¹ÄÜ
-0£ºTx FIFO    underflow  ÖĞ¶ÏÊ¹ÄÜ
-1£ºTx FIFO    underflow  ÖĞ¶Ï²»Ê¹ÄÜ",1¡¯b1
+ä½,è®¿é—®,æ“ä½œè¯´æ˜,å¤ä½å€¼
+[31: 2],RO,ä¿ç•™,
+[1],RW,"IntEnRxOverrunï¼ŒRxOverrun ä¸­æ–­ä½¿èƒ½
+0ï¼šRx FIFO overflow  ä¸­æ–­ä½¿èƒ½
+1ï¼šRx FIFO overflow  ä¸­æ–­ä¸ä½¿",1â€™b1
+[0],RW,"IntEnTxUnderrunï¼ŒTxUnderrun ä¸­æ–­ä½¿èƒ½
+0ï¼šTx FIFO    underflow  ä¸­æ–­ä½¿èƒ½
+1ï¼šTx FIFO    underflow  ä¸­æ–­ä¸ä½¿èƒ½",1â€™b1

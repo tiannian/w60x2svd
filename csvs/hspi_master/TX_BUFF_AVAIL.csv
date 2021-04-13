@@ -1,9 +1,9 @@
-Î»,·ÃÎÊ,²Ù×÷ËµÃ÷,¸´Î»Öµ
-[15: 2],RO,±£Áô,
+ä½,è®¿é—®,æ“ä½œè¯´æ˜Ž,å¤ä½å€¼
+[15: 2],RO,ä¿ç•™,
 [1],RO,"tx_cmdbuff_avail
-±êÖ¾·¢ËÍcmd  µÄbuff ÊÇ·ñ¿ÉÓÃ£¬Èç¹û¿ÉÓÃ£¬ÔòÖ÷»ú¿ÉÒÔÏÂ·¢cmd¡£ 0£º·¢ËÍbuff ²»¿ÉÓÃ
-1£º·¢ËÍbuff ¿ÉÓÃ",1¡¯b0
+æ ‡å¿—å‘é€cmd  çš„buff æ˜¯å¦å¯ç”¨ï¼Œå¦‚æžœå¯ç”¨ï¼Œåˆ™ä¸»æœºå¯ä»¥ä¸‹å‘cmdã€‚ 0ï¼šå‘é€buff ä¸å¯ç”¨
+1ï¼šå‘é€buff å¯ç”¨",1â€™b0
 [0],RO,"tx_buff_avail
-±êÖ¾·¢ËÍbuff ÊÇ·ñ¿ÉÓÃ£¬Èç¹û¿ÉÓÃ£¬ÔòÖ÷»ú¿ÉÒÔÏÂ·¢Êý¾Ý¡£
-0£º·¢ËÍbuff ²»¿ÉÓÃ
-1£º·¢ËÍbuff ¿ÉÓÃ",1¡¯b0
+æ ‡å¿—å‘é€buff æ˜¯å¦å¯ç”¨ï¼Œå¦‚æžœå¯ç”¨ï¼Œåˆ™ä¸»æœºå¯ä»¥ä¸‹å‘æ•°æ®ã€‚
+0ï¼šå‘é€buff ä¸å¯ç”¨
+1ï¼šå‘é€buff å¯ç”¨",1â€™b0

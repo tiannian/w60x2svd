@@ -1,0 +1,1257 @@
+{
+  "name": "i2s",
+  "version": "0.1",
+  "description": "I2S",
+  "base_address": 1073814016,
+  "address_block": {
+    "offset": 0,
+    "size": 512,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "i2s control",
+      "offset": 0,
+      "description": "控制I2S 相关功能，详见下述章节；",
+      "reset": 18432,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 31,
+          "width": 4,
+          "access": "RO",
+          "description": ""
+        },
+        {
+          "name": "timeout_ctrl",
+          "offset": 26,
+          "width": 1,
+          "access": "RW",
+          "description": "超时计数控制位，当此位被置 1 并且传输进程被主设备强制停止时，将不发生接收完成(RXDONE)中断"
+        },
+        {
+          "name": "format",
+          "offset": 25,
+          "width": 1,
+          "access": "RW",
+          "description": "数据格式选择",
+          "enumerated_value": {
+            "name": "format",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "format_00",
+                "description": "I2S  数据格式 2’b01MSB Justified  数据格式 2’b10PCM A 声音数据格式",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "format_11",
+                "description": "PCM B 声音数据格式",
+                "value": 17,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxlch",
+          "offset": 23,
+          "width": 1,
+          "access": "RW",
+          "description": "声道接收使能控制位注意：只有选择MONO_STEREO 的单声道模式时，此位才有效",
+          "enumerated_value": {
+            "name": "rxlch",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxlch_0",
+                "description": "使能接收右声道数据",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxlch_1",
+                "description": "使能接收左声道数据",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "mono_stereo",
+          "offset": 22,
+          "width": 1,
+          "access": "RW",
+          "description": "单声道立体声选择位",
+          "enumerated_value": {
+            "name": "mono_stereo",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "mono_stereo_0",
+                "description": "数据以立体声格式传输",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "mono_stereo_1",
+                "description": "数据以单声道格式传输",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxdmaen",
+          "offset": 21,
+          "width": 1,
+          "access": "RW",
+          "description": "接收DMA 请求使能位注意：当使能传输DMA 请求并且RXFIFO 中的字的个数等于或者大于RXTH时，I2S 控制器会向DMA 发出传输请求直至RXFIFO 为空才停止DMA 传输。",
+          "enumerated_value": {
+            "name": "rxdmaen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxdmaen_0",
+                "description": "不使能发送DMA 请求",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxdmaen_1",
+                "description": "使能发送DMA 请求",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txdmaen",
+          "offset": 20,
+          "width": 1,
+          "access": "RW",
+          "description": "发送DMA 请求使能位注意：当使能传输 DMA 请求并且 TXFIFO 中的字的个数小于TXTH 时，I2S 控制器会向DMA 发出传输请求直至TXFIFO 满才停止DMA 传输。",
+          "enumerated_value": {
+            "name": "txdmaen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txdmaen_0",
+                "description": "不使能发送DMA 请求",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txdmaen_1",
+                "description": "使能发送DMA 请求",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxclr",
+          "offset": 19,
+          "width": 1,
+          "access": "RW",
+          "description": "清空RXFIFO注意：写 1 清空RXFIFO，由硬件自动清空。读此位永远返回 0",
+          "enumerated_value": {
+            "name": "rxclr",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxclr_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxclr_1",
+                "description": "清空RXFIFO",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txclr",
+          "offset": 18,
+          "width": 1,
+          "access": "RW",
+          "description": "清空TXFIFO注意：写 1 清空TXFIFO，由硬件自动清空。读此位永远返回 0",
+          "enumerated_value": {
+            "name": "txclr",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txclr_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txclr_1",
+                "description": "清空TXFIFO",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "lzcen",
+          "offset": 17,
+          "width": 1,
+          "access": "RW",
+          "description": "左声道零交叉检测使能控制位",
+          "enumerated_value": {
+            "name": "lzcen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "lzcen_0",
+                "description": "停止左声道零交叉检测",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "lzcen_1",
+                "description": "使能左声道零交叉检测",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rzcen",
+          "offset": 16,
+          "width": 1,
+          "access": "RW",
+          "description": "右声道零交叉检测使能控制位",
+          "enumerated_value": {
+            "name": "rzcen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rzcen_0",
+                "description": "停止右声道零交叉检测",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rzcen_1",
+                "description": "使能右声道零交叉检测",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rsv",
+          "offset": 15,
+          "width": 1,
+          "access": "RW",
+          "description": ""
+        },
+        {
+          "name": "rxth",
+          "offset": 14,
+          "width": 2,
+          "access": "RW",
+          "description": "RXFIFO 阙值…注意：当RXFIFO 中现有的字等于或者多于RXTH 的值时，RXTHIF 位会被置位。此时可以根据设置来选择触发RXDMA 或者 I2S 中断",
+          "enumerated_value": {
+            "name": "rxth",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxth_000",
+                "description": "设置阙值为 0 个字",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxth_000",
+                "description": "设置阙值为 1 个字",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxth_111",
+                "description": "设置阙值为 7 个字",
+                "value": 273,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txth",
+          "offset": 11,
+          "width": 2,
+          "access": "RW",
+          "description": "TXFIFO 阙值…注意：当TXFIFO 中现有的字等于或者少于TXTH 的值时，TXTHIF 位会被置位。此时可以根据设置来选择触发TXDMA 或者I2S 中断",
+          "enumerated_value": {
+            "name": "txth",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txth_000",
+                "description": "设置阙值为 0 个字",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txth_000",
+                "description": "设置阙值为 1 个字",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txth_111",
+                "description": "设置阙值为 7 个字",
+                "value": 273,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "clk_phase_sel",
+          "offset": 8,
+          "width": 1,
+          "access": "RW",
+          "description": "选择时钟相位模式以上面提及的I2S 总线时序展示以上面提及的I2S 总线时序的反转形式展示",
+          "enumerated_value": {
+            "name": "clk_phase_sel",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "clk_phase_sel_0",
+                "description": "默认模式",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "clk_phase_sel_1",
+                "description": "反转模式",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rsv",
+          "offset": 7,
+          "width": 1,
+          "access": "RW",
+          "description": ""
+        },
+        {
+          "name": "wdwidth",
+          "offset": 5,
+          "width": 1,
+          "access": "RW",
+          "description": "传输字长设置位",
+          "enumerated_value": {
+            "name": "wdwidth",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "wdwidth_00",
+                "description": "字长 8 bit",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "wdwidth_01",
+                "description": "字长 16 bit",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "wdwidth_10",
+                "description": "字长 24 bit",
+                "value": 16,
+                "default": false
+              },
+              {
+                "name": "wdwidth_11",
+                "description": "字长 32 bit",
+                "value": 17,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "mute",
+          "offset": 3,
+          "width": 1,
+          "access": "RW",
+          "description": "传输哑声使能标志位",
+          "enumerated_value": {
+            "name": "mute",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "mute_0",
+                "description": "从移位寄存器传输数据，正常操作模式",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "mute_1",
+                "description": "将传输数据置 0，使声音静音",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxen",
+          "offset": 2,
+          "width": 1,
+          "access": "RW",
+          "description": "接收使能标志位",
+          "enumerated_value": {
+            "name": "rxen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxen_0",
+                "description": "停止I2S 数据接收",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxen_1",
+                "description": "使能I2S 数据接收",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txen",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "传输使能标志位",
+          "enumerated_value": {
+            "name": "txen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txen_0",
+                "description": "停止I2S 数据传输",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txen_1",
+                "description": "使能I2S 数据传输",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "i2sen",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "I2S 使能标志位",
+          "enumerated_value": {
+            "name": "i2sen",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "i2sen_0",
+                "description": "不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "i2sen_1",
+                "description": "使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "i2s_imask",
+      "offset": 4,
+      "description": "控制开启或关闭I2S 中所有的中断",
+      "mode": "RW",
+      "reset": 1023,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 31,
+          "width": 21,
+          "access": "RO",
+          "description": ""
+        },
+        {
+          "name": "lzcimask",
+          "offset": 9,
+          "width": 1,
+          "access": "RW",
+          "description": "左声道零交叉中断使能标志位当使能中断，并且检测到左声道上有零交叉时，产生中断",
+          "enumerated_value": {
+            "name": "lzcimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "lzcimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "lzcimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rzcimask",
+          "offset": 8,
+          "width": 1,
+          "access": "RW",
+          "description": "右声道零交叉中断使能标志位当使能中断，并且检测到右声道上有零交叉时，产生中断",
+          "enumerated_value": {
+            "name": "rzcimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rzcimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rzcimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txdonemask",
+          "offset": 7,
+          "width": 1,
+          "access": "RW",
+          "description": "发送完成中断使能位当使能中断，并且TXFIFO 为空时，产生中断",
+          "enumerated_value": {
+            "name": "txdonemask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txdonemask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txdonemask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txthimask",
+          "offset": 6,
+          "width": 1,
+          "access": "RW",
+          "description": "TXFIFO 阙值中断使能位当使能中断，并且TXFIFO 中的数据数等于或者小于TXTH 时，产生中断",
+          "enumerated_value": {
+            "name": "txthimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txthimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txthimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txovimask",
+          "offset": 5,
+          "width": 1,
+          "access": "RW",
+          "description": "TXFIFO 溢出中断使能位注意：当使能中断，TXFIFO 满，CPU 再向TXFIFO 中写数据时，TXOVIF 标志位将会被置位",
+          "enumerated_value": {
+            "name": "txovimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txovimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txovimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txudimask",
+          "offset": 4,
+          "width": 1,
+          "access": "RW",
+          "description": "TXFIFO 下溢中断使能位注意：当使能TXFIFO 下溢中断，并且检测到TXUDIF 为 1 时，将产生下溢中断",
+          "enumerated_value": {
+            "name": "txudimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txudimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txudimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxdonemask",
+          "offset": 3,
+          "width": 1,
+          "access": "RW",
+          "description": "接收完成中断使能标志位当使能接收完成中断，并且接收过程完成时，将产生接收完成中断",
+          "enumerated_value": {
+            "name": "rxdonemask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxdonemask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxdonemask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxthimask",
+          "offset": 2,
+          "width": 1,
+          "access": "RW",
+          "description": "RXFIFO 阙值中断使能标志位当使能RXFIFO 阙值中断，并且 RXFIFO 中的数据个数等于或者多于阙值数时，产生生 RX 中断",
+          "enumerated_value": {
+            "name": "rxthimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxthimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxthimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxovimask",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "RXFIFO 溢出中断使能位注意：当使能RXFIFO 流出中断，并且检测到TXOVIF 为 1 时，将产生溢出中断",
+          "enumerated_value": {
+            "name": "rxovimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxovimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxovimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxudimask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "RXFIFO 下溢中断使能位注意：当使能RXFIFO 下溢中断，并且检测到TXUDIF 为 1 时，将产生下溢中断",
+          "enumerated_value": {
+            "name": "rxudimask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxudimask_0",
+                "description": "中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxudimask_1",
+                "description": "中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "i2s_int_flag",
+      "offset": 8,
+      "description": "中断标志位，可用于查询中断是否产生及清除相关中断",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 31,
+          "width": 18,
+          "access": "RO",
+          "description": ""
+        },
+        {
+          "name": "txif",
+          "offset": 12,
+          "width": 1,
+          "access": "RO",
+          "description": "I2S  发送中断标志",
+          "enumerated_value": {
+            "name": "txif",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "txif_0",
+                "description": "未发生I2S 中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txif_1",
+                "description": "I2S 有发送中断产生",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxif",
+          "offset": 11,
+          "width": 1,
+          "access": "RO",
+          "description": "I2S  接收中断标志",
+          "enumerated_value": {
+            "name": "rxif",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "rxif_0",
+                "description": "未发生I2S 中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxif_1",
+                "description": "I2S 有接收中断产生",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "i2sif",
+          "offset": 10,
+          "width": 1,
+          "access": "RO",
+          "description": "I2S  中断标志位注意：只要 RX 或者 TX 之一有中断，此位就会置位",
+          "enumerated_value": {
+            "name": "i2sif",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "i2sif_0",
+                "description": "未发生I2S 中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "i2sif_1",
+                "description": "I2S 有中断产生",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "lzcif",
+          "offset": 9,
+          "width": 1,
+          "access": "RW",
+          "description": "左声道零交叉检测标志此位指示左通道下一个样本数据符号位改变或所有数据位为零。注意：写 1 来清除中断标志",
+          "enumerated_value": {
+            "name": "lzcif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "lzcif_0",
+                "description": "未检测到零交叉",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "lzcif_1",
+                "description": "检测到零交叉",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rzcif",
+          "offset": 8,
+          "width": 1,
+          "access": "RW",
+          "description": "右声道零交叉检测标志此位指示右通道下一个样本数据符号位改变或所有数据位为零。注意：写 1 来清除中断标志",
+          "enumerated_value": {
+            "name": "rzcif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rzcif_0",
+                "description": "未检测到零交叉",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rzcif_1",
+                "description": "检测到零交叉",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txdoneif",
+          "offset": 7,
+          "width": 1,
+          "access": "RW",
+          "description": "发送完成中断标志注意：写 1 来清除中断标志",
+          "enumerated_value": {
+            "name": "txdoneif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txdoneif_0",
+                "description": "本次发送未完成",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txdoneif_1",
+                "description": "本次发送完成",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txthif",
+          "offset": 6,
+          "width": 1,
+          "access": "RO",
+          "description": "RXFIFO 中断标志注意：当 TXFIFO 中字的个数(TXCNT)等于或者少于TXTH 设置的阙值时，这个位会被置 1，直至向 TXFIFO 中的写入数据并且 TXCNT 的值大于 TXTH 的值后，它才会变回 0。",
+          "enumerated_value": {
+            "name": "txthif",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "txthif_0",
+                "description": "TXFIFO 中的字个数大于阙值",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txthif_1",
+                "description": "TXFIFO 中的字个数小于或等于于阙值.",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txovif",
+          "offset": 5,
+          "width": 1,
+          "access": "RW",
+          "description": "TXFIFO 溢出中断标志",
+          "enumerated_value": {
+            "name": "txovif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txovif_0",
+                "description": "TXFIFO 没有发生溢出中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txovif_1",
+                "description": "TXFIFO 发生了溢出中断注意写 1 来清除中断标志",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txudif",
+          "offset": 4,
+          "width": 1,
+          "access": "RW",
+          "description": "TXFIFO 下溢中断标志",
+          "enumerated_value": {
+            "name": "txudif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txudif_0",
+                "description": "TXFIFO 没有发生下溢中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txudif_1",
+                "description": "TXFIFO 发生了下溢中断注意写 1 来清除中断标志",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxdoneif",
+          "offset": 3,
+          "width": 1,
+          "access": "RW",
+          "description": "接收完成中断标志注意：写 1 来清除中断标志",
+          "enumerated_value": {
+            "name": "rxdoneif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxdoneif_0",
+                "description": "本次接收未完成",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxdoneif_1",
+                "description": "本次接收完成",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxthif",
+          "offset": 2,
+          "width": 1,
+          "access": "RO",
+          "description": "RXFIFO 中断标志注意：当 RXFIFO 中字的个数等于或者多于RXTH 设置的阙值时，这个位会被置 1，直至RXFIFO 中的数据被读出并且RXCNT 的值小于RXTH 的值后，它才会变回 0。",
+          "enumerated_value": {
+            "name": "rxthif",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "rxthif_0",
+                "description": "RXFIFO 中的字个数小于阙值",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxthif_1",
+                "description": "RXFIFO 中的字个数等于或大于阙值.",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxovif",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "RXFIFO 溢出中断标志注意：写 1 来清除溢出中断",
+          "enumerated_value": {
+            "name": "rxovif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxovif_0",
+                "description": "RXFIFO 没有发生溢出中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxovif_1",
+                "description": "RXFIFO 发生了溢出中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxudif",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "RXFIFO 下溢中断标志",
+          "enumerated_value": {
+            "name": "rxudif",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxudif_0",
+                "description": "RXFIFO 没有发生下溢中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxudif_1",
+                "description": "RXFIFO 发生了下溢中断注意写 1 来清除下溢中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "i2s_status",
+      "offset": 12,
+      "description": "用于查询 I2S 通信过程中 FIFO 的相关状态",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 31,
+          "width": 21,
+          "access": "RO",
+          "description": ""
+        },
+        {
+          "name": "validbyte",
+          "offset": 9,
+          "width": 1,
+          "access": "RO",
+          "description": "最后一个字中可用的字节数。",
+          "enumerated_value": {
+            "name": "validbyte",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "validbyte_00",
+                "description": "接收完成后，RXFIFO 中所有的字节都是可用的",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "validbyte_01",
+                "description": "接收完成后，RXFIFO 中有 1 个字节是可用的",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "validbyte_10",
+                "description": "接收完成后，RXFIFO 中有 2 个字节是可用的",
+                "value": 16,
+                "default": false
+              },
+              {
+                "name": "validbyte_11",
+                "description": "接收完成后，RXFIFO 中有 3 个字节是可用的",
+                "value": 17,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "txcnt",
+          "offset": 7,
+          "width": 3,
+          "access": "RO",
+          "description": "记录当前时刻TXFIFO 中字的个数。…",
+          "enumerated_value": {
+            "name": "txcnt",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "txcnt_0000",
+                "description": "没有数据",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txcnt_0001",
+                "description": "有 1 个字",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "txcnt_1000",
+                "description": "有 8 个字",
+                "value": 4096,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "rxcnt",
+          "offset": 3,
+          "width": 3,
+          "access": "RO",
+          "description": "记录当前时刻RXFIFO 中字的个数。…",
+          "enumerated_value": {
+            "name": "rxcnt",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "rxcnt_0000",
+                "description": "没有数据",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxcnt_0001",
+                "description": "有 1 个字",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "rxcnt_1000",
+                "description": "有 8 个字",
+                "value": 4096,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "i2s_tx",
+      "offset": 16,
+      "description": "控制器会将它里面的数据发送到总线上",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "txfifo",
+          "offset": 31,
+          "width": 31,
+          "access": "RW",
+          "description": "I2S 内置了8 个字长度的FIFO 用于存贮待发送的数据。每次向TXFIFO 中写一个字，TXFIFO 中的字就增加一个。I2S 控制器会自动将先进入TXFIFO 中的字发送出去。"
+        }
+      ]
+    },
+    {
+      "name": "i2s_rx",
+      "offset": 20,
+      "description": "控制器会将总线上的数据接收到它里面",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rxfifo",
+          "offset": 31,
+          "width": 31,
+          "access": "RO",
+          "description": "I2S 内置了 8 个字长度的 FIFO 用于存贮接收到的数据。每次从 RXFIFO 中读取一个字，RXFIFO 中的字就会少一个。"
+        }
+      ]
+    }
+  ]
+}

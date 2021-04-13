@@ -1,0 +1,12 @@
+偏移地址,名称,,缩写,访问,描述,复位值
+0X0000,HSPI FIFO 清空寄存器,,CLEAR_FIFO,RW,"清除 Tx 和Rx FIFO 的内容，同时
+会同步复位系统时钟域的电路",0X0000_0000
+0X0004,HSPI 配置寄存器,,SPI_CFG,RW,"配置SPI 的传输模式以及大小端配
+置",0X0000_0000
+0X0008,HSPI 模式配置寄存器,,MODE_CFG,RW,"配置ahb master访问总线时的burst
+长度",0X0000_0000
+0X000C,HSPI 中断配置寄存器,,"SPI_INT_CPU_
+MASK",RW,配置中断是否使能,0X0000_0003
+0X0010,HSPI 中断状态寄存器,,"SPI_INT_CPU_
+STTS",RW,获取以及清除中断状态,0X0000_0000
+0X0018,HSPI 数据上传长度寄存器,,RX_DAT_LEN,RW,配置可以上传的数据长度,0X0000_0000

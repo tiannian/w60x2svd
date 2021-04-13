@@ -1,0 +1,182 @@
+{
+  "name": "watchdog",
+  "version": "0.1",
+  "description": "Watch Dog",
+  "base_address": 1073811456,
+  "address_block": {
+    "offset": 0,
+    "size": 512,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "wd_ld",
+      "offset": 0,
+      "description": "配置定时值，用于重复加载",
+      "mode": "RW",
+      "reset": 4294967295,
+      "size": 32,
+      "fields": [
+        {
+          "name": "conf_en",
+          "offset": 31,
+          "width": 31,
+          "access": "RW",
+          "description": "配置定时值，用于重复加载\r此寄存器的值以APB 时钟为计数单位。\r例如：以APB 时钟为 40MHZ，则定时值最大时长约 107s 左右，即\r0FFFFFFFF/40000000"
+        }
+      ]
+    },
+    {
+      "name": "wd_val",
+      "offset": 4,
+      "description": "获取当前定时器的值",
+      "mode": "RO",
+      "reset": 4294967295,
+      "size": 32,
+      "fields": [
+        {
+          "name": "timer_value",
+          "offset": 31,
+          "width": 31,
+          "access": "RO",
+          "description": "获取当前定时器的值\r要计算剩余时间，只要读取当前值即可。\r要计算已经过去的时间，只要把寄存器WD_LD 的值减去寄存器WD_VAL 的值即可"
+        }
+      ]
+    },
+    {
+      "name": "wd_ctrl",
+      "offset": 8,
+      "description": "控制寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 29,
+          "description": "保留"
+        },
+        {
+          "name": "reset_en",
+          "offset": 1,
+          "width": 1,
+          "access": "RW",
+          "description": "复位使能位",
+          "enumerated_value": {
+            "name": "reset_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "reset_en_0",
+                "description": "WDG 复位条件产生时，不产生复位信号",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "reset_en_1",
+                "description": "WDG 复位条件产生时，产生复位信号",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "timer_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "定时使能位",
+          "enumerated_value": {
+            "name": "timer_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "timer_en_0",
+                "description": "定时器不工作",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "timer_en_1",
+                "description": "定时器工作，产生周期性中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "wd_clr",
+      "offset": 12,
+      "description": "中断清除寄存器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 30,
+          "description": "保留"
+        },
+        {
+          "name": "int_status_clr",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "中断状态清除位，写任意值清除当前中断状态"
+        }
+      ]
+    },
+    {
+      "name": "wd_src",
+      "offset": 16,
+      "description": "中断源寄存器",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 30,
+          "description": "保留"
+        },
+        {
+          "name": "int_src",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "中断源寄存器，定时器功能打开，会同时产生该中断"
+        }
+      ]
+    },
+    {
+      "name": "wd_state",
+      "offset": 20,
+      "description": "中断输出状态寄存器",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 31,
+          "width": 30,
+          "description": "保留"
+        },
+        {
+          "name": "int_output_status",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "中断输出状态寄存器。该中断在定时器关闭后不产生，但WD_SRC 可能为 1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,59 +1,59 @@
-Î»,·ÃÎÊ,²Ù×÷ËµÃ÷,¸´Î»Öµ
+ä½,è®¿é—®,æ“ä½œè¯´æ˜Ž,å¤ä½å€¼
 [31:27],RW,"CNTEN
-¼ÆÊýÆ÷¼ÆÊýÊ¹ÄÜ
-1¡¯b0£ºÍ£Ö¹¼ÆÊý
-1¡¯b1£º¿ªÊ¼¼ÆÊý
-×¢Òâ£ºÃ¿Î»·Ö±ð¿ØÖÆÃ¿¸öÍ¨µÀ£¬´Ó¸ßµ½µÍÒÀ´Î¿ØÖÆCH4¡¢CH3¡¢CH2¡¢CH1 ºÍCH0",5¡¯b0
-[26],--,±£Áô,1¡¯b0
+è®¡æ•°å™¨è®¡æ•°ä½¿èƒ½
+1â€™b0ï¼šåœæ­¢è®¡æ•°
+1â€™b1ï¼šå¼€å§‹è®¡æ•°
+æ³¨æ„ï¼šæ¯ä½åˆ†åˆ«æŽ§åˆ¶æ¯ä¸ªé€šé“ï¼Œä»Žé«˜åˆ°ä½Žä¾æ¬¡æŽ§åˆ¶CH4ã€CH3ã€CH2ã€CH1 å’ŒCH0",5â€™b0
+[26],--,reservedä¿ç•™,1â€™b0
 [25],RW,"CAPINV
-²¶»ñ·´ÏòÊ¹ÄÜ±êÊ¶Î»
-1¡¯b0£º²¶»ñÄ£Ê½ÊäÈëÐÅºÅ·´ÏòÎÞÐ§
-1¡¯b1£º²¶»ñÄ£Ê½ÊäÈëÐÅºÅ·´ÏòÓÐÐ§£¬¶ÔÊäÈëÐÅºÅÈ¡·´",1¡¯b0
+æ•èŽ·åå‘ä½¿èƒ½æ ‡è¯†ä½
+1â€™b0ï¼šæ•èŽ·æ¨¡å¼è¾“å…¥ä¿¡å·åå‘æ— æ•ˆ
+1â€™b1ï¼šæ•èŽ·æ¨¡å¼è¾“å…¥ä¿¡å·åå‘æœ‰æ•ˆï¼Œå¯¹è¾“å…¥ä¿¡å·å–å",1â€™b0
 [24],RW,"CPEN
-²¶»ñ¹¦ÄÜÊ¹ÄÜ±êÊ¶Î»
-1¡¯b0£ºCH0 ²¶»ñ¹¦ÄÜÎÞÐ§£¬RCAPDAT ºÍFCAPDAT Öµ²»»á±»¸üÐÂ£»
-1¡¯b1£ºCH0 ²¶»ñ¹¦ÄÜÓÐÐ§£¬²¶»ñ²¢Ëø´æ PWM ¼ÆÊýÆ÷£¬·Ö±ð´æ´¢ÔÚ RCAPDAT£¨ÉÏÉýÑØËø´æ£©ºÍFCAPDAT£¨ÏÂ½µÑØËø´æ£©",1¡¯b0
+æ•èŽ·åŠŸèƒ½ä½¿èƒ½æ ‡è¯†ä½
+1â€™b0ï¼šCH0 æ•èŽ·åŠŸèƒ½æ— æ•ˆï¼ŒRCAPDAT å’ŒFCAPDAT å€¼ä¸ä¼šè¢«æ›´æ–°ï¼›
+1â€™b1ï¼šCH0 æ•èŽ·åŠŸèƒ½æœ‰æ•ˆï¼Œæ•èŽ·å¹¶é”å­˜ PWM è®¡æ•°å™¨ï¼Œåˆ†åˆ«å­˜å‚¨åœ¨ RCAPDATï¼ˆä¸Šå‡æ²¿é”å­˜ï¼‰å’ŒFCAPDATï¼ˆä¸‹é™æ²¿é”å­˜ï¼‰",1â€™b0
 [23:22],RW,"CNTTYPE3
-CH3 ¼ÆÊýÆ÷¼ÆÊý·½Ê½
-2¡¯b00£º±ßÔµ¶ÔÆëÄ£Ê½£¨¼ÆÊýÆ÷¼ÆÊý·½Ê½ÎªµÝÔö£¬½öÕë¶Ô²¶»ñÄ£Ê½£©
-2¡¯b01£º±ßÔµ¶ÔÆëÄ£Ê½£¨¼ÆÊýÆ÷¼ÆÊý·½Ê½ÎªµÝ¼õ£¬½öÕë¶Ô PWM Ä£Ê½£©
-2¡¯b10£ºÖÐÑë¶ÔÆëÄ£Ê½£¨½öÕë¶Ô PWM Ä£Ê½£©
-×¢Òâ£ºÔÚPWM Ä£Ê½ÏÂ£¬µ±¼ÆÊýÆ÷±»ÉèÖÃÎªÑØ¶ÔÆëÄ£Ê½Ê±£¬ÐèÒªÉèÖÃ¼ÆÊý·½Ê½ÎªµÝ¼õ·½Ê½¡£",2¡¯b0
+CH3 è®¡æ•°å™¨è®¡æ•°æ–¹å¼
+2â€™b00ï¼šè¾¹ç¼˜å¯¹é½æ¨¡å¼ï¼ˆè®¡æ•°å™¨è®¡æ•°æ–¹å¼ä¸ºé€’å¢žï¼Œä»…é’ˆå¯¹æ•èŽ·æ¨¡å¼ï¼‰
+2â€™b01ï¼šè¾¹ç¼˜å¯¹é½æ¨¡å¼ï¼ˆè®¡æ•°å™¨è®¡æ•°æ–¹å¼ä¸ºé€’å‡ï¼Œä»…é’ˆå¯¹ PWM æ¨¡å¼ï¼‰
+2â€™b10ï¼šä¸­å¤®å¯¹é½æ¨¡å¼ï¼ˆä»…é’ˆå¯¹ PWM æ¨¡å¼ï¼‰
+æ³¨æ„ï¼šåœ¨PWM æ¨¡å¼ä¸‹ï¼Œå½“è®¡æ•°å™¨è¢«è®¾ç½®ä¸ºæ²¿å¯¹é½æ¨¡å¼æ—¶ï¼Œéœ€è¦è®¾ç½®è®¡æ•°æ–¹å¼ä¸ºé€’å‡æ–¹å¼ã€‚",2â€™b0
 [21:20],RW,"CNTTYPE2
-CH2 ¼ÆÊýÆ÷¼ÆÊý·½Ê½Í¬CH3",2¡¯b0
+CH2 è®¡æ•°å™¨è®¡æ•°æ–¹å¼åŒCH3",2â€™b0
 [19:18],RW,"CNTTYPE1
-CH1 ¼ÆÊýÆ÷¼ÆÊý·½Ê½Í¬CH3",2¡¯b0
+CH1 è®¡æ•°å™¨è®¡æ•°æ–¹å¼åŒCH3",2â€™b0
 [17:16],RW,"CNTTYPE0
-CH0 ¼ÆÊýÆ÷¼ÆÊý·½Ê½Í¬CH3",2¡¯b0
+CH0 è®¡æ•°å™¨è®¡æ•°æ–¹å¼åŒCH3",2â€™b0
 [15:14],RW,"TWOSYNCEN
-2 Í¨µÀÍ¬²½Ä£Ê½Ê¹ÄÜÐÅºÅ
-1¡¯b0£º²»ÔÊÐí 2 Í¨µÀÍ¬²½
-1¡¯b1£ºÔÊÐí 2 Í¨µÀÍ¬²½£¬
-PWM_CH0 ºÍPWM_CH1 ¾ßÓÐÏàÍ¬µÄÏàÎ»£¬ÇÒÏàÎ»ÓÉ PWM_CH0 ¾ö¶¨£»PWM_CH2ºÍPWM_CH3 ¾ßÓÐÏàÍ¬µÄÏàÎ»£¬ÇÒÏàÎ»ÓÉPWM_CH2 ¾ö¶¨
-15bit ¿ØÖÆCH3 ºÍCH2
-14bit ¿ØÖÆCH1 ºÍCH0",2¡¯b0
-[13],--,±£Áô,1¡¯b0
+2 é€šé“åŒæ­¥æ¨¡å¼ä½¿èƒ½ä¿¡å·
+1â€™b0ï¼šä¸å…è®¸ 2 é€šé“åŒæ­¥
+1â€™b1ï¼šå…è®¸ 2 é€šé“åŒæ­¥ï¼Œ
+PWM_CH0 å’ŒPWM_CH1 å…·æœ‰ç›¸åŒçš„ç›¸ä½ï¼Œä¸”ç›¸ä½ç”± PWM_CH0 å†³å®šï¼›PWM_CH2å’ŒPWM_CH3 å…·æœ‰ç›¸åŒçš„ç›¸ä½ï¼Œä¸”ç›¸ä½ç”±PWM_CH2 å†³å®š
+15bit æŽ§åˆ¶CH3 å’ŒCH2
+14bit æŽ§åˆ¶CH1 å’ŒCH0",2â€™b0
+[13],--,reservedä¿ç•™,1â€™b0
 [12],RW,"POEN
-PWM ¹Ü½ÅÊä³öÊ¹ÄÜÎ»
-1¡¯b0£ºPWM ¹Ü½ÅÖÃÎªÊä³ö×´Ì¬
-1¡¯b1£ºPWM ¹Ü½ÅÖÃÎªÈýÌ¬×´Ì¬×¢Òâ£ºÖ»ÊÇÕë¶ÔCH0",1¡¯b0
+PWM ç®¡è„šè¾“å‡ºä½¿èƒ½ä½
+1â€™b0ï¼šPWM ç®¡è„šç½®ä¸ºè¾“å‡ºçŠ¶æ€
+1â€™b1ï¼šPWM ç®¡è„šç½®ä¸ºä¸‰æ€çŠ¶æ€æ³¨æ„ï¼šåªæ˜¯é’ˆå¯¹CH0",1â€™b0
 [11:8],RW,"CNTMODE
-PWM Éú³ÉÑ­»··½Ê½
-1¡¯b0£ºµ¥´ÎÄ£Ê½
-1¡¯b1£º×Ô¶¯×°ÔØÄ£Ê½
-×¢Òâ£ºCNTMODE  ±ä»¯¹ý³ÌÖÐ£¬PWM_CMPDAT  ¹éÁã£»Ã¿Î»·Ö±ð¿ØÖÆÃ¿¸öÍ¨µÀ£¬´Ó¸ßµ½µÍÒÀ´Î¿ØÖÆPW3¡¢PW2¡¢PW1 ºÍPW0",4¡¯h0
-[7],--,±£Áô,1¡¯b0
+PWM ç”Ÿæˆå¾ªçŽ¯æ–¹å¼
+1â€™b0ï¼šå•æ¬¡æ¨¡å¼
+1â€™b1ï¼šè‡ªåŠ¨è£…è½½æ¨¡å¼
+æ³¨æ„ï¼šCNTMODE  å˜åŒ–è¿‡ç¨‹ä¸­ï¼ŒPWM_CMPDAT  å½’é›¶ï¼›æ¯ä½åˆ†åˆ«æŽ§åˆ¶æ¯ä¸ªé€šé“ï¼Œä»Žé«˜åˆ°ä½Žä¾æ¬¡æŽ§åˆ¶PW3ã€PW2ã€PW1 å’ŒPW0",4â€™h0
+[7],--,reservedä¿ç•™,1â€™b0
 [6],RW,"ALLSYNCEN
-È«Í¨µÀÍ¬²½Ä£Ê½Ê¹ÄÜÐÅºÅ
-1¡¯b0£º²»ÔÊÐíÈ«²¿Í¨µÀÍ¬²½
-1¡¯b1£ºÔÊÐíÈ«²¿Í¨µÀÍ¬²½£¬PWM_CH0¡¢PWM_CH1¡¢PWM_CH2 ºÍ PWM_CH3 ¾ßÓÐÏàÍ¬µÄÏàÎ»£¬ÇÒÏàÎ»ÓÉPWM_CH0 ¾ö¶¨",1¡¯b0
+å…¨é€šé“åŒæ­¥æ¨¡å¼ä½¿èƒ½ä¿¡å·
+1â€™b0ï¼šä¸å…è®¸å…¨éƒ¨é€šé“åŒæ­¥
+1â€™b1ï¼šå…è®¸å…¨éƒ¨é€šé“åŒæ­¥ï¼ŒPWM_CH0ã€PWM_CH1ã€PWM_CH2 å’Œ PWM_CH3 å…·æœ‰ç›¸åŒçš„ç›¸ä½ï¼Œä¸”ç›¸ä½ç”±PWM_CH0 å†³å®š",1â€™b0
 [5:2],RW,"PINV
-PWM Êä³öÐÅºÅ¼«ÐÔÊ¹ÄÜ
-1¡¯b0£ºPWM Êä³ö¼«ÐÔ·­×ª²»Ê¹ÄÜ
-1¡¯b1£ºPWM Êä³ö¼«ÐÔ·­×ªÊ¹ÄÜ
-×¢Òâ£ºÃ¿Î»·Ö±ð¿ØÖÆÃ¿¸öÍ¨µÀ£¬´Ó¸ßµ½µÍÒÀ´Î¿ØÖÆPW3¡¢PW2¡¢PW1 ºÍPW0",4¡¯h0
+PWM è¾“å‡ºä¿¡å·æžæ€§ä½¿èƒ½
+1â€™b0ï¼šPWM è¾“å‡ºæžæ€§ç¿»è½¬ä¸ä½¿èƒ½
+1â€™b1ï¼šPWM è¾“å‡ºæžæ€§ç¿»è½¬ä½¿èƒ½
+æ³¨æ„ï¼šæ¯ä½åˆ†åˆ«æŽ§åˆ¶æ¯ä¸ªé€šé“ï¼Œä»Žé«˜åˆ°ä½Žä¾æ¬¡æŽ§åˆ¶PW3ã€PW2ã€PW1 å’ŒPW0",4â€™h0
 [1:0],RW,"OUTMODE
-Êä³öÄ£Ê½
-1¡¯b0£ºÃ¿Á½¸öÍ¨µÀ·Ç»¥²¹Ä£Ê½
-1¡¯b1£ºÃ¿Á½¸öÍ¨µÀ×é³É»¥²¹Ä£Ê½ BIT1 ¿ØÖÆCH2 ºÍCH3
-BIT0 ¿ØÖÆCH0 ºÍCH1",2¡¯b0
+è¾“å‡ºæ¨¡å¼
+1â€™b0ï¼šæ¯ä¸¤ä¸ªé€šé“éžäº’è¡¥æ¨¡å¼
+1â€™b1ï¼šæ¯ä¸¤ä¸ªé€šé“ç»„æˆäº’è¡¥æ¨¡å¼ BIT1 æŽ§åˆ¶CH2 å’ŒCH3
+BIT0 æŽ§åˆ¶CH0 å’ŒCH1",2â€™b0

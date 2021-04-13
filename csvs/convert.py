@@ -1,7 +1,7 @@
 import glob
 
 def main():
-    for path in glob.glob('gpiob/*.csv'):
+    for path in glob.glob('pwm/*.csv'):
         print(path)
         f = open(path, "rb")
         tf = open('target/%s' % (path), "wb+")
