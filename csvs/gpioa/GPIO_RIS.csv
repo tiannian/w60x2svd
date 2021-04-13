@@ -1,4 +1,4 @@
-λ,����,����˵��,��λֵ
-[15: 0],RW,"GPIO ���ж�״̬��MASK ǰ����ÿ BIT ����Ӧ��GPIO �߶�Ӧ��1��bx��
-[x] = 0, GPIO[x]û���жϲ���
-[x] = 1, GPIO[x]���жϲ���",16��h0
+位,访问,操作说明,复位值
+[15: 0],RW,"GPIO 裸中断状态（MASK 前），每 BIT 与相应的GPIO 线对应，1’bx：
+[x] = 0, GPIO[x]没有中断产生
+[x] = 1, GPIO[x]有中断产生",16’h0

@@ -1,10 +1,10 @@
-λ,����,����˵��,��λֵ
-[15: 0],RW,"GPIO ���ù���ʹ��λ��ÿBIT ��Ӧ��ӦGPIO ���ù����Ƿ�򿪣�1��bx��
-[x] = 0, GPIO[x]���ù��ܹر�
-[x] = 1, GPIO[x]���ù��ܴ�
-[x] = 1 ʱ�����ù���ȡ����GPIO_AF_S1 ��GPIO_AF_S0 �����Ĵ�����ӦBIT
-��״̬��
-S1.[x] = 0�� S0.[x] = 0�����ù��� 1(opt1) S1.[x] = 0�� S0.[x] = 1�����ù��� 2(opt2) S1.[x] = 1�� S0.[x] = 0�����ù��� 3(opt3) S1.[x] = 1�� S0.[x] = 1�����ù��� 4(opt4)
-[x] = 0 ʱ�����GPIO_DIR[x] = 0���� GPIO_PULL_EN[x] = 1���� GPIO ����Ϊ
-opt6  ģ�� IO ����
-IO ���ù��ܲμ�оƬ���Ÿ��ù�ϵ",16��hffff
+位,访问,操作说明,复位值
+[15: 0],RW,"GPIO 复用功能使能位，每BIT 对应相应GPIO 复用功能是否打开，1’bx：
+[x] = 0, GPIO[x]复用功能关闭
+[x] = 1, GPIO[x]复用功能打开
+[x] = 1 时，复用功能取决于GPIO_AF_S1 和GPIO_AF_S0 两个寄存器相应BIT
+的状态。
+S1.[x] = 0， S0.[x] = 0，复用功能 1(opt1) S1.[x] = 0， S0.[x] = 1，复用功能 2(opt2) S1.[x] = 1， S0.[x] = 0，复用功能 3(opt3) S1.[x] = 1， S0.[x] = 1，复用功能 4(opt4)
+[x] = 0 时，如果GPIO_DIR[x] = 0，且 GPIO_PULL_EN[x] = 1，则 GPIO 复用为
+opt6  模拟 IO 功能
+IO 复用功能参见芯片引脚复用关系",16’hffff
