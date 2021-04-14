@@ -1,0 +1,647 @@
+{
+  "name": "uart0",
+  "version": "0.1",
+  "description": "uart0",
+  "base_address": 1073809408,
+  "address_block": {
+    "offset": 0,
+    "size": 512,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "uart_line_ctrl",
+      "offset": 0,
+      "description": "uart 通信的数据格式设置",
+      "mode": "RW",
+      "reset": 11,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "uart_rx_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "接收使能，高有效",
+          "reset": 0
+        },
+        {
+          "name": "uart_tx_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "发送使能，高有效。",
+          "reset": 0
+        },
+        {
+          "name": "send_break_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "发送break 数据包。Uart 会在该为被置位后发送完一个break 数据包，发送完成后自动清 0。",
+          "reset": 0
+        },
+        {
+          "name": "parity",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "极性",
+          "enumerated_value": {
+            "name": "parity",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "parity_0",
+                "description": "偶校验",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "parity_1",
+                "description": "奇校验",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "parity",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "en\r奇偶检验使能，高有效",
+          "reset": 1
+        },
+        {
+          "name": "stop_bit_count",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "个数",
+          "enumerated_value": {
+            "name": "stop_bit_count",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "stop_bit_count_0",
+                "description": "1 个停止位",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "stop_bit_count_1",
+                "description": "2 个停止位",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "uart_bit_length",
+          "offset": 0,
+          "width": 2,
+          "access": "RW",
+          "description": "比特长度。",
+          "enumerated_value": {
+            "name": "uart_bit_length",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "uart_bit_length_0",
+                "description": "5bit",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "uart_bit_length_1",
+                "description": "6bit",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "uart_bit_length_2",
+                "description": "7bit",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "uart_bit_length_3",
+                "description": "8bit",
+                "value": 3,
+                "default": false
+              }
+            ]
+          },
+          "reset": 3
+        }
+      ]
+    },
+    {
+      "name": "auto_flow_ctrl",
+      "offset": 4,
+      "description": "uart rts/cts 硬件流控设置",
+      "mode": "RW",
+      "reset": 20,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 5,
+          "width": 27,
+          "description": "保留"
+        },
+        {
+          "name": "rts_trigger_level",
+          "offset": 2,
+          "width": 3,
+          "access": "RW",
+          "description": "在afc_enable 有效时，决定何时需要将RTS 置无效。",
+          "enumerated_value": {
+            "name": "rts_trigger_level",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rts_trigger_level_0",
+                "description": "rxfifo 有 4 个以上字节 3’h1rxfifo 有 8 个以上字节 3’h2rxfifo 有 12 个以上字节 3’h3rxfifo 有 16 个以上字节 3’h4rxfifo 有 20 个以上字节 3’h5rxfifo 有 24 个以上字节 3’h6rxfifo 有 28 个以上字节",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rts_trigger_level_7",
+                "description": "rxfifo 有 31 个以上字节",
+                "value": 7,
+                "default": false
+              }
+            ]
+          },
+          "reset": 5
+        },
+        {
+          "name": "rts_set",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "当AFC_enable 无效时，软件可以通过设置此位来完成接收流量控制。当 AFC_enable\r有效时，此位不关心。",
+          "reset": 0
+        },
+        {
+          "name": "afc_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "afc_enable",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "afc_enable_1",
+                "description": "有效，接收条件rts 使用rts_trigger_level 控制产生。",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "dma_ctrl",
+      "offset": 8,
+      "description": "uart dma 传输模式设置",
+      "mode": "RW",
+      "reset": 36,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "rxfifo_timeout_num",
+          "offset": 3,
+          "width": 5,
+          "access": "RW",
+          "description": "rxfifo 中存在数据小于rxfifo_trigger_level 情况下，如果 N 个包的时间内，没有接收到新的数据时，产生rxfifo timeout 中断。\r该计时功能使能后，无论是第一次计时还是上一次计时完成，都只在接收到至少 1\r个包后才开始计时",
+          "reset": 4
+        },
+        {
+          "name": "rxfifo_timeout_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "rxfifo 超时使能",
+          "reset": 1
+        },
+        {
+          "name": "rx_dma_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "接收DMA 使能，高有效。\r0：表示接收过程使用中断。",
+          "reset": 0
+        },
+        {
+          "name": "tx_dma_enable",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "发送DMA 使能，高有效。\r0：表示发送过程使用中断。",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "uart_fifo_ctrl",
+      "offset": 12,
+      "description": "设置 uart fifo 触发等级",
+      "mode": "RW",
+      "reset": 20,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 6,
+          "width": 26,
+          "description": "保留"
+        },
+        {
+          "name": "rxfifo_trigger_level",
+          "offset": 4,
+          "width": 2,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "rxfifo_trigger_level",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxfifo_trigger_level_0",
+                "description": "1byte",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxfifo_trigger_level_1",
+                "description": "4byte",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "rxfifo_trigger_level_2",
+                "description": "8byte 2’h316byte",
+                "value": 2,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "txfifo_trigger_level",
+          "offset": 2,
+          "width": 2,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "txfifo_trigger_level",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txfifo_trigger_level_0",
+                "description": "empty",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txfifo_trigger_level_1",
+                "description": "4byte 2’h28byte",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "txfifo_trigger_level_3",
+                "description": "16byte",
+                "value": 3,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "rxfifo_reset",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "复位rxfifo，将rxfifo 状态清空",
+          "reset": 0
+        },
+        {
+          "name": "txfifo_reset",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "复位txfifo，将txfifo 状态清空",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "baud_rate_ctrl",
+      "offset": 16,
+      "description": "设置uart  通信波特率",
+      "mode": "RW",
+      "reset": 196737,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 20,
+          "width": 12,
+          "description": "保留"
+        },
+        {
+          "name": "ubdiv_frac",
+          "offset": 16,
+          "width": 4,
+          "access": "RW",
+          "description": "系统时钟除以 16 倍波特率时钟商的小数部分指示。具体值为frac×16 。\r（参考章节 2.3.2，波特率计算方法）",
+          "reset": 3
+        },
+        {
+          "name": "ubdiv",
+          "offset": 0,
+          "width": 16,
+          "access": "RW",
+          "description": "系统时钟除以 16 倍波特率时钟商的整数部分减 1。默认系统时钟为 40MHz，波特率为 19200。\r（参考章节 2.3.2，波特率计算方法）",
+          "reset": 129
+        }
+      ]
+    },
+    {
+      "name": "int_mask",
+      "offset": 20,
+      "description": "设置uart 需要使用的中断",
+      "mode": "RW",
+      "reset": 511,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 9,
+          "width": 23,
+          "description": "保留"
+        },
+        {
+          "name": "overrun_error_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "， rxfifo 溢出中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "parity_error_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，奇偶检验中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "frame_error_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，数据帧出错中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "break_detect_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，break 信号检测中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "cts_changed_indicate_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，CTS 信号变化中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "rxfifo_data_timeout_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，rxfifo 接收数据超时中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "rxfifo_trigger_level_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，rxfifo 达到触发值中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "txfifo_trigger_level_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，txfifo 达到触发值中断屏蔽位，高有效。",
+          "reset": 1
+        },
+        {
+          "name": "txfifo_empty_int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，txfifo 为空中断屏蔽位，高有效。",
+          "reset": 1
+        }
+      ]
+    },
+    {
+      "name": "int_src",
+      "offset": 24,
+      "description": "uart 中断状态指示",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 9,
+          "width": 23,
+          "description": "保留"
+        },
+        {
+          "name": "overrun_error_rxfifo",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "出现溢出。\r软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "parity_error",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "接收到的包校验位错误。\rDMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "frame_error",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "接收到的包停止位错误。\rDMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "break_detect",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "接收到break 包。\rDMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。\r软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "cts_changed",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "cts 信号变化则产生此中断。软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "rxfifo_data_timeout",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "rxfifo 中数据长度小于rxfifo trigger level 但N 个数据周期没有接收到任何数据，则产生中断。\r软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "rxfifo_trigger_level_interrupt",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "当rxfifo 中数据个数由小于rxfifo trigger level 中指定的数变成大于或等于该数时，产生此中断。\r此时应该根据rxfifo count 确定当前数据帧大小。\r软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "txfifo_trigger_level_interrupt",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "当txfifo 中数据个数由大于txfifo trigger level 中指定的数变成小于或等于该数时，产生中断。\r软件主动写 1 清 0。",
+          "reset": 0
+        },
+        {
+          "name": "tx_fifo_empty_interrupt",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "当发送完成当前包，并且txfifo 为空时，产生此中断。软件主动写 1 清 0。",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "fifo_status",
+      "offset": 28,
+      "description": "fifo 状态，cts 状态查询",
+      "mode": "RW",
+      "reset": 4096,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 13,
+          "width": 19,
+          "description": "保留"
+        },
+        {
+          "name": "cts_status",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "当前cts 的状态",
+          "reset": 0
+        },
+        {
+          "name": "rxfifo_count",
+          "offset": 6,
+          "width": 6,
+          "access": "RW",
+          "description": "rxfifo 中数据个数",
+          "reset": 0
+        },
+        {
+          "name": "txfifo_count",
+          "offset": 0,
+          "width": 6,
+          "access": "RW",
+          "description": "txfifo 中数据个数",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "tx_data_window",
+      "offset": 32,
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "tx_data_window",
+          "offset": 0,
+          "width": 32,
+          "access": "RW",
+          "description": "发送数据起始地址。\r注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "rx_data_window",
+      "offset": 48,
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rx_data_window",
+          "offset": 0,
+          "width": 32,
+          "access": "RO",
+          "description": "接收数据起始地址。\r注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。",
+          "reset": 0
+        }
+      ]
+    }
+  ]
+}
