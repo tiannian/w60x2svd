@@ -1,9 +1,0 @@
-[
-    {
-        "description":"JTAG",
-        "name":"JTAG",
-        "offset":5,
-        "access":"RW",
-        "enumerated_value":"@switch_default_disable.json"
-    }
-]

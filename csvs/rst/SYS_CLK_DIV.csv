@@ -1,0 +1,22 @@
+位,访问,操作说明,复位值
+[31],RW,"divide_freq_en
+当需要重新配置cpu_clk_divider  ，wlan_clk_divider  ，bus2_syncdn_factor，sdadc_fdiv时，置位本寄存器，硬件自动更新上述四个参数到分频器，然后清零本寄存器。 
+注：此处配置分频因子时，当Divide_freq_en 有效时，所有因子必须已经有效
+1’b0：分频系数已生效
+1’b1：要求硬件更新分频参数",1’b0
+[30:29],,reserved保留,
+[28],RW,"rsa_clk_sel  RSA  时钟选择: 1’b0: 40MHz
+1’b1: 80MHz",1’b0
+[27:12],RW,"sdadc_fdiv
+clk_sar_adc  分频因子：
+以 40M 为时钟源进行分频。分频系数即为所配分频值。",16’h20
+[11: 8],RW,"bus2_syncdn_factor
+bus1 和bus2 的时钟比例关系，应该为N：1
+其中N 为整数，在实际调整时，主要看CPU 的工作频率和bus2 的时钟频率之比。由于默认cpu 采用 80MHz 时钟，bus2 采用 40MHz 时钟，则 N=2",4’h2
+[7 : 4],RW,"wlan_clk_divider
+从PLL 出来的时钟分频后，送给wlan 系统。本寄存器为分频因子，该因子>=1。默认分频因子为 1，即不对 pll 的 160MHz 输出分频，得到 160MHz 时钟，作为根节点时钟送给wlan（wlan 在继续分频得到更为详细的低频时钟）；
+注：二级总线及APB 时钟为wlan 根节点时钟四分频",4’b1
+[3 : 0],RW,"cpu_clk_divider
+从PLL 出来的时钟分频后，送给CPU。本寄存器为分频因子，该因子>=2。
+默认分频因子为 2，即复位释放后，对 PLL 输出的 160MHz 时钟 2 分频，送给 cpu
+的是 80MHz 时钟。当需要调整cpu 所需时钟时，可以重新配置本参数",4’h2

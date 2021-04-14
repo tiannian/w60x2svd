@@ -1,0 +1,31 @@
+位,访问,操作说明,复位值
+[31:8],,RSV,24’h0
+[7],RW,"spi_timeout
+1’b0：rxfifo 中没有结尾数据需要CPU 取走
+1’b1：rxfifo 中有结尾数据需要CPU 取走写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[6],RW,"spi_done
+1’b0：SPI 发送或者接收没有完成
+1’b1：SPI 发送或者接收完成写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[5],RW,"RxOverrun
+1’b0：Rx FIFO overflow 1’b1：Rx FIFO overflow
+写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[4],RW,"RxUnderrun
+1’b0：Rx FIFO underflow 1’b1：Rx FIFO underflow写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[3],RW,"TxOverrun
+1’b0：Tx FIFO    overflow 1’b1：Tx FIFO    overflow写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[2],RW,"TxUnderrun
+1’b0：Tx FIFO    underflow 1’b1：Tx FIFO    underflow写 1 清零
+在 continue mode = 1  的情况下，永远不会产生该中断。
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[1],RW,"RxFifoRdy
+1’b0：Rx FIFO  数据量<= RxTrigger level，不需要上传 1’b1：Rx FIFO 数据量> RxTrigger level，要求上传
+写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0
+[0],RW,"TxFifoRdy
+1’b0：Tx FIFO  数据量 > TxTrigger level，不可以向TX FIFO 写数据 1’b1：Tx FIFO  数据量 <= TxTrigger level，可以向TX FIFO 写数据写 1 清零
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b0

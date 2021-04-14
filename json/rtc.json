@@ -1,0 +1,173 @@
+{
+  "name": "rtc",
+  "version": "0.1",
+  "description": "real time",
+  "base_address": 1073743360,
+  "address_block": {
+    "offset": 0,
+    "size": 256,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "rtc_r1",
+      "offset": 12,
+      "description": "配置RTC 日时分秒值，配置使能定时",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rtc_int_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "定时中断功能使能",
+          "enumerated_value": {
+            "name": "rtc_int_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rtc_int_en_0",
+                "description": "不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rtc_int_en_1",
+                "description": "使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 29,
+          "width": 2,
+          "description": "保留"
+        },
+        {
+          "name": "date",
+          "offset": 24,
+          "width": 5,
+          "access": "RW",
+          "description": "日初值/日定时值",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 21,
+          "width": 3,
+          "description": "保留"
+        },
+        {
+          "name": "hour",
+          "offset": 16,
+          "width": 5,
+          "access": "RW",
+          "description": "小时初值/小时定时值",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 14,
+          "width": 2,
+          "description": "保留"
+        },
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 6,
+          "description": "保留"
+        },
+        {
+          "name": "reserved",
+          "offset": 6,
+          "width": 2,
+          "description": "保留"
+        },
+        {
+          "name": "second",
+          "offset": 0,
+          "width": 6,
+          "access": "RW",
+          "description": "秒初值/秒定时值",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "rtc_r2",
+      "offset": 16,
+      "description": "配置RTC 年月值，配置使能计时",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 17,
+          "width": 15,
+          "description": "保留"
+        },
+        {
+          "name": "rtc_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "计时功能使能位",
+          "enumerated_value": {
+            "name": "rtc_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rtc_en_0",
+                "description": "不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rtc_en_1",
+                "description": "使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "description": "保留"
+        },
+        {
+          "name": "year",
+          "offset": 8,
+          "width": 7,
+          "access": "RW",
+          "description": "年初值/年定时值",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 4,
+          "width": 4,
+          "description": "保留"
+        },
+        {
+          "name": "month",
+          "offset": 0,
+          "width": 4,
+          "access": "RW",
+          "description": "月初值/月定时值",
+          "reset": 0
+        }
+      ]
+    }
+  ]
+}

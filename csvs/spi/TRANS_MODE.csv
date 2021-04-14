@@ -1,0 +1,29 @@
+位,访问,操作说明,复位值
+[31:30],,RSV,16’d0
+[29:24],RW,"TI_BLK_LEN
+在TI 的时序模式下，每个 block 传输的长度，即每次 CS 有效之后的传输数据长度。支持 4~32bit
+6’h4:    4bit 长数据 6’h5:    5bit 长数据 6’h6:    6bit 长数据
+……..
+6’h20:    32bit 长数据注：master 有效
+TI 模式有效",6’d0
+[16],RW,"MICRO_BURST
+1b’1：Microwire 模式下，采用burst 传输，即 Tx 发送控制字，Rx 接收数据，依次交替进行，MICRO_CONTROL_LEN 表示的是控制字长度，MICRO_DAT_LEN  表示的是发送或者接收字的长度，Tx/Rx  length  表示的是整个传输过程中有效 sck， burst    模 式 下 ， 发 送 接 收 交 替 进 行 的 次 数 为 （ Tx/Rx    length  ）
+/(MICRO_CONTROL_LEN+ MICRO_DAT_LEN+1)
+length-MICRO_CONTROL_LEN-1，其中m 表示接收多少个（MICRO_DAT_LEN）长度的字
+注：master 有效
+microwire 模式有效
+1’b0：Microwire 模式下，不采用burst 传输在此模式下，有两种情况
+1）tx_ch_on = 1, rx_ch_on = 0,此时，只有发送，MICRO_CONTROL_LEN 表示的是控制字长度，Tx/Rx length 表示的是整个传输过程中有效sck，此时发送的数据长度为m*MICRO_DAT_LEN = Tx/Rx length - MICRO_CONTROL_LEN，其中 m 表示发送多少个（MICRO_DAT_LEN）长度的字
+2 ） tx_ch_on   =   1,   rx_ch_on   =   1 ， 此时， Tx  发送控制字， Rx   接收数据，
+MICRO_CONTROL_LEN 表示的是控制字长度，Tx/Rx length 表示的是整个传输过程 中 有 效  sck  ， 接 收 数 据 长 度 为  m*MICRO_DAT_LEN    =    Tx/Rx",1’b0
+[13:8],RW,"MICRO_DAT_LEN
+Microwire 模式下，在burst 模式模式时，每个burst 传输数据的长度从 1~32：
+6’h1:    1bit 长数据 6’h2:    2bit 长数据 6’h3:    3bit 长数据
+……..
+6’h20    32bit 长数据注：master 有效 microwire 模式有效",6’d0
+[5:0],RW,"MICRO_CONTROL_LEN
+Microwire 模式下，命令字的长度从 1~32：
+6’h1:    1bit 长命令 6’h2:    2bit 长命令 6’h3:    3bit 长命令
+……..
+6’h20    32bit 长命令注：master 有效
+microwire 模式有效",6’d0

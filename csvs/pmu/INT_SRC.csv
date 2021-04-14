@@ -1,0 +1,19 @@
+位,访问,操作说明,复位值
+[31: 9],RO,reserved保留,
+[8],RW,"lasted_status显示当次上电状态：
+1’b0：上电或复位启动
+1’b1：从休眠状态唤醒，写 1 清除",1’b0
+[7],RO,reserved保留,1’b0
+[6],RO,reserved保留,1’b0
+[5],RW,"rtc_int RTC 定时中断标志位：
+1’b0：有定时中断产生
+1’b1：无定时中断产生，写 1 清除",1’b0
+[4],RW,reserved保留,1’b0
+[3],RW,reserved保留,1’b0
+[2],RW,"WAKEUP_int 管脚唤醒中断标志位
+1’b0：无 WAKEUP 唤醒中断产生
+1’b1：有 WAEKUP 唤醒中断产生，写 1 清除",1’b0
+[1],RW,reserved保留,1’b0
+[0],RW,"Timer0_int 定时中断标志位：
+1’b0：无Timer0 中断产生
+1’b1：有Timer0 中断产生，写 1 清除",1’b0

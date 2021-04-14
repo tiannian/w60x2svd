@@ -1,0 +1,8 @@
+位,访问,操作说明,复位值
+[31: 2],RO,保留,
+[1],RW,"RxOverrun
+0：Rx FIFO overflow 1：Rx FIFO overflow
+写 1 清零",1’b0
+[0],RW,"TxUnderrun
+0：Tx FIFO    underflow 1：Tx FIFO    underflow
+写 1 清零",1’b0

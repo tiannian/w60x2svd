@@ -1,0 +1,55 @@
+位,访问,操作说明,复位值
+[31],,RSV,1’b0
+[30:23],RW,"RX_INVALID_BIT
+表示接收通路在开始接收时，前多少 bit 是无效数据，这些无效数据需要直接扔掉，不进入Rx FIFO。只有后续的数据进入Rx FIFO本寄存器与Tx/Rx length 配合使用。最后实际存入 Rx FIFO 的数据量为Tx/Rx length
+- RX_INVALID_BIT
+注：master 模式有效
+Motorola/ TI 模式有效",8’h0
+[22],RW,"Clear FIFOs，清除 Tx 和Rx FIFO 的内容,同时同步复位master 和slave 所有电路（配置寄存器除外）
+1’b0：不清除FIFO
+1’b1：清除有效
+软件置 1，硬件清 0
+注：master/slave 都有效
+Motorola/TI/microwire 模式有效",1’b0
+[21],RW,"continue mode，该模式下，spi 发送不受Tx FIFO 空的影响。，持续传输，直至整个传输过程完成。
+1’b0：normal,Tx  FIFO 空后，需要等待FIFO 中出现数据，SCK 停止翻转，同理，
+Rx FIFO 满后，SCK 停止翻转，等待RX FIFO 有空间接收数据
+1’b1：continue mode，Tx fifo 空，仍可以传输，直至传输完成，但此时如果rx fifo
+满，则需要暂停传输，直至rx fifo 可以存数为止注：master 有效
+一般情况下，不设置该模式。
+开启该模式时，如果tx fifo 中没有数据，有可能导致无效数据先发送出去。所以请先填入数据后，再启动spi master
+Motorola/TI/microwire 模式有效",1’b0
+[20],RW,"RxChOn，接收通路是否开启 1’b0: Rx channel off
+1’b1: Rx channel on
+注：master/slave 都有效
+Motorola/TI/microwire 模式有效",1’b0
+[19],RW,"TxChOn，发送通路是否开启 1’b0: Tx channel off
+1’b1: Tx channel on
+注：master/slave 都有效
+Motorola/TI/microwire 模式有效",1’b0
+[18:3],RW,"Tx/Rx length
+Spi 在传输时，有效的SCK 数也间接的反映了发送或者接收数据的长度。
+当（TxChOn=1，RxChOn=1）时，表示发送的 bit 数，以及最大接收的bit 数（具体接收多少与RX_INVALID_BIT 有关）
+当（TxChOn=1，RxChOn=0）时，表示发送的bit 数，
+当（TxChOn=0，RxChOn=1）时，
+表示最大接收的 bit  数（具体接收多少与 RX_INVALID_BIT  有关，实际接收数为
+Tx/Rx length - RX_INVALID_BIT）当（TxChOn=0，RxChOn=0）时，无意义。
+注：master 有效
+Motorola/TI/microwire 模式有效",16’h0
+[2],RW,"Chip selects
+1’b0：SPI_CS 有效信号为 0
+1’b1：SPI_CS 有效信号为 1
+注：master 有效
+Motorola/TI/microwire 模式有效",1’b0
+[1],RW,"Force CS out
+1’b0：spi_cs 信号输出由硬件控制
+1’b1：spi_cs 信号输出由软件控制，具体输出值为Chip selects
+该信号配合Chip selects 可以实现输出csn 信号可编程，即该信号为 1 时，spi_cs  =
+Chip selects
+注：master 有效
+Motorola/TI/microwire 模式有效",1’b0
+[0],RW,"SPI start,
+命令 SPI 开始接收或者发送，写 1 为spi 开始工作，之后，自动归零
+1’b0：停止spi 工作
+1’b1：启动spi 的一次发送或者接收，自动归零注：master 有效
+Motorola/TI/microwire 模式有效",1’b0

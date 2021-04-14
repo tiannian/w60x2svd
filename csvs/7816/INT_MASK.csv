@@ -1,0 +1,12 @@
+位,访问,操作说明,复位值
+[31:10],,reserved保留,
+[9],RW,7816_error_signal 卡发送时收到error signal 错误信号。（7816 模式）,1’b1
+[8],RW,overrun_error_int_mask， rxfifo 溢出中断屏蔽位，高有效。（UART&7816 模式）,1’b1
+[7],RW,parity_error_int_mask，奇偶检验中断屏蔽位，高有效。（UART&7816 模式）,1’b1
+[6],RW,frame_error_int_mask，数据帧出错中断屏蔽位，高有效。（UART 模式）,1’b1
+[5],RW,break_detect_int_mask，break 信号检测中断屏蔽位，高有效。（UART 模式）,1’b1
+[4],RW,cts_changed_indicate_mask，CTS 信号变化中断屏蔽位，高有效。（UART 模式）,1’b1
+[3],RW,rxfifo_data_timeout_int_mask，rxfifo 接收数据超时中断屏蔽位，高有效。（UART&7816 模式）,1’b1
+[2],RW,rxfifo_trigger_level_int_mask，rxfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）,1’b1
+[1],RW,txfifo_trigger_level_int_mask，txfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）,1’b1
+[0],RW,txfifo_empty_int_mask，txfifo 为空中断屏蔽位，高有效。（UART&7816 模式）,1’b1

@@ -1,94 +1,112 @@
-use crate::dim::Dim;
 use crate::field::Field;
 use crate::mode::AccessMode;
+use crate::utils;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::fs::File;
-use svd_parser::{
-    access::Access, registerinfo::RegisterInfoBuilder, Register as SvdRegister, RegisterCluster,
+use svd_parser::svd::{
+    registerinfo::RegisterInfoBuilder, Register as SvdRegister, RegisterCluster,
 };
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
+pub struct RegisterCsv {
+    #[serde(rename = "偏移地址")]
+    pub offset: String,
+    #[serde(rename = "名称")]
+    pub title: String,
+    #[serde(rename = "缩写")]
+    pub name: String,
+    #[serde(rename = "访问")]
+    pub access: String,
+    #[serde(rename = "描述")]
+    pub description: String,
+    #[serde(rename = "复位值")]
+    pub reset: String,
+}
+
+impl RegisterCsv {
+    pub fn to_register(self) -> Register {
+        let offset = utils::from_radix_to_u32(&self.offset);
+        let desc = self.description.trim();
+        let description = if desc == "" {
+            None
+        } else {
+            Some(String::from(desc.trim()))
+        };
+        let mode = utils::from_string_to_access(&self.access);
+        let reset = utils::from_radix_to_u32(&self.reset);
+        let name = self.name.to_lowercase();
+        println!("register name: {}", name);
+        Register {
+            name,
+            offset,
+            description,
+            mode,
+            reset,
+            size: Some(32),
+            fields: Vec::new(),
+        }
+    }
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Register {
-    pub name: Option<String>,   // Notice: This file is required in svd file.
-    pub offset: Option<String>, // Notice: This file is required in svd file.
+    pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub mode: Option<AccessMode>,
-    pub reset: Option<String>,
-    pub fields: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reset: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub size: Option<u32>,
-    // Need svd_parser support.
-    pub data_type: Option<String>,
-    pub expressions: Option<HashMap<String, String>>,
-    pub dim_file: Option<String>,
-    pub fields_files: Option<Vec<String>>,
+    pub fields: Vec<Field>,
 }
 
 impl Register {
-    pub fn load(path: &str) -> Vec<Self> {
-        println!("load device definition.\nReading {}", path);
-        let file = File::open(path).unwrap();
-        serde_json::from_reader(file).unwrap()
-    }
-
-    pub fn get_svd(self) -> RegisterCluster {
-        let offset = u32::from_str_radix(&self.offset.unwrap()[2..], 16).unwrap();
-        let reset_value = match self.reset {
-            Some(v) => Some(u32::from_str_radix(&v[2..], 16).unwrap()),
-            None => None,
+    pub fn to_svd(self) -> RegisterCluster {
+        let builder = RegisterInfoBuilder::default();
+        let mut fields = Vec::new();
+        for field in self.fields {
+            let f = field.to_svd();
+            fields.push(f)
+        }
+        println!("read register: {}", self.name);
+        let mode = if let Some(m) = self.mode {
+            Some(m.into())
+        } else {
+            None
         };
-        let access = match self.mode {
-            Some(v) => match v {
-                AccessMode::Unknown => None,
-                AccessMode::RW => Some(Access::ReadWrite),
-                AccessMode::RO => Some(Access::ReadOnly),
-                AccessMode::WO => Some(Access::WriteOnly),
-            },
-            None => None,
+        let reset = if let Some(m) = self.reset {
+            Some(m.into())
+        } else {
+            None
         };
-
-        // TODO: Load fields.
-
-        let fields = match self.fields_files {
-            Some(fields_files) => {
-                let mut fields = Vec::new();
-                for fs in fields_files {
-                    for f in Field::load(&fs) {
-                        fields.push(f.get_svd());
-                    }
-                }
-                Some(fields)
-            }
-            None => None,
-        };
-
-        let info = RegisterInfoBuilder::default()
-            .name(self.name.unwrap())
-            .address_offset(offset)
+        let info = builder
+            .name(self.name)
+            .address_offset(self.offset.unwrap())
             .description(self.description)
-            .reset_value(reset_value)
             .size(self.size)
-            .access(access)
-            .fields(fields)
+            .access(mode)
+            .reset_value(reset)
+            .fields(Some(fields))
             .build()
             .unwrap();
-        if let Some(dim) = self.dim_file {
-            let de = Dim::load(&dim);
-            RegisterCluster::Register(SvdRegister::Array(info, de.get_svd()))
-        } else {
-            RegisterCluster::Register(SvdRegister::Single(info))
-        }
+        let register = SvdRegister::Single(info);
+        RegisterCluster::Register(register)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::Register;
-    use std::fs::File;
+    use super::*;
     #[test]
-    fn load_json() {
-        let file = File::open("svdjson/dma/registers.json").unwrap();
-        let registers: Vec<Register> = serde_json::from_reader(file).unwrap();
-        println!("{:?}", registers);
+    fn test_csv_de() {
+        let mut rdr = csv::Reader::from_path("./csvs/timer.csv").unwrap();
+        for r in rdr.deserialize() {
+            let record: RegisterCsv = r.unwrap();
+            let _reg = record.to_register();
+            // println!("{:?}", reg);
+        }
     }
 }

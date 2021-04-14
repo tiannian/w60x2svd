@@ -1,0 +1,69 @@
+位,访问,操作说明,复位值
+[31:19],,RSV,13’h0
+[18:17],RW,"FRAM FORMAT
+2’b00:motorola 2’b01:TI
+2’b10:microwire 2’b11:RSV
+选择master 支持那个厂家的协议
+注：master 有效",2’b0
+[16],RW,"SPI_TX pin always driven
+1’b0：spi 输出只有在spi_cs 有效时，被驱动，其它时间为三态
+1’b1：spi 输出一直有驱动，即使没有数据传输注：master/slave 都有效
+Motorola/TI/microwire 模式有效",1’b0
+[15],,RSV,1’b0
+[14:12],RW,"cs hold， spi_cs 在数据传输完成后持续有效的时间，即spi_cs 的hold 时间
+3’b000      >=1      个APB  总线 CLK
+3’b001      >=2      个APB  总线CLK
+3’b010      >=4      个APB  总线 CLK
+3’b011      >=8      个APB  总线 CLK
+3’b100      >=16    个APB  总线 CLK
+3’b101      >=32    个APB  总线 CLK
+3’b110      >=64    个APB  总线 CLK
+3’b111      >=127    个APB  总线 CLK
+注： master 有效
+Motorola 模式有效",3’b0
+[11:9],RW,"cs setup， spi_cs 在数据传输前提前有效的时间，即spi_cs 的setup 时间
+3’b000      >=1    个APB  总线 CLK
+3’b001      >=2    个APB  总线 CLK
+3’b010      >=4    个APB  总线 CLK
+Motorola 模式有效
+3’b011      >=8    个APB  总线 CLK
+3’b100      >=16    个APB  总线 CLK
+3’b101      >=32    个APB  总线 CLK
+3’b110      >=64    个APB  总线 CLK
+3’b111      >=127  个APB  总线 CLK
+注：master 有效",3’b0
+[8:7],RW,"SPI-out delay, SPI 数据输出相对与SCK 的delay，主要是为了hold time 考虑。
+[8:7]      系统时钟周期数(APB clock)
+2’b00            0
+2’b01            1
+2’b10            2
+2’b11            3
+注：master/slave 都有效
+Motorola 模式有效",2’b0
+[6:4],RW,"Frame delay，默认在一帧（spi_cs 有效期间）传输结束到下一帧开始的间隔为SCK时钟周期的一半，即SPI_CS 无效时间。但为了兼容性，此处可配置。默认至少0.5SCK [6:4]    SCK clock
+3’b000      0
+3’b001      2
+3’b010      4
+3’b011      8
+3’b100      16
+3’b101      32
+3’b110      64
+3’b111      127
+例如，按照 block 模式传输 128byte 的数据，数据传输完成后，会加入所设置的延迟时间。
+注：master 有效",3’b0
+[3],RW,"Bigendian
+1’b0：数据格式采用小端模式，即传输过程中，先发低字节
+1’b1：数据格式采用大端模式，即传输过程中，先发高字节",1’b0
+[2],RW,"MASTER/SLAVE
+1’b0：slave，该设备是slave 1’b1：master，该设备是master
+注：master/slave 都有效",1’b1
+[1],RW,"SPI CPHA
+1’b0：传输模式A
+1’b1：传输模式B
+注：master/slave 都有效
+Motorola 模式有效",1’b0
+[0],RW,"SPI CPOL，SCK 在 IDLE 时的极性
+1’b0：SCK IDLE 时为 0
+1’b1：SCK IDLE  时为 1
+注：master/slave 都有效
+Motorola 模式有效",1’b0

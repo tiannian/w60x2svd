@@ -1,0 +1,33 @@
+位,访问,操作说明,复位值
+[31:8],,RSV,24’h0
+[7],RW,"IntEn_spi_timeout
+1’b0： 允许产生spi_timeout  中断 1’b1： 不允许产生spi_timeout  中断注：master/slave 都有效
+Motorola/TI/microwire 模式有效",1’b1
+[6],RW,"IntEn_spi_done
+1’b0：spi 发送或者接收完成，允许产生中断
+1’b1：spi 发送或者接收完成，不允许产生中断
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[5],RW,"IntEnRxOverrun
+1’b0：Rx FIFO overflow  中断使能
+1’b1：Rx FIFO overflow  中断不使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[4],RW,"IntEnRxUnderrun
+1’b0：Rx FIFO underflow  中断不使能
+1’b1：Rx FIFO underflow  中断使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[3],RW,"IntEnTxOverrun
+1’b0：Tx FIFO    overflow  中断使能
+1’b1：Tx FIFO    overflow  中断不使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[2],RW,"IntEnTxUnderrun
+1’b0：Tx FIFO    underflow  中断使能
+1’b1：Tx FIFO    underflow  中断不使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[1],RW,"IntEnRxFifoRdy
+1’b0：Rx FIFO  有数据上传中断使能
+1’b1：Rx FIFO  有数据上传中断不使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1
+[0],RW,"IntEnTxFifoRdy
+1’b0：Tx FIFO 可以向TX FIFO 写数据中断使能
+1’b1：Tx FIFO  可以向TX FIFO 写数据中断不使能
+注：master/slave 都有效Motorola/TI/microwire 模式有效",1’b1

@@ -1,0 +1,14 @@
+位,访问,操作说明,复位值
+[31: 4],RO,保留,
+[3],RW,"Bigendian, spi 接口支持数据的大小端选择。
+0：支持小段数据传输
+1：支持大端数据传输",1’b0
+[2],RW,"spi_tx_always_drive
+0：spi 输出只有在片选有效时有效，其它时刻为高阻
+1：spi 输出一直有效",1’b0
+[1],RW,"SPI CPHA
+0：传输模式A
+1：传输模式B",1’b0
+[0],RW,"SPI CPOL，SCK 在 IDLE 时的极性
+0：SCK IDLE 时为 0
+1：SCK IDLE  时为 1",1’b0

@@ -1,0 +1,102 @@
+位,访问,操作说明,复位值
+[31:25],,reserved保留,
+[24],RW,"soft_rst_7816_n
+软件复位 7816/uart2 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[23],RW,"soft_rst_gpsec_n
+软件复位gpsec 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[22],RW,"soft_rst_rsa_n
+软件复位RSA 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[21],RW,"soft_rst_i2s_n
+软件复位i2s 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[20],RW,"soft_rst_lcd_n
+软件复位lcd 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[19],RW,"soft_rst_pwm_n
+软件复位pwm 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[18],RW,"soft_rst_io_ctrl_n
+软件复位io_ctrl 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[17],RW,"soft_rst_sar_adc_n
+软件复位sar_adc 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[16],RW,"soft_rst_timer_n
+软件复位timer 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[15],RW,"soft_rst_gpio_n
+软件复位gpio 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[14],RW,"soft_rst_rf_cfg_n
+软件复位配置 RF 的寄存器模块(内部使用，请勿修改)
+1’b0：复位
+1’b1：复位释放",1’b1
+[13],RW,"soft_rst_spis_n
+软件复位高速spi 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[12],RW,"soft_rst_spim_n
+软件复位低速spi 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[11],RW,"soft_rst_uart1_n
+软件复位片内uart1 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[10],RW,"soft_rst_uart0_n
+软件复位片内uart0 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[9],RW,"soft_rst_i2c_n
+软件复位片内i2c 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[8],RW,"soft_rst_bus2_n
+软件复位片内bus2 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[7],RW,"soft_rst_bus1_n
+软件复位片内bus1 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[6],RW,"soft_rst_apb_n
+软件复位abp 桥接模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[5],RW,"soft_rst_mem_mng_n
+软件复位mem_mng 模块(内部使用，请勿修改)
+1’b0：复位
+1’b1：复位释放",1’b1
+[4],RW,"soft_rst_dma_n
+软件复位dma 模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[3],RW,"soft_rst_sdio_ahb_n
+软件复位sdio ahb 时钟域模块
+1’b0：复位
+1’b1：复位释放",1’b1
+[2],RW,"soft_rst_sec_n
+软件复位安全模块(内部使用，请勿修改)
+1’b0：复位
+1’b1：复位释放",1’b1
+[1],RW,"soft_rst_mac_n
+软件复位mac 模块(内部使用，请勿修改)
+1’b0：复位
+1’b1：复位释放",1’b1
+[0],RW,"soft_rst_bbp_n
+软件复位bbp 模块(内部使用，请勿修改)
+1’b0：复位
+1’b1：复位释放",1’b1
