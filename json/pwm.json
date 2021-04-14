@@ -19,17 +19,19 @@
       "fields": [
         {
           "name": "clkdiv1",
-          "offset": 31,
-          "width": 15,
+          "offset": 16,
+          "width": 16,
           "access": "RW",
-          "description": "CH1 分频计数器\r由计数器值决定分频数\r注意：分频范围为(0~65535)，如不需要分频，输入 0 或 1。"
+          "description": "CH1 分频计数器\r由计数器值决定分频数\r注意：分频范围为(0~65535)，如不需要分频，输入 0 或 1。",
+          "reset": 0
         },
         {
           "name": "clkdiv0",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RW",
-          "description": "CH0 分频计数器同CH1"
+          "description": "CH0 分频计数器同CH1",
+          "reset": 0
         }
       ]
     },
@@ -43,17 +45,19 @@
       "fields": [
         {
           "name": "clkdiv3",
-          "offset": 31,
-          "width": 15,
+          "offset": 16,
+          "width": 16,
           "access": "RW",
-          "description": "CH3 分频计数器同CH1"
+          "description": "CH3 分频计数器同CH1",
+          "reset": 0
         },
         {
           "name": "clkdiv2",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RW",
-          "description": "CH2 分频计数器同CH1"
+          "description": "CH2 分频计数器同CH1",
+          "reset": 0
         }
       ]
     },
@@ -67,8 +71,8 @@
       "fields": [
         {
           "name": "cnten",
-          "offset": 31,
-          "width": 4,
+          "offset": 27,
+          "width": 5,
           "access": "RW",
           "description": "计数器计数使能\r注意：每位分别控制每个通道，从高到低依次控制CH4、CH3、CH2、CH1 和CH0",
           "enumerated_value": {
@@ -88,17 +92,19 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 26,
+          "offset": 0,
           "width": 1,
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "capinv",
-          "offset": 25,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获反向使能标识位",
@@ -119,11 +125,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cpen",
-          "offset": 24,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获功能使能标识位",
@@ -144,12 +151,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cnttype3",
-          "offset": 23,
-          "width": 1,
+          "offset": 22,
+          "width": 2,
           "access": "RW",
           "description": "CH3 计数器计数方式\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。",
           "enumerated_value": {
@@ -171,37 +179,41 @@
               {
                 "name": "cnttype3_10",
                 "description": "中央对齐模式（仅针对 PWM 模式）",
-                "value": 16,
+                "value": 2,
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cnttype2",
-          "offset": 21,
-          "width": 1,
+          "offset": 20,
+          "width": 2,
           "access": "RW",
-          "description": "CH2 计数器计数方式同CH3"
+          "description": "CH2 计数器计数方式同CH3",
+          "reset": 0
         },
         {
           "name": "cnttype1",
-          "offset": 19,
-          "width": 1,
+          "offset": 18,
+          "width": 2,
           "access": "RW",
-          "description": "CH1 计数器计数方式同CH3"
+          "description": "CH1 计数器计数方式同CH3",
+          "reset": 0
         },
         {
           "name": "cnttype0",
-          "offset": 17,
-          "width": 1,
+          "offset": 16,
+          "width": 2,
           "access": "RW",
-          "description": "CH0 计数器计数方式同CH3"
+          "description": "CH0 计数器计数方式同CH3",
+          "reset": 0
         },
         {
           "name": "twosyncen",
-          "offset": 15,
-          "width": 1,
+          "offset": 14,
+          "width": 2,
           "access": "RW",
           "description": "2 通道同步模式使能信号\rPWM_CH0 和PWM_CH1 具有相同的相位，且相位由 PWM_CH0 决定；PWM_CH2和PWM_CH3 具有相同的相位，且相位由PWM_CH2 决定\r15bit 控制CH3 和CH2\r14bit 控制CH1 和CH0",
           "enumerated_value": {
@@ -221,17 +233,19 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 13,
+          "offset": 0,
           "width": 1,
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "poen",
-          "offset": 12,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "PWM 管脚输出使能位",
@@ -252,12 +266,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cntmode",
-          "offset": 11,
-          "width": 3,
+          "offset": 8,
+          "width": 4,
           "access": "RW",
           "description": "PWM 生成循环方式\r注意：CNTMODE  变化过程中，PWM_CMPDAT  归零；每位分别控制每个通道，从高到低依次控制PW3、PW2、PW1 和PW0",
           "enumerated_value": {
@@ -277,17 +292,19 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "allsyncen",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "全通道同步模式使能信号",
@@ -308,12 +325,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "pinv",
-          "offset": 5,
-          "width": 3,
+          "offset": 2,
+          "width": 4,
           "access": "RW",
           "description": "PWM 输出信号极性使能\r注意：每位分别控制每个通道，从高到低依次控制PW3、PW2、PW1 和PW0",
           "enumerated_value": {
@@ -333,12 +351,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "outmode",
-          "offset": 1,
-          "width": 1,
+          "offset": 0,
+          "width": 2,
           "access": "RW",
           "description": "输出模式\rBIT0 控制CH0 和CH1",
           "enumerated_value": {
@@ -358,7 +377,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -372,31 +392,35 @@
       "fields": [
         {
           "name": "period3",
-          "offset": 31,
-          "width": 7,
+          "offset": 24,
+          "width": 8,
           "access": "RW",
-          "description": "CH3 周期寄存器值(注意：period 不可以大于 255) “沿对齐模式（计数器计数方式为递减）”：\r寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定为高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1；\r“中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/（2*（PERIOD+1））\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。注意：“中间对齐模式”中，周期数不应为 255。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率f_div 为：f_div = 40MHz/N，N 为分频数（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递\r减方式。"
+          "description": "CH3 周期寄存器值(注意：period 不可以大于 255) “沿对齐模式（计数器计数方式为递减）”：\r寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定为高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1；\r“中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/（2*（PERIOD+1））\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。注意：“中间对齐模式”中，周期数不应为 255。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率f_div 为：f_div = 40MHz/N，N 为分频数（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递\r减方式。",
+          "reset": 0
         },
         {
           "name": "period2",
-          "offset": 23,
-          "width": 7,
+          "offset": 16,
+          "width": 8,
           "access": "RW",
-          "description": "CH2 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3"
+          "description": "CH2 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3",
+          "reset": 0
         },
         {
           "name": "period1",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "CH1 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3"
+          "description": "CH1 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3",
+          "reset": 0
         },
         {
           "name": "period0",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "CH0 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3"
+          "description": "CH0 周期寄存器值(注意：period 不可以大于 255)\r同PERIOD3",
+          "reset": 0
         }
       ]
     },
@@ -410,31 +434,35 @@
       "fields": [
         {
           "name": "pnum3",
-          "offset": 31,
-          "width": 7,
+          "offset": 24,
+          "width": 8,
           "access": "RW",
-          "description": "PWM3 生成周期数\r设置 PWM3 周期数 PNUM3，当 PWM 产生PNUM3 个 PWM 信号后，停止生成信号，同时触发中断和置位中断状态字"
+          "description": "PWM3 生成周期数\r设置 PWM3 周期数 PNUM3，当 PWM 产生PNUM3 个 PWM 信号后，停止生成信号，同时触发中断和置位中断状态字",
+          "reset": 0
         },
         {
           "name": "pnum2",
-          "offset": 23,
-          "width": 7,
+          "offset": 16,
+          "width": 8,
           "access": "RW",
-          "description": "PWM2 生成周期数同PNUM3"
+          "description": "PWM2 生成周期数同PNUM3",
+          "reset": 0
         },
         {
           "name": "pnum1",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "PWM1 生成周期数同PNUM3"
+          "description": "PWM1 生成周期数同PNUM3",
+          "reset": 0
         },
         {
           "name": "pnum0",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "PWM0 生成周期数同PNUM3"
+          "description": "PWM0 生成周期数同PNUM3",
+          "reset": 0
         }
       ]
     },
@@ -448,31 +476,35 @@
       "fields": [
         {
           "name": "cmp3",
-          "offset": 31,
-          "width": 7,
+          "offset": 24,
+          "width": 8,
           "access": "RW",
-          "description": "PWM3 比较寄存器值\r“沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/2*（PERIOD+1）\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率 f_div 为：f_div  =  40MHz/N，N 为分频数\r（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。"
+          "description": "PWM3 比较寄存器值\r“沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/2*（PERIOD+1）\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率 f_div 为：f_div  =  40MHz/N，N 为分频数\r（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。",
+          "reset": 0
         },
         {
           "name": "cmp2",
-          "offset": 23,
-          "width": 7,
+          "offset": 16,
+          "width": 8,
           "access": "RW",
-          "description": "PWM2 比较寄存器值同CMP3"
+          "description": "PWM2 比较寄存器值同CMP3",
+          "reset": 0
         },
         {
           "name": "cmp1",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "PWM1 比较寄存器值同CMP3"
+          "description": "PWM1 比较寄存器值同CMP3",
+          "reset": 0
         },
         {
           "name": "cmp0",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "PWM0 比较寄存器值同CMP3"
+          "description": "PWM0 比较寄存器值同CMP3",
+          "reset": 0
         }
       ]
     },
@@ -486,13 +518,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 9,
-          "description": "保留"
+          "offset": 22,
+          "width": 10,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "dten23",
-          "offset": 21,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "通道 2 和通道 3 是否可以插入死区有效标识\r插入死区有效信号只有在通道的互补模式打开后，才有效。并且，如果插入有效信号为 0，则两个通道输出的互补信号没有死区的插入",
@@ -513,25 +546,28 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "dten01",
-          "offset": 20,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "通道 0 和通道 1 是否可以插入死区有效标识同DTEN23"
+          "description": "通道 0 和通道 1 是否可以插入死区有效标识同DTEN23",
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 19,
-          "width": 1,
-          "description": "保留"
+          "offset": 18,
+          "width": 2,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "dtdiv",
-          "offset": 17,
-          "width": 1,
+          "offset": 16,
+          "width": 2,
           "access": "RW",
           "description": "死区时钟分频控制",
           "enumerated_value": {
@@ -553,31 +589,34 @@
               {
                 "name": "dtdiv_10",
                 "description": "死区时钟等于基准时钟（40MHz）四分频",
-                "value": 16,
+                "value": 2,
                 "default": false
               },
               {
                 "name": "dtdiv_11",
                 "description": "死区时钟等于基准时钟（40MHz）八分频",
-                "value": 17,
+                "value": 3,
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "dtcnt23",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "通道 3 和通道 2 的死区间隔\r8bit 决定死区间隔值，死区时钟由DTDIV 决定"
+          "description": "通道 3 和通道 2 的死区间隔\r8bit 决定死区间隔值，死区时钟由DTDIV 决定",
+          "reset": 0
         },
         {
           "name": "dtcnt01",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "通道 1 和通道 0 的死区间隔\r8bit 决定死区间隔值，死区时钟由DTDIV 决定"
+          "description": "通道 1 和通道 0 的死区间隔\r8bit 决定死区间隔值，死区时钟由DTDIV 决定",
+          "reset": 0
         }
       ]
     },
@@ -591,13 +630,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
-          "description": "保留"
+          "offset": 8,
+          "width": 24,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "dma_request_en",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "DMA_request 使能",
@@ -618,11 +658,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "flien",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "下降沿缓存中断使能位",
@@ -643,11 +684,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rlien",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "上升沿缓存中断使能位",
@@ -668,12 +710,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "pien",
-          "offset": 4,
-          "width": 4,
+          "offset": 0,
+          "width": 5,
           "access": "RW",
           "description": "PWM 周期中断使能位\r注意：当计数器计数到 0，且 PWM 周期个数满足PWM_PNUM 后，触发中断。",
           "enumerated_value": {
@@ -693,7 +736,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -707,13 +751,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 21,
-          "description": "保留"
+          "offset": 10,
+          "width": 22,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "overfl",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "计数器溢出标志\r注意：当用户清除CFLIF 或CRLIF 时，本bit 也同时被清除",
@@ -734,11 +779,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "flifov",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "下降沿延迟中断标识过跑状态",
@@ -759,11 +805,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rlifov",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "上升沿延迟中断标识过跑状态\r注意：当用户清除CRILF 时，本bit 也同时被清除",
@@ -784,11 +831,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cflif",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获下降沿中断标识\r注意：通过写入 1，清除该标识位；注意：针对CH0 而言",
@@ -809,11 +857,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "crlif",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获上升沿中断标识\r注意：通过写入 1，清除该标识位；注意：针对CH0 而言",
@@ -834,14 +883,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "pif",
-          "offset": 4,
-          "width": 4,
+          "offset": 0,
+          "width": 5,
           "access": "RW",
-          "description": "PWM 周期中断标识\r当PWM 产生指定周期PWM 信号后，该标识位置 1；通过软件写入 1，清除该标识注意：每位分别标识每个通道，从高到低依次控制 PW4、PW3、PW2、PW1 和PW0"
+          "description": "PWM 周期中断标识\r当PWM 产生指定周期PWM 信号后，该标识位置 1；通过软件写入 1，清除该标识注意：每位分别标识每个通道，从高到低依次控制 PW4、PW3、PW2、PW1 和PW0",
+          "reset": 0
         }
       ]
     },
@@ -855,17 +906,19 @@
       "fields": [
         {
           "name": "pwm_fcapdat",
-          "offset": 31,
-          "width": 15,
+          "offset": 16,
+          "width": 16,
           "access": "RO",
-          "description": "捕获下降沿寄存器\r当输入信号存在下降沿时，存储当前计数器值"
+          "description": "捕获下降沿寄存器\r当输入信号存在下降沿时，存储当前计数器值",
+          "reset": 0
         },
         {
           "name": "pwm_rcapdat",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RO",
-          "description": "捕获上升沿寄存器\r当输入信号存在上升沿时，存储当前计数器值"
+          "description": "捕获上升沿寄存器\r当输入信号存在上升沿时，存储当前计数器值",
+          "reset": 0
         }
       ]
     },
@@ -879,14 +932,15 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 15,
-          "description": "保留"
+          "offset": 16,
+          "width": 16,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "brkctl",
-          "offset": 15,
-          "width": 4,
+          "offset": 11,
+          "width": 5,
           "access": "RW",
           "description": "制动模式使能\r[7:3]分别对应CH4、CH3、CH2、CH1 和CH0",
           "enumerated_value": {
@@ -906,18 +960,20 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 10,
-          "width": 2,
-          "description": "保留"
+          "offset": 8,
+          "width": 3,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "bkod",
-          "offset": 7,
-          "width": 4,
+          "offset": 3,
+          "width": 5,
           "access": "RW",
           "description": "制动输出控制寄存器\r[7:3]分别对应CH4、CH3、CH2、CH1 和CH0",
           "enumerated_value": {
@@ -937,13 +993,15 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "",
-          "offset": 2,
-          "width": 2,
-          "description": "保留"
+          "offset": 0,
+          "width": 3,
+          "description": "保留",
+          "reset": 0
         }
       ]
     },
@@ -957,24 +1015,27 @@
       "fields": [
         {
           "name": "clkdiv4",
-          "offset": 31,
-          "width": 15,
+          "offset": 16,
+          "width": 16,
           "access": "RW",
-          "description": "CH4 分频计数器\r由计数器值决定分频数\r注意：分频范围为(0~65535)，如不需要分频，输入 0 或 1。"
+          "description": "CH4 分频计数器\r由计数器值决定分频数\r注意：分频范围为(0~65535)，如不需要分频，输入 0 或 1。",
+          "reset": 0
         },
         {
           "name": "period4",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "CH4 周期寄存器值(注意：period 不可以大于 255) “沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/（2*（PERIOD+1））\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。注意：“中间对齐模式”中，周期数不应为 255。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，\r即：输入时钟为 40MHz，经分频后时钟频率f_div 为：f_div = 40MHz/N，N 为分频数（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递\r减方式。"
+          "description": "CH4 周期寄存器值(注意：period 不可以大于 255) “沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/（2*（PERIOD+1））\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。注意：“中间对齐模式”中，周期数不应为 255。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，\r即：输入时钟为 40MHz，经分频后时钟频率f_div 为：f_div = 40MHz/N，N 为分频数（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递\r减方式。",
+          "reset": 0
         },
         {
           "name": "ch4",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "生成周期数\r设置PWM4 周期数为PNUM4，当PWM 产生PNUM4 个PWM 信号后，停止生成信号，同时触发中断和置位中断状态字"
+          "description": "生成周期数\r设置PWM4 周期数为PNUM4，当PWM 产生PNUM4 个PWM 信号后，停止生成信号，同时触发中断和置位中断状态字",
+          "reset": 0
         }
       ]
     },
@@ -988,27 +1049,30 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 15,
-          "description": "保留"
+          "offset": 16,
+          "width": 16,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "cmp4",
-          "offset": 15,
-          "width": 7,
+          "offset": 8,
+          "width": 8,
           "access": "RW",
-          "description": "CH4 周期寄存器值\r“沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/2*（PERIOD+1）\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率 f_div 为：f_div  =  40MHz/N，N 为分频数\r（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。"
+          "description": "CH4 周期寄存器值\r“沿对齐模式（计数器计数方式为递减）”：\rPERIOD 寄存器值，周期值为（PERIOD + 1）\r占空比=（CMP+1）/（PERIOD + 1）\rCMP>=PERIOD：PWM 输出固定位高\rCMP<PERIOD：PWM 低电平宽度为（PERIOD-CMP），高电平宽度为（CMP+1）\rCMP=0：PWM 低电平宽度为PERIOD，高电平宽度为 1； “中间对齐模式”：\rPERIOD 寄存器值：周期为 2*（PERIOD+1）\r占空比=(2*CMP+1）/2*（PERIOD+1）\rCMP>PERIOD：PWM 持续为高\rCMP<=PERIOD：PWM 低电平=2*（PERIOD-CMP）+1，高电平=（2*CMP）+1\rCMP=0：PWM 低电平宽度为 2*PERIOD+1，高电平宽度为 1。\r无论选择哪种对齐模式，通道周期均由分频数（N）和周期数（P）共同决定，即：输入时钟为 40MHz，经分频后时钟频率 f_div 为：f_div  =  40MHz/N，N 为分频数\r（16bit）。输出频率 f_output 为：f_output = f_div / P，P 为周期数。\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。",
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 7,
-          "width": 2,
-          "description": "保留"
+          "offset": 5,
+          "width": 3,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "cnttype4",
-          "offset": 4,
-          "width": 1,
+          "offset": 3,
+          "width": 2,
           "access": "RW",
           "description": "CH4 计数器计数方式\r注意：在PWM 模式下，当计数器被设置为沿对齐模式时，需要设置计数方式为递减方式。",
           "enumerated_value": {
@@ -1030,21 +1094,23 @@
               {
                 "name": "cnttype4_10",
                 "description": "中央对齐模式（仅针对PWM 模式）",
-                "value": 16,
+                "value": 2,
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "cntmode4",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "CH4 生成循环方式\r注意：CNTMODE 变化过程中，PWM_CMPDAT 归零",
@@ -1065,7 +1131,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "pinv4",
@@ -1090,7 +1157,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -1104,17 +1172,19 @@
       "fields": [
         {
           "name": "pwm_fcap2dat",
-          "offset": 31,
-          "width": 15,
+          "offset": 16,
+          "width": 16,
           "access": "RO",
-          "description": "捕获下降沿寄存器\r当输入信号存在下降沿时，存储当前计数器值"
+          "description": "捕获下降沿寄存器\r当输入信号存在下降沿时，存储当前计数器值",
+          "reset": 0
         },
         {
           "name": "pwm_rcap2dat",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RO",
-          "description": "捕获上升沿寄存器\r当输入信号存在上升沿时，存储当前计数器值"
+          "description": "捕获上升沿寄存器\r当输入信号存在上升沿时，存储当前计数器值",
+          "reset": 0
         }
       ]
     },
@@ -1128,13 +1198,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 20,
-          "description": "保留"
+          "offset": 11,
+          "width": 21,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "dma_request2_mask",
-          "offset": 10,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "注意：只是针对CH4",
@@ -1155,11 +1226,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "flien2",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "下降沿缓存中断使能位",
@@ -1180,11 +1252,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rlien2",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "上升沿缓存中断使能位",
@@ -1205,11 +1278,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "overfl2",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "计数器溢出标志\r注意：当用户清除CFLIF 或CRLIF 时，本bit 也同时被清除注意：只是针对CH4",
@@ -1230,11 +1304,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "flifov2",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "下降沿延迟中断标识过跑状态\r注意：只是针对CH4",
@@ -1255,11 +1330,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rlifov2",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "上升沿延迟中断标识过跑状态\r注意：当用户清除CRILF 时，本bit 也同时被清除注意：只是针对CH4",
@@ -1280,11 +1356,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cflif2",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获下降沿中断标识\r注意：通过写入 1，清除该标识位注意：只是针对CH4",
@@ -1305,11 +1382,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "crlif2",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获上升沿中断标识\r注意：通过写入 1，清除该标识位注意：只是针对CH4",
@@ -1330,11 +1408,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "poen2",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "PWM 管脚输出使能位",
@@ -1355,11 +1434,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cpen2",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "捕获功能使能标识位\r注意：只是针对CH4",
@@ -1380,7 +1460,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "capinv2",
@@ -1405,7 +1486,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     }

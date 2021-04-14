@@ -19,10 +19,11 @@
       "fields": [
         {
           "name": "conf_en",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "配置定时值，用于重复加载\r此寄存器的值以APB 时钟为计数单位。\r例如：以APB 时钟为 40MHZ，则定时值最大时长约 107s 左右，即\r0FFFFFFFF/40000000"
+          "description": "配置定时值，用于重复加载\r此寄存器的值以APB 时钟为计数单位。\r例如：以APB 时钟为 40MHZ，则定时值最大时长约 107s 左右，即\r0FFFFFFFF/40000000",
+          "reset": 65535
         }
       ]
     },
@@ -36,10 +37,11 @@
       "fields": [
         {
           "name": "timer_value",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RO",
-          "description": "获取当前定时器的值\r要计算剩余时间，只要读取当前值即可。\r要计算已经过去的时间，只要把寄存器WD_LD 的值减去寄存器WD_VAL 的值即可"
+          "description": "获取当前定时器的值\r要计算剩余时间，只要读取当前值即可。\r要计算已经过去的时间，只要把寄存器WD_LD 的值减去寄存器WD_VAL 的值即可",
+          "reset": 65535
         }
       ]
     },
@@ -53,13 +55,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 29,
-          "description": "保留"
+          "offset": 2,
+          "width": 30,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "reset_en",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "复位使能位",
@@ -80,7 +83,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "timer_en",
@@ -105,7 +109,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -119,16 +124,18 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 30,
-          "description": "保留"
+          "offset": 1,
+          "width": 31,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "int_status_clr",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "中断状态清除位，写任意值清除当前中断状态"
+          "description": "中断状态清除位，写任意值清除当前中断状态",
+          "reset": 0
         }
       ]
     },
@@ -142,16 +149,18 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 30,
-          "description": "保留"
+          "offset": 1,
+          "width": 31,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "int_src",
           "offset": 0,
           "width": 1,
           "access": "RO",
-          "description": "中断源寄存器，定时器功能打开，会同时产生该中断"
+          "description": "中断源寄存器，定时器功能打开，会同时产生该中断",
+          "reset": 0
         }
       ]
     },
@@ -165,16 +174,18 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 30,
-          "description": "保留"
+          "offset": 1,
+          "width": 31,
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "int_output_status",
           "offset": 0,
           "width": 1,
           "access": "RO",
-          "description": "中断输出状态寄存器。该中断在定时器关闭后不产生，但WD_SRC 可能为 1"
+          "description": "中断输出状态寄存器。该中断在定时器关闭后不产生，但WD_SRC 可能为 1",
+          "reset": 0
         }
       ]
     }

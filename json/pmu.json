@@ -19,21 +19,23 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "access": "RO",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 7,
-          "width": 3,
+          "offset": 4,
+          "width": 4,
           "access": "RW",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "bypass",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "32K 振荡电路BYPASS 信号，高有效。\r当芯片进入STANBY 状态， 32K 时钟自动切换为振荡电路产生的 32K 时钟。芯片唤醒后，如需继续使用 40M 分频的 32K 时钟，需重新置位为 1。",
@@ -54,11 +56,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rc_switch",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "RC 32K 振荡器校准电路启动开关；\r要启动校准功能，需要此位先置 0，后置 1。",
@@ -79,14 +82,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "保留"
+          "description": "保留",
+          "reset": 1
         },
         {
           "name": "standby_en",
@@ -111,7 +116,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -125,14 +131,15 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 14,
+          "offset": 17,
+          "width": 15,
           "access": "RO",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "timer0_en",
-          "offset": 16,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "使能位",
@@ -153,14 +160,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "timer0_value",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RW",
-          "description": "的定时值，单位:秒"
+          "description": "的定时值，单位:秒",
+          "reset": 0
         }
       ]
     },
@@ -174,14 +183,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 22,
+          "offset": 9,
+          "width": 23,
           "access": "RO",
           "description": "保留"
         },
         {
           "name": "lasted_status",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "显示当次上电状态：",
@@ -202,25 +211,28 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RO",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RO",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "rtc_int",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "RTC 定时中断标志位：",
@@ -241,25 +253,28 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "wakeup_int",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "管脚唤醒中断标志位",
@@ -280,14 +295,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "timer0_int",
@@ -312,7 +329,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     }

@@ -1,8 +1,10 @@
 use crate::field::FieldCsv;
 use crate::register::{Register, RegisterCsv};
+use crate::utils;
 use serde::{Deserialize, Serialize};
 use std::path;
-use crate::utils;
+use svd_parser::svd::peripheral::{Peripheral as SvdPeripheral, PeripheralBuilder};
+use svd_parser::svd::AddressBlock as SvdAddressBlock;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum Usage {
@@ -11,11 +13,31 @@ pub enum Usage {
     Resverd,
 }
 
+impl From<Usage> for String {
+    fn from(ab: Usage) -> Self {
+        match ab {
+            Usage::Registers => String::from("Registers"),
+            Usage::Buffer => String::from("Buffer"),
+            Usage::Resverd => String::from("Resverd"),
+        }
+    }
+}
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct AddressBlock {
     pub offset: u32,
     pub size: u32,
     pub usage: Usage,
+}
+
+impl From<AddressBlock> for SvdAddressBlock {
+    fn from(ab: AddressBlock) -> Self {
+        Self {
+            offset: ab.offset,
+            size: ab.size,
+            usage: ab.usage.into(),
+        }
+    }
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -60,7 +82,7 @@ pub struct Peripheral {
 }
 
 impl Peripheral {
-    fn read_csv(&mut self) {
+    pub fn read_csv(&mut self) {
         let path = String::from("./csvs/") + &self.name + ".csv";
         let mut rdr = csv::Reader::from_path(path).unwrap();
         for r in rdr.deserialize() {
@@ -78,6 +100,23 @@ impl Peripheral {
             }
             self.registers.push(reg);
         }
+    }
+
+    pub fn to_svd(self) -> SvdPeripheral {
+        let builder = PeripheralBuilder::default();
+        let mut registers = Vec::new();
+        for register in self.registers {
+            registers.push(register.to_svd())
+        }
+        builder
+            .name(self.name)
+            .base_address(self.base_address.into())
+            .version(Some(self.version))
+            .description(Some(self.description))
+            .address_block(Some(self.address_block.into()))
+            .registers(Some(registers))
+            .build()
+            .unwrap()
     }
 }
 

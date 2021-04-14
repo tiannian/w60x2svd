@@ -19,10 +19,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "当前数据，每BIT 与相应的GPIO 线对应"
+          "description": "当前数据，每BIT 与相应的GPIO 线对应",
+          "reset": 29444
         }
       ]
     },
@@ -36,10 +37,11 @@
       "fields": [
         {
           "name": "",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "对应GPIO_DATA 的BIT 使能位，只有对应 BIT 为 1 时，对 GPIO_DATA 相应位的操作才有效，每BIT 与相应的GPIO 线对应"
+          "description": "对应GPIO_DATA 的BIT 使能位，只有对应 BIT 为 1 时，对 GPIO_DATA 相应位的操作才有效，每BIT 与相应的GPIO 线对应",
+          "reset": 32767
         }
       ]
     },
@@ -53,10 +55,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "方向控制，每BIT 与相应的GPIO 线对应，1’bx："
+          "description": "方向控制，每BIT 与相应的GPIO 线对应，1’bx：",
+          "reset": 0
         }
       ]
     },
@@ -70,10 +73,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "上下拉控制，每BIT 与相应的GPIO 线对应，该寄存器为低有效，一个GPIO 只有一种上下拉状态，IO 属性参见 IO 复用表"
+          "description": "上下拉控制，每BIT 与相应的GPIO 线对应，该寄存器为低有效，一个GPIO 只有一种上下拉状态，IO 属性参见 IO 复用表",
+          "reset": 65535
         }
       ]
     },
@@ -87,10 +91,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "复用功能使能位，每BIT 对应相应GPIO 复用功能是否打开，1’bx：[x] = 0, GPIO[x]复用功能关闭[x] = 1, GPIO[x]复用功能打开[x] = 1 时，复用功能取决于GPIO_AF_S1 和GPIO_AF_S0 两个寄存器相应BIT的状态。S1.[x] = 0， S0.[x] = 0，复用功能 1(opt1) S1.[x] = 0， S0.[x] = 1，复用功能 2(opt2) S1.[x] = 1， S0.[x] = 0，复用功能 3(opt3) S1.[x] = 1， S0.[x] = 1，复用功能 4(opt4)IO 复用功能参见芯片引脚复用关系[x] = 0 时，如果GPIO_DIR[x] = 0，且 GPIO_PULL_EN[x] = 1，则 GPIO 复用为opt6  模拟 IO 功能"
+          "description": "复用功能使能位，每BIT 对应相应GPIO 复用功能是否打开，1’bx：[x] = 0, GPIO[x]复用功能关闭[x] = 1, GPIO[x]复用功能打开[x] = 1 时，复用功能取决于GPIO_AF_S1 和GPIO_AF_S0 两个寄存器相应BIT的状态。S1.[x] = 0， S0.[x] = 0，复用功能 1(opt1) S1.[x] = 0， S0.[x] = 1，复用功能 2(opt2) S1.[x] = 1， S0.[x] = 0，复用功能 3(opt3) S1.[x] = 1， S0.[x] = 1，复用功能 4(opt4)IO 复用功能参见芯片引脚复用关系[x] = 0 时，如果GPIO_DIR[x] = 0，且 GPIO_PULL_EN[x] = 1，则 GPIO 复用为opt6  模拟 IO 功能",
+          "reset": 65535
         }
       ]
     },
@@ -104,10 +109,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "复用功能选择位高地址位，和GPIO_AF_S0 共同决定复用功能IO 复用功能参见芯片引脚复用关系"
+          "description": "复用功能选择位高地址位，和GPIO_AF_S0 共同决定复用功能IO 复用功能参见芯片引脚复用关系",
+          "reset": 0
         }
       ]
     },
@@ -121,10 +127,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "复用功能选择位低地址位，和GPIO_AF_S1 共同决定复用功能如何配置参见GPIO_AF_SEL 寄存器说明"
+          "description": "复用功能选择位低地址位，和GPIO_AF_S1 共同决定复用功能如何配置参见GPIO_AF_SEL 寄存器说明",
+          "reset": 0
         }
       ]
     },
@@ -138,10 +145,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "的中断触发方式，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断为边沿触发[x] = 1, GPIO[x]中断为电平触发"
+          "description": "的中断触发方式，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断为边沿触发[x] = 1, GPIO[x]中断为电平触发",
+          "reset": 0
         }
       ]
     },
@@ -155,10 +163,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "中断边沿触发模式，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]边沿触发中断模式由GPIO_IEV 决定[x] = 1, GPIO[x]双沿都触发中断"
+          "description": "中断边沿触发模式，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]边沿触发中断模式由GPIO_IEV 决定[x] = 1, GPIO[x]双沿都触发中断",
+          "reset": 0
         }
       ]
     },
@@ -172,10 +181,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "中断上下边沿触发或高低电平触发选择，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断为低电平或下降沿触发[x] = 1, GPIO[x]中断为高电平或上升沿触发"
+          "description": "中断上下边沿触发或高低电平触发选择，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断为低电平或下降沿触发[x] = 1, GPIO[x]中断为高电平或上升沿触发",
+          "reset": 0
         }
       ]
     },
@@ -189,10 +199,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "中断使能控制，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断失能[x] = 1, GPIO[x]中断使能"
+          "description": "中断使能控制，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]中断失能[x] = 1, GPIO[x]中断使能",
+          "reset": 0
         }
       ]
     },
@@ -206,10 +217,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "裸中断状态（MASK 前），每 BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]没有中断产生[x] = 1, GPIO[x]有中断产生"
+          "description": "裸中断状态（MASK 前），每 BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]没有中断产生[x] = 1, GPIO[x]有中断产生",
+          "reset": 0
         }
       ]
     },
@@ -223,10 +235,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "屏蔽后中断状态（MASK 后），每 BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]没有中断产生（MASK 后）[x] = 1, GPIO[x]中断产生（MASK 后）"
+          "description": "屏蔽后中断状态（MASK 后），每 BIT 与相应的GPIO 线对应，1’bx：[x] = 0, GPIO[x]没有中断产生（MASK 后）[x] = 1, GPIO[x]中断产生（MASK 后）",
+          "reset": 0
         }
       ]
     },
@@ -240,10 +253,11 @@
       "fields": [
         {
           "name": "gpio",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "中断清除控制，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0,  无动作[x] = 1,  清除GPIO[x]中断状态"
+          "description": "中断清除控制，每BIT 与相应的GPIO 线对应，1’bx：[x] = 0,  无动作[x] = 1,  清除GPIO[x]中断状态",
+          "reset": 0
         }
       ]
     }

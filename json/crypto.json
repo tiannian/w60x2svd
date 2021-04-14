@@ -37,13 +37,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
+          "offset": 0,
           "width": 1,
           "description": "保留"
         },
         {
           "name": "rng_start",
-          "offset": 30,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -64,11 +64,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rng_load_seed",
-          "offset": 29,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "硬件自动清 0",
@@ -89,11 +90,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rng_switch",
-          "offset": 28,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "控制生成随机数的位数，",
@@ -114,11 +116,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "des_soft_reset",
-          "offset": 27,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -139,11 +142,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "aes_soft_reset",
-          "offset": 26,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "aes 软复位完成后硬件自动清 0",
@@ -164,11 +168,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rc4_soft_reset",
-          "offset": 25,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -189,11 +194,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "crc_datarev",
-          "offset": 24,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -214,11 +220,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "crc_chksrev",
-          "offset": 23,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -239,12 +246,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "sub_mode",
-          "offset": 22,
-          "width": 1,
+          "offset": 21,
+          "width": 2,
           "access": "RW",
           "description": "算法类型子模式选择：",
           "enumerated_value": {
@@ -266,21 +274,22 @@
               {
                 "name": "sub_mode_10",
                 "description": "AES 密码算法的CTR 模式，可复用 CRC 算法的CRC16_1 模式",
-                "value": 16,
+                "value": 2,
                 "default": false
               },
               {
                 "name": "sub_mode_11",
                 "description": "CRC 算法的CRC32",
-                "value": 17,
+                "value": 3,
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "encrypt_decrypt",
-          "offset": 20,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -301,11 +310,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "gpsec_int_mask",
-          "offset": 19,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -326,12 +336,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "cypher_mode",
-          "offset": 18,
-          "width": 2,
+          "offset": 16,
+          "width": 3,
           "access": "RW",
           "description": "",
           "enumerated_value": {
@@ -353,48 +364,50 @@
               {
                 "name": "cypher_mode_010",
                 "description": "SHA1",
-                "value": 16,
+                "value": 2,
                 "default": false
               },
               {
                 "name": "cypher_mode_011",
                 "description": "AES",
-                "value": 17,
+                "value": 3,
                 "default": false
               },
               {
                 "name": "cypher_mode_100",
                 "description": "DES",
-                "value": 256,
+                "value": 4,
                 "default": false
               },
               {
                 "name": "cypher_mode_101",
                 "description": "3DES",
-                "value": 257,
+                "value": 5,
                 "default": false
               },
               {
                 "name": "cypher_mode_110",
                 "description": "CRC",
-                "value": 272,
+                "value": 6,
                 "default": false
               },
               {
                 "name": "cypher_mode_111",
                 "description": "MD5",
-                "value": 273,
+                "value": 7,
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "total_byte",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RW",
-          "description": "总共需要加解密操作的byte 个数。"
+          "description": "总共需要加解密操作的byte 个数。",
+          "reset": 0
         }
       ]
     },
@@ -408,13 +421,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 29,
+          "offset": 2,
+          "width": 30,
           "description": "保留"
         },
         {
           "name": "sec_stop",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "停止当前正在进行的加解密操作",
@@ -435,7 +448,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "sec_strt",
@@ -460,7 +474,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -546,13 +561,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 14,
+          "offset": 17,
+          "width": 15,
           "description": "保留"
         },
         {
           "name": "int_flag",
-          "offset": 16,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件写 1 清零",
@@ -573,14 +588,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "transfer_cnt",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RO",
-          "description": "当前加密完成的字节个数。\r每次重新开启加解密时清 0，并重新开始计数。"
+          "description": "当前加密完成的字节个数。\r每次重新开启加解密时清 0，并重新开始计数。",
+          "reset": 0
         }
       ]
     },

@@ -2,10 +2,10 @@
   "name": "rst",
   "version": "0.1",
   "description": "Reset",
-  "base_address": 1073743616,
+  "base_address": 1073822720,
   "address_block": {
     "offset": 0,
-    "size": 256,
+    "size": 536790016,
     "usage": "Registers"
   },
   "registers": [
@@ -19,13 +19,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 16,
+          "offset": 15,
+          "width": 17,
           "description": "保留"
         },
         {
           "name": "soft_7816_gate_en",
-          "offset": 14,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置 7816/uart2 模块时钟的门控，默认 7816 模块门控开启",
@@ -46,11 +46,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_gpsec_gate_en",
-          "offset": 13,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置gpsec 模块时钟的门控，默认gpsec 模块门控开启",
@@ -71,11 +72,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rsa_gate_en",
-          "offset": 12,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置RSA 时钟的门控，默认RSA 门控开启",
@@ -96,11 +98,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_i2s_gate_en",
-          "offset": 11,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置i2s 时钟的门控，默认i2s 门控开启",
@@ -121,11 +124,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_lcd_gate_en",
-          "offset": 10,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置lcd 时钟的门控，默认lcd 门控开启",
@@ -146,11 +150,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_pwm_gate_en",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置pwm 时钟的门控，默认pwm 门控开启",
@@ -171,11 +176,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_sd_adc_gate_en",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置sd_adc_时钟的门控，默认sd_adc_门控开启",
@@ -196,11 +202,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_gpio_gate_en",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置GPIO 时钟的门控，默认GPIO 门控开启",
@@ -221,11 +228,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_timer_gate_en",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置timer 时钟的门控，默认timer 门控开启",
@@ -246,11 +254,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rf_cfg_gate_en",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "内部使用，请勿修改。配置rf_cfg 时钟的门控，默认rf_cfg 门控开启",
@@ -271,11 +280,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_dma_gate_en",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "表示供给dma 时钟域的时钟是否关断",
@@ -296,11 +306,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_ls_spi_gate_en",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置低速spi 时钟的门控，默认低速spi 门控开启",
@@ -321,11 +332,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_uart1_gate_en",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置uart1 时钟的门控，默认uart1 门控开启",
@@ -346,11 +358,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_uart0_gate_en",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "配置uart0 时钟的门控，默认uart0 门控开启",
@@ -371,7 +384,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_i2c_gate_en",
@@ -396,7 +410,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         }
       ]
     },
@@ -410,7 +425,7 @@
       "fields": [
         {
           "name": "soft_cpu_clk_gt_mask",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "表示供给 CPU 时钟域（包括 CPU，bus1、ROM、SRAM）的时钟是否能够自适应的关断（当 CPU 需要进入WFI 状态的时候，不要设置自适应关断）",
@@ -431,18 +446,19 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "reserved",
-          "offset": 5,
-          "width": 3,
+          "offset": 2,
+          "width": 4,
           "access": "RW",
           "description": "保留，内部使用，请勿修改"
         },
         {
           "name": "soft_sdioahb_clk_gt_mask",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "表示供给sdio ahb 时钟域的时钟是否能够自适应的关断",
@@ -463,7 +479,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_pmu_clk_gt_mask",
@@ -488,7 +505,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -508,13 +526,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 6,
+          "offset": 25,
+          "width": 7,
           "description": "保留"
         },
         {
           "name": "soft_rst_7816_n",
-          "offset": 24,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位 7816/uart2 模块",
@@ -535,11 +553,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_gpsec_n",
-          "offset": 23,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位gpsec 模块",
@@ -560,11 +579,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_rsa_n",
-          "offset": 22,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位RSA 模块",
@@ -585,11 +605,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_i2s_n",
-          "offset": 21,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位i2s 模块",
@@ -610,11 +631,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_lcd_n",
-          "offset": 20,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位lcd 模块",
@@ -635,11 +657,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_pwm_n",
-          "offset": 19,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位pwm 模块",
@@ -660,11 +683,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_io_ctrl_n",
-          "offset": 18,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位io_ctrl 模块",
@@ -685,11 +709,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_sar_adc_n",
-          "offset": 17,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位sar_adc 模块",
@@ -710,11 +735,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_timer_n",
-          "offset": 16,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位timer 模块",
@@ -735,11 +761,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_gpio_n",
-          "offset": 15,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位gpio 模块",
@@ -760,11 +787,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_rf_cfg_n",
-          "offset": 14,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位配置 RF 的寄存器模块(内部使用，请勿修改)",
@@ -785,11 +813,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_spis_n",
-          "offset": 13,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位高速spi 模块",
@@ -810,11 +839,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_spim_n",
-          "offset": 12,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位低速spi 模块",
@@ -835,11 +865,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_uart1_n",
-          "offset": 11,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位片内uart1 模块",
@@ -860,11 +891,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_uart0_n",
-          "offset": 10,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位片内uart0 模块",
@@ -885,11 +917,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_i2c_n",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位片内i2c 模块",
@@ -910,11 +943,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_bus2_n",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位片内bus2 模块",
@@ -935,11 +969,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_bus1_n",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位片内bus1 模块",
@@ -960,11 +995,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_apb_n",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位abp 桥接模块",
@@ -985,11 +1021,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_mem_mng_n",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位mem_mng 模块(内部使用，请勿修改)",
@@ -1010,11 +1047,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_dma_n",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位dma 模块",
@@ -1035,11 +1073,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_sdio_ahb_n",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位sdio ahb 时钟域模块",
@@ -1060,11 +1099,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_sec_n",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位安全模块(内部使用，请勿修改)",
@@ -1085,11 +1125,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_mac_n",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "软件复位mac 模块(内部使用，请勿修改)",
@@ -1110,7 +1151,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "soft_rst_bbp_n",
@@ -1135,7 +1177,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         }
       ]
     },
@@ -1149,7 +1192,7 @@
       "fields": [
         {
           "name": "divide_freq_en",
-          "offset": 31,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "当需要重新配置cpu_clk_divider  ，wlan_clk_divider  ，bus2_syncdn_factor，sdadc_fdiv时，置位本寄存器，硬件自动更新上述四个参数到分频器，然后清零本寄存器。 \r注：此处配置分频因子时，当Divide_freq_en 有效时，所有因子必须已经有效",
@@ -1170,17 +1213,18 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 30,
-          "width": 1,
+          "offset": 29,
+          "width": 2,
           "description": "保留"
         },
         {
           "name": "rsa_clk_sel",
-          "offset": 28,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -1201,35 +1245,40 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "sdadc_fdiv",
-          "offset": 27,
-          "width": 15,
+          "offset": 12,
+          "width": 16,
           "access": "RW",
-          "description": "clk_sar_adc  分频因子：\r以 40M 为时钟源进行分频。分频系数即为所配分频值。"
+          "description": "clk_sar_adc  分频因子：\r以 40M 为时钟源进行分频。分频系数即为所配分频值。",
+          "reset": 32
         },
         {
           "name": "bus2_syncdn_factor",
-          "offset": 11,
-          "width": 3,
+          "offset": 8,
+          "width": 4,
           "access": "RW",
-          "description": "bus1 和bus2 的时钟比例关系，应该为N：1\r其中N 为整数，在实际调整时，主要看CPU 的工作频率和bus2 的时钟频率之比。由于默认cpu 采用 80MHz 时钟，bus2 采用 40MHz 时钟，则 N=2"
+          "description": "bus1 和bus2 的时钟比例关系，应该为N：1\r其中N 为整数，在实际调整时，主要看CPU 的工作频率和bus2 的时钟频率之比。由于默认cpu 采用 80MHz 时钟，bus2 采用 40MHz 时钟，则 N=2",
+          "reset": 2
         },
         {
           "name": "wlan_clk_divider",
-          "offset": 7,
-          "width": 3,
+          "offset": 4,
+          "width": 4,
           "access": "RW",
-          "description": "从PLL 出来的时钟分频后，送给wlan 系统。本寄存器为分频因子，该因子>=1。默认分频因子为 1，即不对 pll 的 160MHz 输出分频，得到 160MHz 时钟，作为根节点时钟送给wlan（wlan 在继续分频得到更为详细的低频时钟）；\r注：二级总线及APB 时钟为wlan 根节点时钟四分频"
+          "description": "从PLL 出来的时钟分频后，送给wlan 系统。本寄存器为分频因子，该因子>=1。默认分频因子为 1，即不对 pll 的 160MHz 输出分频，得到 160MHz 时钟，作为根节点时钟送给wlan（wlan 在继续分频得到更为详细的低频时钟）；\r注：二级总线及APB 时钟为wlan 根节点时钟四分频",
+          "reset": 1
         },
         {
           "name": "cpu_clk_divider",
-          "offset": 3,
-          "width": 3,
+          "offset": 0,
+          "width": 4,
           "access": "RW",
-          "description": "从PLL 出来的时钟分频后，送给CPU。本寄存器为分频因子，该因子>=2。\r默认分频因子为 2，即复位释放后，对 PLL 输出的 160MHz 时钟 2 分频，送给 cpu\r的是 80MHz 时钟。当需要调整cpu 所需时钟时，可以重新配置本参数"
+          "description": "从PLL 出来的时钟分频后，送给CPU。本寄存器为分频因子，该因子>=2。\r默认分频因子为 2，即复位释放后，对 PLL 输出的 160MHz 时钟 2 分频，送给 cpu\r的是 80MHz 时钟。当需要调整cpu 所需时钟时，可以重新配置本参数",
+          "reset": 2
         }
       ]
     },
@@ -1243,7 +1292,7 @@
       "fields": [
         {
           "name": "jtag",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "使能",
@@ -1264,14 +1313,16 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 4,
-          "width": 4,
+          "offset": 0,
+          "width": 5,
           "access": "RW",
-          "description": "保留，请勿修改"
+          "description": "保留，请勿修改",
+          "reset": 0
         }
       ]
     },
@@ -1285,27 +1336,29 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 13,
+          "offset": 18,
+          "width": 14,
           "description": "保留"
         },
         {
           "name": "bclkdiv",
-          "offset": 17,
-          "width": 9,
+          "offset": 8,
+          "width": 10,
           "access": "RW",
-          "description": "BCLK 分配器：F_BCLK = F_I2SCLK / BCLKDIV\r注意：如果未选择EXTAL_EN 而使用内部PLL 则F_I2SCLK  =F_CPU  (与CPU 频率相同)。\r假设F_CPU = 160MHz，启用WXTAL_EN 时F_I2SCLK =  外部晶振频率，\rBCLKDIV = round (F_I2SCLK/(Fs*W*F)) 其中 Fs 是音频数据的采样频率，W 是字宽；数据为单声道时F = 1；\r当数据为立体声时F = 2。\r例如，如果使用内部 PLL 且数据宽度为 24 位，则格式为立体声格式，采样频率为\r128KHz，BCLKDIV 应配置为（160 * 10e6 / 128 * 10e3 * 24 * 2）= 10'h1a。"
+          "description": "BCLK 分配器：F_BCLK = F_I2SCLK / BCLKDIV\r注意：如果未选择EXTAL_EN 而使用内部PLL 则F_I2SCLK  =F_CPU  (与CPU 频率相同)。\r假设F_CPU = 160MHz，启用WXTAL_EN 时F_I2SCLK =  外部晶振频率，\rBCLKDIV = round (F_I2SCLK/(Fs*W*F)) 其中 Fs 是音频数据的采样频率，W 是字宽；数据为单声道时F = 1；\r当数据为立体声时F = 2。\r例如，如果使用内部 PLL 且数据宽度为 24 位，则格式为立体声格式，采样频率为\r128KHz，BCLKDIV 应配置为（160 * 10e6 / 128 * 10e3 * 24 * 2）= 10'h1a。",
+          "reset": 0
         },
         {
           "name": "mclkdiv",
-          "offset": 7,
-          "width": 5,
+          "offset": 2,
+          "width": 6,
           "access": "RW",
-          "description": "如果选择外部时钟，则该MCLK 分频器用于产生适当的MCLK 频率。\rF_mclk = F_I2SCLK / (2 * MCLKDIV)；\r当MCLKDIV = 0 时F_I2SCLK 是外部时钟；当MCLKDIV >= 1 时F_mclk = F_I2SCLK；\r注意：F_mclk 应配置为 256 * fs，其中 fs 是采样频率。"
+          "description": "如果选择外部时钟，则该MCLK 分频器用于产生适当的MCLK 频率。\rF_mclk = F_I2SCLK / (2 * MCLKDIV)；\r当MCLKDIV = 0 时F_I2SCLK 是外部时钟；当MCLKDIV >= 1 时F_mclk = F_I2SCLK；\r注意：F_mclk 应配置为 256 * fs，其中 fs 是采样频率。",
+          "reset": 0
         },
         {
           "name": "mclken",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "MCLK 使能开关",
@@ -1326,7 +1379,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "extal_en",
@@ -1351,7 +1405,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     }

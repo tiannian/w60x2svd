@@ -19,13 +19,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 6,
+          "offset": 25,
+          "width": 7,
           "description": "保留"
         },
         {
           "name": "sc_mode",
-          "offset": 24,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -46,11 +46,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rx_retrans_en",
-          "offset": 23,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "模式7816 T0",
@@ -71,18 +72,20 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rx_retrans_cnt",
-          "offset": 22,
-          "width": 2,
+          "offset": 20,
+          "width": 3,
           "access": "RW",
-          "description": "模式7816 卡 T0"
+          "description": "模式7816 卡 T0",
+          "reset": 3
         },
         {
           "name": "tx_retrans_en",
-          "offset": 19,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -103,25 +106,28 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "tx_retrans_cnt",
-          "offset": 18,
-          "width": 2,
+          "offset": 16,
+          "width": 3,
           "access": "RW",
-          "description": "模式7816 卡T0tx 自动重传次数"
+          "description": "模式7816 卡T0tx 自动重传次数",
+          "reset": 3
         },
         {
           "name": "min_block_guard_time",
-          "offset": 15,
-          "width": 4,
+          "offset": 11,
+          "width": 5,
           "access": "RW",
-          "description": "7816 卡的最小MIN_BGT（Min Block Guard Time  ）Min Block Guard Time 计算： 10+stop 位(默认 2 位)+配置值MIN_BGT Note:T=0：在发送和接收的两个相反方向连续字符的起始位下降沿之间的最小时间间隔不能小于 16 个 ETU。必须能够正确解释接收到的其起始位下降沿和最后发送的字节起始位下降沿间隔为 15 个 ETU 的字符。T=1：在发送和接收的两个相反方向连续字符的起始位下降沿之间的最小时间间隔（块保护时间，BGT）必须为 22 个 ETU。必须能够正确解释接收到的其起始位下降沿和最后发送的字节起始位下降沿间隔为 21 个 ETU 以内接收到的字符。"
+          "description": "7816 卡的最小MIN_BGT（Min Block Guard Time  ）Min Block Guard Time 计算： 10+stop 位(默认 2 位)+配置值MIN_BGT Note:T=0：在发送和接收的两个相反方向连续字符的起始位下降沿之间的最小时间间隔不能小于 16 个 ETU。必须能够正确解释接收到的其起始位下降沿和最后发送的字节起始位下降沿间隔为 15 个 ETU 的字符。T=1：在发送和接收的两个相反方向连续字符的起始位下降沿之间的最小时间间隔（块保护时间，BGT）必须为 22 个 ETU。必须能够正确解释接收到的其起始位下降沿和最后发送的字节起始位下降沿间隔为 21 个 ETU 以内接收到的字符。",
+          "reset": 10
         },
         {
           "name": "7816_tmr_cfg",
-          "offset": 10,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "7816 卡时钟控制配置",
@@ -142,11 +148,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "7816_parity_error",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "7816 卡的parity 错误时是否接收数据",
@@ -167,11 +174,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "7816_mode",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "7816 卡的T0/T1 模式配置，",
@@ -192,32 +200,36 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "uart_rx_enable",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "uart/7816 模式下，接收使能，高有效"
+          "description": "uart/7816 模式下，接收使能，高有效",
+          "reset": 0
         },
         {
           "name": "uart_tx_enable",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "uart/7816 模式下，发送使能，高有效。"
+          "description": "uart/7816 模式下，发送使能，高有效。",
+          "reset": 0
         },
         {
           "name": "send_break_enable",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "发送break 数据包。Uart 会在该为被置位后发送完一个break 数据包，发送完成后自动清 0。"
+          "description": "发送break 数据包。Uart 会在该为被置位后发送完一个break 数据包，发送完成后自动清 0。",
+          "reset": 0
         },
         {
           "name": "parity",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -250,18 +262,20 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "parity_en",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "使能，高有效(UART 模式)"
+          "description": "使能，高有效(UART 模式)",
+          "reset": 1
         },
         {
           "name": "stop_bit_count",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "个数（UART 模式）stop bit 个数（7816 模式）",
@@ -294,12 +308,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "uart_bit_length",
-          "offset": 1,
-          "width": 1,
+          "offset": 0,
+          "width": 2,
           "access": "RW",
           "description": "比特长度（UART 模式）",
           "enumerated_value": {
@@ -313,7 +328,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 3
         }
       ]
     },
@@ -327,14 +343,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 26,
+          "offset": 5,
+          "width": 27,
           "description": "保留"
         },
         {
           "name": "rts_trigger_level",
-          "offset": 4,
-          "width": 2,
+          "offset": 2,
+          "width": 3,
           "access": "RW",
           "description": "（UART 模式）在afc_enable 有效时，决定何时需要将RTS 置无效。",
           "enumerated_value": {
@@ -354,21 +370,24 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 5
         },
         {
           "name": "rts_set",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）当AFC_enable 无效时，软件可以通过设置此位来完成接收流量控制。当 AFC_enable有效时，此位不关心。"
+          "description": "（UART 模式）当AFC_enable 无效时，软件可以通过设置此位来完成接收流量控制。当 AFC_enable有效时，此位不关心。",
+          "reset": 0
         },
         {
           "name": "afc_enable",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）接收条件rts 使用rts_trigger_level 控制产生，高有效。"
+          "description": "（UART 模式）接收条件rts 使用rts_trigger_level 控制产生，高有效。",
+          "reset": 0
         }
       ]
     },
@@ -382,37 +401,41 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "rxfifo_timeout_num",
-          "offset": 7,
-          "width": 4,
+          "offset": 3,
+          "width": 5,
           "access": "RW",
-          "description": "（UART 模式）rxfifo 中存在数据小于rxfifo_trigger_level 情况下，如果 N 个包的时间内，没有接收到新的数据时，产生rxfifo timeout 中断。该计时功能使能后，无论是第一次计时还是上一次计时完成，都只在接收到至少 1个包后才开始计时"
+          "description": "（UART 模式）rxfifo 中存在数据小于rxfifo_trigger_level 情况下，如果 N 个包的时间内，没有接收到新的数据时，产生rxfifo timeout 中断。该计时功能使能后，无论是第一次计时还是上一次计时完成，都只在接收到至少 1个包后才开始计时",
+          "reset": 4
         },
         {
           "name": "rxfifo_timeout_en",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）rxfifo 超时使能，高有效"
+          "description": "（UART&7816 模式）rxfifo 超时使能，高有效",
+          "reset": 1
         },
         {
           "name": "rx_dma_enable",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）接收DMA 使能，高有效。0 表示接收过程使用中断。"
+          "description": "（UART&7816 模式）接收DMA 使能，高有效。0 表示接收过程使用中断。",
+          "reset": 0
         },
         {
           "name": "tx_dma_enable",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）发送DMA 使能，高有效。0 表示发送过程使用中断。"
+          "description": "（UART&7816 模式）发送DMA 使能，高有效。0 表示发送过程使用中断。",
+          "reset": 0
         }
       ]
     },
@@ -426,14 +449,14 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 25,
+          "offset": 6,
+          "width": 26,
           "description": "保留"
         },
         {
           "name": "rxfifo_trigger_level",
-          "offset": 5,
-          "width": 1,
+          "offset": 4,
+          "width": 2,
           "access": "RW",
           "description": "(UART&7816 模式)",
           "enumerated_value": {
@@ -459,12 +482,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "txfifo_trigger_level",
-          "offset": 3,
-          "width": 1,
+          "offset": 2,
+          "width": 2,
           "access": "RW",
           "description": "(UART&7816 模式)",
           "enumerated_value": {
@@ -490,21 +514,24 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "rxfifo_reset",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "(UART&7816 模式)复位rxfifo， 将rxfifo 状态清空"
+          "description": "(UART&7816 模式)复位rxfifo， 将rxfifo 状态清空",
+          "reset": 0
         },
         {
           "name": "txfifo_reset",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "(UART&7816 模式)复位txfifo，将txfifo 状态清空"
+          "description": "(UART&7816 模式)复位txfifo，将txfifo 状态清空",
+          "reset": 0
         }
       ]
     },
@@ -518,23 +545,25 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 11,
+          "offset": 20,
+          "width": 12,
           "description": "保留"
         },
         {
           "name": "ubdiv_frac",
-          "offset": 19,
-          "width": 3,
+          "offset": 16,
+          "width": 4,
           "access": "RW",
-          "description": "UART 模式：系统时钟除以 16 倍波特率时钟商的小数部分指示。具体值为frac×16 。（参考章节波特率计算方法）7816 模式：ubdiv_frac = (fclk_apb + fsc_clk)/(2 * fsc_clk) - 1;（参考 7816 时钟计算方法）"
+          "description": "UART 模式：系统时钟除以 16 倍波特率时钟商的小数部分指示。具体值为frac×16 。（参考章节波特率计算方法）7816 模式：ubdiv_frac = (fclk_apb + fsc_clk)/(2 * fsc_clk) - 1;（参考 7816 时钟计算方法）",
+          "reset": 3
         },
         {
           "name": "ubdiv",
-          "offset": 15,
-          "width": 15,
+          "offset": 0,
+          "width": 16,
           "access": "RW",
-          "description": "UART 模式：系统时钟除以 16 倍波特率时钟商的整数部分减 1。默认系统时钟为 40MHz，波特率为 19200。（参考波特率计算方法）7816 模式：ubdiv=Fi/Di (Fi、Di 为智能卡反馈的参数,edu 频率：f_etuclk = fsc_clk/(ubdiv+1))（参考章节 7816 速率计算方法）"
+          "description": "UART 模式：系统时钟除以 16 倍波特率时钟商的整数部分减 1。默认系统时钟为 40MHz，波特率为 19200。（参考波特率计算方法）7816 模式：ubdiv=Fi/Di (Fi、Di 为智能卡反馈的参数,edu 频率：f_etuclk = fsc_clk/(ubdiv+1))（参考章节 7816 速率计算方法）",
+          "reset": 130
         }
       ]
     },
@@ -548,79 +577,89 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 21,
+          "offset": 10,
+          "width": 22,
           "description": "保留"
         },
         {
           "name": "7816_error_signal",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "卡发送时收到error signal 错误信号。（7816 模式）"
+          "description": "卡发送时收到error signal 错误信号。（7816 模式）",
+          "reset": 1
         },
         {
           "name": "overrun_error_int_mask",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "， rxfifo 溢出中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "， rxfifo 溢出中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         },
         {
           "name": "parity_error_int_mask",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，奇偶检验中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "，奇偶检验中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         },
         {
           "name": "frame_error_int_mask",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，数据帧出错中断屏蔽位，高有效。（UART 模式）"
+          "description": "，数据帧出错中断屏蔽位，高有效。（UART 模式）",
+          "reset": 1
         },
         {
           "name": "break_detect_int_mask",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，break 信号检测中断屏蔽位，高有效。（UART 模式）"
+          "description": "，break 信号检测中断屏蔽位，高有效。（UART 模式）",
+          "reset": 1
         },
         {
           "name": "cts_changed_indicate_mask",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，CTS 信号变化中断屏蔽位，高有效。（UART 模式）"
+          "description": "，CTS 信号变化中断屏蔽位，高有效。（UART 模式）",
+          "reset": 1
         },
         {
           "name": "rxfifo_data_timeout_int_mask",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，rxfifo 接收数据超时中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "，rxfifo 接收数据超时中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         },
         {
           "name": "rxfifo_trigger_level_int_mask",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，rxfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "，rxfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         },
         {
           "name": "txfifo_trigger_level_int_mask",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，txfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "，txfifo 达到触发值中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         },
         {
           "name": "txfifo_empty_int_mask",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "，txfifo 为空中断屏蔽位，高有效。（UART&7816 模式）"
+          "description": "，txfifo 为空中断屏蔽位，高有效。（UART&7816 模式）",
+          "reset": 1
         }
       ]
     },
@@ -634,79 +673,88 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 22,
+          "offset": 9,
+          "width": 23,
           "description": "保留"
         },
         {
           "name": "7816_error_signal",
-          "offset": 9,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "卡发送时收到error signal 错误信号。(7816 模式)"
         },
         {
           "name": "overrun_error",
-          "offset": 8,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）rxfifo 出现溢出。 软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）rxfifo 出现溢出。 软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "parity_error",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）接收到的包校验位错误。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）接收到的包校验位错误。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "frame_error",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）接收到的包停止位错误。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。"
+          "description": "（UART 模式）接收到的包停止位错误。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "break_detect",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）接收到break 包。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。"
+          "description": "（UART 模式）接收到break 包。DMA 情况下，此中断仍会产生。但DMA 操作不关心此中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "cts_changed",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）cts 信号变化则产生此中断。软件主动写 1 清 0。"
+          "description": "（UART 模式）cts 信号变化则产生此中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "rxfifo_data_timeout",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）rxfifo 中数据长度小于rxfifo trigger level 但N 个数据周期没有接收到任何数据，则产生中断。软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）rxfifo 中数据长度小于rxfifo trigger level 但N 个数据周期没有接收到任何数据，则产生中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "rxfifo_trigger_level_interrupt",
-          "offset": 2,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）当rxfifo 中数据个数由小于rxfifo trigger level 中指定的数变成大于或等于该数时，产生此中断。此时应该根据rxfifo count 确定当前数据帧大小。软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）当rxfifo 中数据个数由小于rxfifo trigger level 中指定的数变成大于或等于该数时，产生此中断。此时应该根据rxfifo count 确定当前数据帧大小。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "txfifo_trigger_level_interrupt",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）当txfifo 中数据个数由大于txfifo trigger level 中指定的数变成小于或等于该数时，产生中断。软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）当txfifo 中数据个数由大于txfifo trigger level 中指定的数变成小于或等于该数时，产生中断。软件主动写 1 清 0。",
+          "reset": 0
         },
         {
           "name": "tx_fifo_empty_interrupt",
           "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART&7816 模式）当发送完成当前包，并且txfifo 为空时，产生此中断。软件主动写 1 清 0。"
+          "description": "（UART&7816 模式）当发送完成当前包，并且txfifo 为空时，产生此中断。软件主动写 1 清 0。",
+          "reset": 0
         }
       ]
     },
@@ -720,30 +768,33 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 18,
+          "offset": 13,
+          "width": 19,
           "description": "保留"
         },
         {
           "name": "cts_status",
-          "offset": 12,
+          "offset": 0,
           "width": 1,
           "access": "RW",
-          "description": "（UART 模式）当前cts 的状态"
+          "description": "（UART 模式）当前cts 的状态",
+          "reset": 0
         },
         {
           "name": "rxfifo_count",
-          "offset": 11,
-          "width": 5,
+          "offset": 6,
+          "width": 6,
           "access": "RW",
-          "description": "（UART&7816 模式）rxfifo 中数据个数"
+          "description": "（UART&7816 模式）rxfifo 中数据个数",
+          "reset": 0
         },
         {
           "name": "txfifo_count",
-          "offset": 5,
-          "width": 5,
+          "offset": 0,
+          "width": 6,
           "access": "RW",
-          "description": "（UART&7816 模式）txfifo 中数据个数"
+          "description": "（UART&7816 模式）txfifo 中数据个数",
+          "reset": 0
         }
       ]
     },
@@ -756,10 +807,11 @@
       "fields": [
         {
           "name": "tx_data_window",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RW",
-          "description": "（UART&7816 模式）发送数据起始地址。注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。"
+          "description": "（UART&7816 模式）发送数据起始地址。注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。",
+          "reset": 0
         }
       ]
     },
@@ -772,10 +824,11 @@
       "fields": [
         {
           "name": "rx_data_window",
-          "offset": 31,
-          "width": 31,
+          "offset": 0,
+          "width": 32,
           "access": "RO",
-          "description": "（UART&7816 模式）接收数据起始地址。注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。"
+          "description": "（UART&7816 模式）接收数据起始地址。注意：uart 发送与接收数据只支持字节操作，当采用 burst 传输时，有可能使用字节地址递增的方式，设计中最多支持 16-burst 的操作，即 16byte。因此从发送/接收起始地址后共 16byte（4 个字）都保留为发送/接收数据窗口。",
+          "reset": 0
         }
       ]
     },
@@ -789,16 +842,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "ex_gt_num",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "7816 模式下，guard time 计算：10+stop 位+配置值ex_gt_num"
+          "description": "7816 模式下，guard time 计算：10+stop 位+配置值ex_gt_num",
+          "reset": 0
         }
       ]
     },
@@ -812,16 +866,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 7,
+          "offset": 24,
+          "width": 8,
           "description": "保留"
         },
         {
           "name": "wait_time",
-          "offset": 23,
-          "width": 23,
+          "offset": 0,
+          "width": 24,
           "access": "RW",
-          "description": "计数器（以 ETU 为单位）7816 模式下：CWT 和BWT 时间，配置为最大默认值。（在 T1 模式下：BWT =（11 etu+ 2BWI*960*Fd/fsc））"
+          "description": "计数器（以 ETU 为单位）7816 模式下：CWT 和BWT 时间，配置为最大默认值。（在 T1 模式下：BWT =（11 etu+ 2BWI*960*Fd/fsc））",
+          "reset": 491520
         }
       ]
     }

@@ -19,16 +19,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "prescale_lo",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "时钟分频配置prescale 的低 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19"
+          "description": "时钟分频配置prescale 的低 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19",
+          "reset": 255
         }
       ]
     },
@@ -42,16 +43,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "prescale_hi",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RW",
-          "description": "时钟分频配置prescale 的高 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19"
+          "description": "时钟分频配置prescale 的高 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19",
+          "reset": 255
         }
       ]
     },
@@ -65,13 +67,13 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "i2c_en",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "使能控制，",
@@ -92,11 +94,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "int_mask",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "",
@@ -117,12 +120,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 1
         },
         {
           "name": "reserved",
-          "offset": 5,
-          "width": 5,
+          "offset": 0,
+          "width": 6,
           "description": "保留"
         }
       ]
@@ -137,15 +141,16 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "rx_tx_byte",
-          "offset": 7,
-          "width": 7,
-          "description": "写该寄存器时，为发送寄存器TXR，表示下一个要发送的字节，当为设备地址时，[0]：1 时表示读，0 时表示写。读该寄存器时，为接收寄存器RXR，为最新从I2C 上接收到的字节。"
+          "offset": 0,
+          "width": 8,
+          "description": "写该寄存器时，为发送寄存器TXR，表示下一个要发送的字节，当为设备地址时，[0]：1 时表示读，0 时表示写。读该寄存器时，为接收寄存器RXR，为最新从I2C 上接收到的字节。",
+          "reset": 0
         }
       ]
     },
@@ -159,7 +164,7 @@
       "fields": [
         {
           "name": "sta",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "，控制产生START 时序",
@@ -180,11 +185,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "sto",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "，控制产生STOP 时序；",
@@ -199,11 +205,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rd",
-          "offset": 5,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "，从 SLAVE 读；",
@@ -224,11 +231,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "wr",
-          "offset": 4,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "，向 SLAVE 写；",
@@ -249,11 +257,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "ack_nack",
-          "offset": 3,
+          "offset": 0,
           "width": 1,
           "access": "RW",
           "description": "控制向SLAVE 送回 ACK/NACK；",
@@ -274,12 +283,13 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 2,
-          "width": 1,
+          "offset": 1,
+          "width": 2,
           "access": "RW",
           "description": "保留"
         },
@@ -306,11 +316,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "rxack",
-          "offset": 7,
+          "offset": 0,
           "width": 1,
           "access": "RO",
           "description": "，从SLAVE 收到的ACK/NACK 状态；",
@@ -331,11 +342,12 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "busy",
-          "offset": 6,
+          "offset": 0,
           "width": 1,
           "access": "RO",
           "description": "；",
@@ -356,18 +368,20 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "reserved",
-          "offset": 5,
-          "width": 3,
+          "offset": 2,
+          "width": 4,
           "access": "RO",
-          "description": "保留"
+          "description": "保留",
+          "reset": 0
         },
         {
           "name": "tip",
-          "offset": 1,
+          "offset": 0,
           "width": 1,
           "access": "RO",
           "description": "；",
@@ -388,7 +402,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         },
         {
           "name": "if",
@@ -413,7 +428,8 @@
                 "default": false
               }
             ]
-          }
+          },
+          "reset": 0
         }
       ]
     },
@@ -427,16 +443,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "txr_read",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RO",
-          "description": "只读，TXR 寄存器的读出值，功能描述见TXR_RXR 寄存器；"
+          "description": "只读，TXR 寄存器的读出值，功能描述见TXR_RXR 寄存器；",
+          "reset": 0
         }
       ]
     },
@@ -450,16 +467,17 @@
       "fields": [
         {
           "name": "reserved",
-          "offset": 31,
-          "width": 23,
+          "offset": 8,
+          "width": 24,
           "description": "保留"
         },
         {
           "name": "read_cr",
-          "offset": 7,
-          "width": 7,
+          "offset": 0,
+          "width": 8,
           "access": "RO",
-          "description": "只读，CR 寄存器的读出值，功能描述见CR_SR 寄存器；"
+          "description": "只读，CR 寄存器的读出值，功能描述见CR_SR 寄存器；",
+          "reset": 0
         }
       ]
     }
