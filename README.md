@@ -10,29 +10,24 @@ Register definitions from w60x official documents:
 
 ## Status
 
-- [X] Generate `Device` from json.
-- [X] Generate `Peripheral` from json.
-- [X] Generate `Register` from json.
-- [X] Generate `Field` from json.
-- [ ] Extract definitions from official registers description document.
-  - [X] CLK
-  - [X] DMA
-  - [ ] GPIO
-  - [X] RSA
-  - [X] Crypto
-  - [ ] HSPI
-  - [ ] SDIO
-  - [ ] Wrapper
-  - [ ] SPI
-  - [ ] I2C
-  - [ ] UART
-  - [ ] 7816
-  - [ ] Timer
-  - [ ] PMU
-  - [ ] RTC
-  - [ ] WDG
-  - [ ] PWM
-  - [ ] QFLASH
+- [X] CLK
+- [X] DMA
+- [X] GPIO
+- [X] RSA
+- [X] Crypto
+- [ ] HSPI
+- [ ] SDIO
+- [ ] Wrapper
+- [X] SPI
+- [X] I2C
+- [X] UART
+- [X] 7816
+- [X] Timer
+- [X] PMU
+- [X] RTC
+- [X] WDG
+- [X] PWM
+- [X] QFLASH
 
 ## Building
 
@@ -44,10 +39,12 @@ $ cd w60x2svd/ && cargo build
 ### For w600
 
 ```bash
-$ cargo run w600
+$ cargo run json
+$ cargo run svd
+$ xmllint -format w600.svd > w600.format.svd
 ```
 
-This will create the file `esp32.svd` in the base project directory.
+This will create the file `w600.svd` in the base project directory.
 
 ## License
 
