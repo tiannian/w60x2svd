@@ -1,0 +1,1441 @@
+{
+  "name": "spi",
+  "version": "0.1",
+  "description": "SPI",
+  "base_address": 1073742336,
+  "address_block": {
+    "offset": 0,
+    "size": 256,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "ch_cfg",
+      "offset": 0,
+      "description": "用以对收发通道的相关项进行一些配置",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 0,
+          "width": 1,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "rx_invalid_bit",
+          "offset": 23,
+          "width": 8,
+          "access": "RW",
+          "description": "表示接收通路在开始接收时，前多少 bit 是无效数据，这些无效数据需要直接扔掉，不进入Rx FIFO。只有后续的数据进入Rx FIFO本寄存器与Tx/Rx length 配合使用。最后实际存入 Rx FIFO 的数据量为Tx/Rx length- RX_INVALID_BIT注：master 模式有效Motorola/ TI 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "clear",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "FIFOs，清除 Tx 和Rx FIFO 的内容,同时同步复位master 和slave 所有电路（配置寄存器除外）软件置 1，硬件清 0注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "clear",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "clear_0",
+                "description": "不清除FIFO",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "clear_1",
+                "description": "清除有效",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "continue",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "mode，该模式下，spi 发送不受Tx FIFO 空的影响。，持续传输，直至整个传输过程完成。Rx FIFO 满后，SCK 停止翻转，等待RX FIFO 有空间接收数据满，则需要暂停传输，直至rx fifo 可以存数为止注：master 有效一般情况下，不设置该模式。开启该模式时，如果tx fifo 中没有数据，有可能导致无效数据先发送出去。所以请先填入数据后，再启动spi masterMotorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "continue",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "continue_0",
+                "description": "normal,Tx  FIFO 空后，需要等待FIFO 中出现数据，SCK 停止翻转，同理，",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "continue_1",
+                "description": "continue mode，Tx fifo 空，仍可以传输，直至传输完成，但此时如果rx fifo",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rxchon",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "rxchon",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxchon_0",
+                "description": ": Rx channel off",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxchon_1",
+                "description": ": Rx channel on",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "txchon",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "txchon",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txchon_0",
+                "description": ": Tx channel off",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txchon_1",
+                "description": ": Tx channel on",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "tx",
+          "offset": 3,
+          "width": 16,
+          "access": "RW",
+          "description": "/Rx lengthSpi 在传输时，有效的SCK 数也间接的反映了发送或者接收数据的长度。当（TxChOn=1，RxChOn=1）时，表示发送的 bit 数，以及最大接收的bit 数（具体接收多少与RX_INVALID_BIT 有关）当（TxChOn=1，RxChOn=0）时，表示发送的bit 数，当（TxChOn=0，RxChOn=1）时，表示最大接收的 bit  数（具体接收多少与 RX_INVALID_BIT  有关，实际接收数为Tx/Rx length - RX_INVALID_BIT）当（TxChOn=0，RxChOn=0）时，无意义。注：master 有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "chip",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "selects注：master 有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "chip",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "chip_0",
+                "description": "SPI_CS 有效信号为 0",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "chip_1",
+                "description": "SPI_CS 有效信号为 1",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "force",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "CS out该信号配合Chip selects 可以实现输出csn 信号可编程，即该信号为 1 时，spi_cs  =Chip selects注：master 有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "force",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "force_0",
+                "description": "spi_cs 信号输出由硬件控制",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "force_1",
+                "description": "spi_cs 信号输出由软件控制，具体输出值为Chip selects",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "start,命令 SPI 开始接收或者发送，写 1 为spi 开始工作，之后，自动归零Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_0",
+                "description": "停止spi 工作",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_1",
+                "description": "启动spi 的一次发送或者接收，自动归零注master 有效",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_cfg",
+      "offset": 4,
+      "description": "对 SPI 通信相关项进行配置",
+      "mode": "RW",
+      "reset": 4,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 19,
+          "width": 13,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "fram",
+          "offset": 17,
+          "width": 2,
+          "access": "RW",
+          "description": "FORMAT选择master 支持那个厂家的协议注：master 有效",
+          "enumerated_value": {
+            "name": "fram",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "fram_00",
+                "description": ":motorola 2’b01:TI",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "fram_10",
+                "description": ":microwire 2’b11:RSV",
+                "value": 2,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi_tx",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "pin always drivenMotorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi_tx",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_tx_0",
+                "description": "spi 输出只有在spi_cs 有效时，被驱动，其它时间为三态",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_tx_1",
+                "description": "spi 输出一直有驱动，即使没有数据传输注master/slave 都有效",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rsv",
+          "offset": 0,
+          "width": 1,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "cs",
+          "offset": 12,
+          "width": 3,
+          "access": "RW",
+          "description": "hold， spi_cs 在数据传输完成后持续有效的时间，即spi_cs 的hold 时间注： master 有效Motorola 模式有效",
+          "enumerated_value": {
+            "name": "cs",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "cs_000",
+                "description": ">=1      个APB  总线 CLK",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "cs_001",
+                "description": ">=2      个APB  总线CLK",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "cs_010",
+                "description": ">=4      个APB  总线 CLK",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "cs_011",
+                "description": ">=8      个APB  总线 CLK",
+                "value": 3,
+                "default": false
+              },
+              {
+                "name": "cs_100",
+                "description": ">=16    个APB  总线 CLK",
+                "value": 4,
+                "default": false
+              },
+              {
+                "name": "cs_101",
+                "description": ">=32    个APB  总线 CLK",
+                "value": 5,
+                "default": false
+              },
+              {
+                "name": "cs_110",
+                "description": ">=64    个APB  总线 CLK",
+                "value": 6,
+                "default": false
+              },
+              {
+                "name": "cs_111",
+                "description": ">=127    个APB  总线 CLK",
+                "value": 7,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "cs",
+          "offset": 9,
+          "width": 3,
+          "access": "RW",
+          "description": "setup， spi_cs 在数据传输前提前有效的时间，即spi_cs 的setup 时间Motorola 模式有效注：master 有效",
+          "enumerated_value": {
+            "name": "cs",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "cs_000",
+                "description": ">=1    个APB  总线 CLK",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "cs_001",
+                "description": ">=2    个APB  总线 CLK",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "cs_010",
+                "description": ">=4    个APB  总线 CLK",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "cs_011",
+                "description": ">=8    个APB  总线 CLK",
+                "value": 3,
+                "default": false
+              },
+              {
+                "name": "cs_100",
+                "description": ">=16    个APB  总线 CLK",
+                "value": 4,
+                "default": false
+              },
+              {
+                "name": "cs_101",
+                "description": ">=32    个APB  总线 CLK",
+                "value": 5,
+                "default": false
+              },
+              {
+                "name": "cs_110",
+                "description": ">=64    个APB  总线 CLK",
+                "value": 6,
+                "default": false
+              },
+              {
+                "name": "cs_111",
+                "description": ">=127  个APB  总线 CLK",
+                "value": 7,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi",
+          "offset": 7,
+          "width": 2,
+          "access": "RW",
+          "description": "-out delay, SPI 数据输出相对与SCK 的delay，主要是为了hold time 考虑。[8:7]      系统时钟周期数(APB clock)注：master/slave 都有效Motorola 模式有效",
+          "enumerated_value": {
+            "name": "spi",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_00",
+                "description": "0",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_01",
+                "description": "1",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "spi_10",
+                "description": "2",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "spi_11",
+                "description": "3",
+                "value": 3,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "frame",
+          "offset": 4,
+          "width": 3,
+          "access": "RW",
+          "description": "delay，默认在一帧（spi_cs 有效期间）传输结束到下一帧开始的间隔为SCK时钟周期的一半，即SPI_CS 无效时间。但为了兼容性，此处可配置。默认至少0.5SCK [6:4]    SCK clock例如，按照 block 模式传输 128byte 的数据，数据传输完成后，会加入所设置的延迟时间。注：master 有效",
+          "enumerated_value": {
+            "name": "frame",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "frame_000",
+                "description": "0",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "frame_001",
+                "description": "2",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "frame_010",
+                "description": "4",
+                "value": 2,
+                "default": false
+              },
+              {
+                "name": "frame_011",
+                "description": "8",
+                "value": 3,
+                "default": false
+              },
+              {
+                "name": "frame_100",
+                "description": "16",
+                "value": 4,
+                "default": false
+              },
+              {
+                "name": "frame_101",
+                "description": "32",
+                "value": 5,
+                "default": false
+              },
+              {
+                "name": "frame_110",
+                "description": "64",
+                "value": 6,
+                "default": false
+              },
+              {
+                "name": "frame_111",
+                "description": "127",
+                "value": 7,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "bigendian",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "bigendian",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "bigendian_0",
+                "description": "数据格式采用小端模式，即传输过程中，先发低字节",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "bigendian_1",
+                "description": "数据格式采用大端模式，即传输过程中，先发高字节",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "master",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "/SLAVE注：master/slave 都有效",
+          "enumerated_value": {
+            "name": "master",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "master_0",
+                "description": "slave，该设备是slave 1’b1master，该设备是master",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "spi",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "CPHA注：master/slave 都有效Motorola 模式有效",
+          "enumerated_value": {
+            "name": "spi",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_0",
+                "description": "传输模式A",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_1",
+                "description": "传输模式B",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "CPOL，SCK 在 IDLE 时的极性注：master/slave 都有效Motorola 模式有效",
+          "enumerated_value": {
+            "name": "spi",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_0",
+                "description": "SCK IDLE 时为 0",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_1",
+                "description": "SCK IDLE  时为 1",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "clk_cfg",
+      "offset": 8,
+      "description": "用以设置时钟分频系数",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 16,
+          "width": 16,
+          "description": ""
+        },
+        {
+          "name": "divider",
+          "offset": 0,
+          "width": 16,
+          "access": "RW",
+          "description": "FSCK  = FAPB_CLK/ ( 2 x (Divider +1))注：master 有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "rsv",
+          "offset": 16,
+          "width": 16,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "divider",
+          "offset": 0,
+          "width": 16,
+          "access": "RW",
+          "description": "FSCK  = FAPB_CLK/ ( 2 x (Divider +1))注：master 有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "mode_cfg",
+      "offset": 12,
+      "description": "配置传输模式",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 9,
+          "width": 23,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "rxtrigger",
+          "offset": 6,
+          "width": 3,
+          "access": "RW",
+          "description": "levelRX FIFO  存储的数据触发中断或者DMA 请求的阈值：0~7word只有rxbuffer 中的数据大于RxTrigger level，才会触发中断或者请求DMA 搬移注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "rsv",
+          "offset": 0,
+          "width": 1,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "txtrigger",
+          "offset": 2,
+          "width": 3,
+          "access": "RW",
+          "description": "levelTX FIFO  存储的数据触发中断或者DMA 请求的阈值：0~7word只有txbuffer 中的数据大于等于TxTrigger level，才会触发中断或者请求 DMA 搬移注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "rxdma",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "On，采用DMA 搬移数据使能注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "rxdma",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxdma_0",
+                "description": "不采用DMA，",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxdma_1",
+                "description": "采用DMA",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "txdma",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "On，采用DMA 搬移数据使能注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "txdma",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txdma_0",
+                "description": "不采用DMA，",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "txdma_1",
+                "description": "采用DMA",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_int_mask",
+      "offset": 16,
+      "description": "屏蔽或者使能相关中断",
+      "mode": "RW",
+      "reset": 255,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 8,
+          "width": 24,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "inten_spi_timeout",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "inten_spi_timeout",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "inten_spi_timeout_0",
+                "description": "允许产生spi_timeout  中断 1’b1 不允许产生spi_timeout  中断注master/slave 都有效",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "inten_spi_done",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "inten_spi_done",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "inten_spi_done_0",
+                "description": "spi 发送或者接收完成，允许产生中断",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "inten_spi_done_1",
+                "description": "spi 发送或者接收完成，不允许产生中断",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intenrxoverrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intenrxoverrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intenrxoverrun_0",
+                "description": "Rx FIFO overflow  中断使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intenrxoverrun_1",
+                "description": "Rx FIFO overflow  中断不使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intenrxunderrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intenrxunderrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intenrxunderrun_0",
+                "description": "Rx FIFO underflow  中断不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intenrxunderrun_1",
+                "description": "Rx FIFO underflow  中断使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intentxoverrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intentxoverrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intentxoverrun_0",
+                "description": "Tx FIFO    overflow  中断使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intentxoverrun_1",
+                "description": "Tx FIFO    overflow  中断不使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intentxunderrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intentxunderrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intentxunderrun_0",
+                "description": "Tx FIFO    underflow  中断使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intentxunderrun_1",
+                "description": "Tx FIFO    underflow  中断不使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intenrxfifordy",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intenrxfifordy",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intenrxfifordy_0",
+                "description": "Rx FIFO  有数据上传中断使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intenrxfifordy_1",
+                "description": "Rx FIFO  有数据上传中断不使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "intentxfifordy",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "intentxfifordy",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "intentxfifordy_0",
+                "description": "Tx FIFO 可以向TX FIFO 写数据中断使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "intentxfifordy_1",
+                "description": "Tx FIFO  可以向TX FIFO 写数据中断不使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        }
+      ]
+    },
+    {
+      "name": "spi_int_source",
+      "offset": 20,
+      "description": "用于查询中断源",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 8,
+          "width": 24,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "spi_timeout",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi_timeout",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_timeout_0",
+                "description": "rxfifo 中没有结尾数据需要CPU 取走",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_timeout_1",
+                "description": "rxfifo 中有结尾数据需要CPU 取走写 1 清零",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi_done",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi_done",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_done_0",
+                "description": "SPI 发送或者接收没有完成",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_done_1",
+                "description": "SPI 发送或者接收完成写 1 清零",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rxoverrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "写 1 清零注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "rxoverrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxoverrun_0",
+                "description": "Rx FIFO overflow 1’b1Rx FIFO overflow",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rxunderrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "rxunderrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxunderrun_0",
+                "description": "Rx FIFO underflow 1’b1Rx FIFO underflow写 1 清零",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "txoverrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "txoverrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txoverrun_0",
+                "description": "Tx FIFO    overflow 1’b1Tx FIFO    overflow写 1 清零",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "txunderrun",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "在 continue mode = 1  的情况下，永远不会产生该中断。注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "txunderrun",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txunderrun_0",
+                "description": "Tx FIFO    underflow 1’b1Tx FIFO    underflow写 1 清零",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rxfifordy",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "写 1 清零注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "rxfifordy",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rxfifordy_0",
+                "description": "Rx FIFO  数据量<= RxTrigger level，不需要上传 1’b1Rx FIFO 数据量> RxTrigger level，要求上传",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "txfifordy",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "txfifordy",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "txfifordy_0",
+                "description": "Tx FIFO  数据量 > TxTrigger level，不可以向TX FIFO 写数据 1’b1Tx FIFO  数据量 <= TxTrigger level，可以向TX FIFO 写数据写 1 清零",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_status",
+      "offset": 24,
+      "description": "列举 SPI 通信中的相关状态",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 13,
+          "width": 19,
+          "description": "",
+          "reset": 0
+        },
+        {
+          "name": "spi",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "Busy注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "spi_0",
+                "description": "SPI 没有发送和接收任务",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_1",
+                "description": "SPI 处于发送或者接收过程",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rx",
+          "offset": 6,
+          "width": 6,
+          "access": "RO",
+          "description": "FIFO fill levelRx FIFO 中数据量，单位为字节注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "tx",
+          "offset": 0,
+          "width": 6,
+          "access": "RO",
+          "description": "FIFO fill levelTx FIFO 中数据量，单位为字节注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_time_out",
+      "offset": 28,
+      "description": "设置 SPI 通信超时",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "spi_timer_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "enumerated_value": {
+            "name": "spi_timer_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "spi_timer_en_0",
+                "description": "不允许timer 计时",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "spi_timer_en_1",
+                "description": ":允许timer  计时",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "spi_time_out",
+          "offset": 0,
+          "width": 31,
+          "access": "RW",
+          "description": "当一次传输完成后，在接收通路 rxfifo  中，结尾的数据如果不能触发接收中断RxFifoRdy 或者DMA 请求时，需要采用计时机制来通知CPU 搬走结尾数据。具体方法：当 rxfifo 处于idle 状态下（没有读写操作，没有 dma 请求，cs 无效，rxfifo中有数据，且数据量小于等于 RxTrigger level），开始计数，达到本寄存器设置的值，则触发timeout 中断，请求CPU 搬走结尾数据。任何对rxfifo 的读写操作都会清楚timeout 计时器。所表示的时间为： T = SPI_TIME_OUT/FAPB_CLK注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_tx_data",
+      "offset": 32,
+      "description": "TX FIFO，用于存放待发送数据",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "spi_tx_data",
+          "offset": 0,
+          "width": 32,
+          "access": "RW",
+          "description": "向Tx FIFO 写数据的窗口地址注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "trans_mode",
+      "offset": 36,
+      "description": "设置传输模式",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rsv",
+          "offset": 30,
+          "width": 2,
+          "description": ""
+        },
+        {
+          "name": "ti_blk_len",
+          "offset": 24,
+          "width": 6,
+          "access": "RW",
+          "description": "在TI 的时序模式下，每个 block 传输的长度，即每次 CS 有效之后的传输数据长度。支持 4~32bit……..TI 模式有效",
+          "enumerated_value": {
+            "name": "ti_blk_len",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "ti_blk_len_4",
+                "description": ":    4bit 长数据 6’h5:    5bit 长数据 6’h6:    6bit 长数据",
+                "value": 4,
+                "default": false
+              },
+              {
+                "name": "ti_blk_len_20",
+                "description": ":    32bit 长数据注master 有效",
+                "value": 32,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "micro_burst",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "1b’1：Microwire 模式下，采用burst 传输，即 Tx 发送控制字，Rx 接收数据，依次交替进行，MICRO_CONTROL_LEN 表示的是控制字长度，MICRO_DAT_LEN  表示的是发送或者接收字的长度，Tx/Rx  length  表示的是整个传输过程中有效 sck， burst    模 式 下 ， 发 送 接 收 交 替 进 行 的 次 数 为 （ Tx/Rx    length  ）/(MICRO_CONTROL_LEN+ MICRO_DAT_LEN+1)length-MICRO_CONTROL_LEN-1，其中m 表示接收多少个（MICRO_DAT_LEN）长度的字注：master 有效microwire 模式有效1）tx_ch_on = 1, rx_ch_on = 0,此时，只有发送，MICRO_CONTROL_LEN 表示的是控制字长度，Tx/Rx length 表示的是整个传输过程中有效sck，此时发送的数据长度为m*MICRO_DAT_LEN = Tx/Rx length - MICRO_CONTROL_LEN，其中 m 表示发送多少个（MICRO_DAT_LEN）长度的字2 ） tx_ch_on   =   1,   rx_ch_on   =   1 ， 此时， Tx  发送控制字， Rx   接收数据，MICRO_CONTROL_LEN 表示的是控制字长度，Tx/Rx length 表示的是整个传输过程 中 有 效  sck  ， 接 收 数 据 长 度 为  m*MICRO_DAT_LEN    =    Tx/Rx",
+          "enumerated_value": {
+            "name": "micro_burst",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "micro_burst_0",
+                "description": "Microwire 模式下，不采用burst 传输在此模式下，有两种情况",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "micro_dat_len",
+          "offset": 8,
+          "width": 6,
+          "access": "RW",
+          "description": "Microwire 模式下，在burst 模式模式时，每个burst 传输数据的长度从 1~32：……..",
+          "enumerated_value": {
+            "name": "micro_dat_len",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "micro_dat_len_1",
+                "description": ":    1bit 长数据 6’h2:    2bit 长数据 6’h3:    3bit 长数据",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "micro_dat_len_20",
+                "description": "32bit 长数据注master 有效 microwire 模式有效",
+                "value": 32,
+                "default": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "micro_control_len",
+          "offset": 0,
+          "width": 6,
+          "access": "RW",
+          "description": "Microwire 模式下，命令字的长度从 1~32：……..microwire 模式有效",
+          "enumerated_value": {
+            "name": "micro_control_len",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "micro_control_len_1",
+                "description": ":    1bit 长命令 6’h2:    2bit 长命令 6’h3:    3bit 长命令",
+                "value": 1,
+                "default": false
+              },
+              {
+                "name": "micro_control_len_20",
+                "description": "32bit 长命令注master 有效",
+                "value": 32,
+                "default": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "slv_xmit_len",
+      "offset": 40,
+      "description": "作为从设备时用于存放发送出去或者接收到的数据的长度",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "slv_tx_length",
+          "offset": 16,
+          "width": 16,
+          "access": "RO",
+          "description": "作为slave 时，在 cs 有效期间，发送出去的数据长度，单位为bit注：slave 有效Motorola 模式有效",
+          "reset": 0
+        },
+        {
+          "name": "slv_rx_length",
+          "offset": 0,
+          "width": 16,
+          "access": "RO",
+          "description": "作为slave 时，在 cs 有效期间，接收到的数据长度，单位为bit注：slave 有效Motorola 模式有效",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "spi_rx_data",
+      "offset": 48,
+      "description": "RX FIFO，用于存放接收到的数据",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "rx_address",
+          "offset": 0,
+          "width": 32,
+          "access": "RO",
+          "description": "从Rx FIFO 读数据的窗口地址注：master/slave 都有效Motorola/TI/microwire 模式有效",
+          "reset": 0
+        }
+      ]
+    }
+  ]
+}

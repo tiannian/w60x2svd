@@ -1,0 +1,485 @@
+{
+  "name": "i2c",
+  "version": "0.1",
+  "description": "I2C",
+  "base_address": 1073807360,
+  "address_block": {
+    "offset": 0,
+    "size": 512,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "prerlo",
+      "offset": 0,
+      "description": "存放低 8 位的分频值，用以对 APB总线时钟进行分频",
+      "mode": "RW",
+      "reset": 255,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "prescale_lo",
+          "offset": 0,
+          "width": 8,
+          "access": "RW",
+          "description": "时钟分频配置prescale 的低 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19",
+          "reset": 255
+        }
+      ]
+    },
+    {
+      "name": "prerhi",
+      "offset": 4,
+      "description": "存放高 8 位的分频值，用以对 APB总线时钟进行分频",
+      "mode": "RW",
+      "reset": 255,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "prescale_hi",
+          "offset": 0,
+          "width": 8,
+          "access": "RW",
+          "description": "时钟分频配置prescale 的高 8bit。例如：apb_clk=40MHz, SCL=100KHzprescale = (40*1000)/(5*100) – 1 = 16’d79 apb_clk = 40M, SCL=400Kprescale=(40*1000)/(5*400) – 1 = 16’d19",
+          "reset": 255
+        }
+      ]
+    },
+    {
+      "name": "ctr",
+      "offset": 8,
+      "description": "用以控制中断的使能以及I2S 控制器的使能",
+      "mode": "RW",
+      "reset": 64,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "i2c_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "使能控制，",
+          "enumerated_value": {
+            "name": "i2c_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "i2c_en_0",
+                "description": "不使能",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "i2c_en_1",
+                "description": "使能",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "int_mask",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "",
+          "enumerated_value": {
+            "name": "int_mask",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "int_mask_0",
+                "description": "允许中断产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "int_mask_1",
+                "description": "不允许中断产生",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 1
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 6,
+          "description": "保留"
+        }
+      ]
+    },
+    {
+      "name": "txr_rxr",
+      "offset": 12,
+      "description": "用以存放待发送的数据或者接收到的数据",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "rx_tx_byte",
+          "offset": 0,
+          "width": 8,
+          "description": "写该寄存器时，为发送寄存器TXR，表示下一个要发送的字节，当为设备地址时，[0]：1 时表示读，0 时表示写。读该寄存器时，为接收寄存器RXR，为最新从I2C 上接收到的字节。",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "cr_sr",
+      "offset": 16,
+      "description": "用以控制一些数据读写相关的操作",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "sta",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，控制产生START 时序",
+          "enumerated_value": {
+            "name": "sta",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "sta_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "sta_1",
+                "description": "产生START 时序",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "sto",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，控制产生STOP 时序；",
+          "enumerated_value": {
+            "name": "sto",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "sto_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rd",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，从 SLAVE 读；",
+          "enumerated_value": {
+            "name": "rd",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rd_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rd_1",
+                "description": "从SLAVE 读",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "wr",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，向 SLAVE 写；",
+          "enumerated_value": {
+            "name": "wr",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "wr_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "wr_1",
+                "description": "向SLAVE 写",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "ack_nack",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "控制向SLAVE 送回 ACK/NACK；",
+          "enumerated_value": {
+            "name": "ack_nack",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "ack_nack_0",
+                "description": "回ACK",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "ack_nack_1",
+                "description": "回NAK",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 1,
+          "width": 2,
+          "access": "RW",
+          "description": "保留"
+        },
+        {
+          "name": "iack",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "，清除中断状态，1 有效；",
+          "enumerated_value": {
+            "name": "iack",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "iack_0",
+                "description": "无效",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "iack_1",
+                "description": "清除中断标志",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rxack",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "，从SLAVE 收到的ACK/NACK 状态；",
+          "enumerated_value": {
+            "name": "rxack",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "rxack_0",
+                "description": "从SLAVE 收到 ACK",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rxack_1",
+                "description": "从SLAVE 收到NAK",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "busy",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "；",
+          "enumerated_value": {
+            "name": "busy",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "busy_0",
+                "description": "STO 后置 0",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "busy_1",
+                "description": "STA 后置 1",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 2,
+          "width": 4,
+          "access": "RO",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "tip",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "；",
+          "enumerated_value": {
+            "name": "tip",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "tip_0",
+                "description": "无传输正在进行",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "tip_1",
+                "description": "有传输正在进行",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "if",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "，中断状态位；",
+          "enumerated_value": {
+            "name": "if",
+            "usage": "RO",
+            "values": [
+              {
+                "name": "if_0",
+                "description": "无中断产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "if_1",
+                "description": "传输完成",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "txr",
+      "offset": 20,
+      "description": "读取I2C 发送时的TXR 寄存器值",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "txr_read",
+          "offset": 0,
+          "width": 8,
+          "access": "RO",
+          "description": "只读，TXR 寄存器的读出值，功能描述见TXR_RXR 寄存器；",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "cr",
+      "offset": 24,
+      "description": "读取I2C 控制寄存器的设定值 CR",
+      "mode": "RO",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "description": "保留"
+        },
+        {
+          "name": "read_cr",
+          "offset": 0,
+          "width": 8,
+          "access": "RO",
+          "description": "只读，CR 寄存器的读出值，功能描述见CR_SR 寄存器；",
+          "reset": 0
+        }
+      ]
+    }
+  ]
+}

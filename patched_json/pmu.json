@@ -1,0 +1,338 @@
+{
+  "name": "pmu",
+  "version": "0.1",
+  "description": "Power Managent Unit",
+  "base_address": 1073743360,
+  "address_block": {
+    "offset": 0,
+    "size": 256,
+    "usage": "Registers"
+  },
+  "registers": [
+    {
+      "name": "ps_cr",
+      "offset": 0,
+      "description": "用于配置32K 校准，配置32K 时钟源，设置芯片的STANDBY 功能",
+      "mode": "RW",
+      "reset": 2,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 8,
+          "width": 24,
+          "access": "RO",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 4,
+          "width": 4,
+          "access": "RW",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "bypass",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "32K 振荡电路BYPASS 信号，高有效。\r当芯片进入STANBY 状态， 32K 时钟自动切换为振荡电路产生的 32K 时钟。芯片唤醒后，如需继续使用 40M 分频的 32K 时钟，需重新置位为 1。",
+          "enumerated_value": {
+            "name": "bypass",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "bypass_0",
+                "description": "32K 由振荡电路产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "bypass_1",
+                "description": "32K 由 40M 时钟分频得到",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "rc_switch",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "RC 32K 振荡器校准电路启动开关；\r要启动校准功能，需要此位先置 0，后置 1。",
+          "enumerated_value": {
+            "name": "rc_switch",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rc_switch_0",
+                "description": "校准电路复位；",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rc_switch_1",
+                "description": "启动校准电路；",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "保留",
+          "reset": 1
+        },
+        {
+          "name": "standby_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "使能信号，高有效。\r如果 WAKEUP 脚为无效电平，且没有配置TIMER0/1 中断唤醒，则该寄存器有效时，芯片进入STANDBY 状态；\r如果唤醒中断产生，则芯片会从 STANDBY  状态切换到唤醒状态，唤醒条件满足，该位自动清 0。\r唤醒源：WAKEUP 脚，TIMER0/TIMER1，RTC\r1） WAKEUP 脚，高有效；要想芯片进入 STANDBY 状态，WAKEUP 脚必须处于低电平。要唤醒时，拉高 WAKEUP 脚，产生唤醒中断，使芯片离开STANDBY 状态。\r2） TIMER0，定时器唤醒中断。\r当 WAKEUP 脚为低，TIMER0 设置定时时间并使能，定时时间到会产生唤醒中断，使芯片离开STANDBY 状态。\r3） RTC，定时时间到唤醒\r当 WAKEUP  脚为低，RTC  定时时间到，会产生唤醒中断，使芯片离开\rSTANDBY 状态",
+          "enumerated_value": {
+            "name": "standby_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "standby_en_0",
+                "description": "芯片唤醒状态",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "standby_en_1",
+                "description": "芯片进入STANDBY 状态",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "timer0",
+      "offset": 4,
+      "description": "配置定时值（单位为秒），使能定时器",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 17,
+          "width": 15,
+          "access": "RO",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "timer0_en",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "使能位",
+          "enumerated_value": {
+            "name": "timer0_en",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "timer0_en_0",
+                "description": "位使能。",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "timer0_en_1",
+                "description": "使能；",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "timer0_value",
+          "offset": 0,
+          "width": 16,
+          "access": "RW",
+          "description": "的定时值，单位:秒",
+          "reset": 0
+        }
+      ]
+    },
+    {
+      "name": "int_src",
+      "offset": 20,
+      "description": "提供PMU中断标志",
+      "mode": "RW",
+      "reset": 0,
+      "size": 32,
+      "fields": [
+        {
+          "name": "reserved",
+          "offset": 9,
+          "width": 23,
+          "access": "RO",
+          "description": "保留"
+        },
+        {
+          "name": "lasted_status",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "显示当次上电状态：",
+          "enumerated_value": {
+            "name": "lasted_status",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "lasted_status_0",
+                "description": "上电或复位启动",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "lasted_status_1",
+                "description": "从休眠状态唤醒，写 1 清除",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RO",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "rtc_int",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "RTC 定时中断标志位：",
+          "enumerated_value": {
+            "name": "rtc_int",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "rtc_int_0",
+                "description": "有定时中断产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "rtc_int_1",
+                "description": "无定时中断产生，写 1 清除",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "wakeup_int",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "管脚唤醒中断标志位",
+          "enumerated_value": {
+            "name": "wakeup_int",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "wakeup_int_0",
+                "description": "无 WAKEUP 唤醒中断产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "wakeup_int_1",
+                "description": "有 WAEKUP 唤醒中断产生，写 1 清除",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        },
+        {
+          "name": "reserved",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "保留",
+          "reset": 0
+        },
+        {
+          "name": "timer0_int",
+          "offset": 0,
+          "width": 1,
+          "access": "RW",
+          "description": "定时中断标志位：",
+          "enumerated_value": {
+            "name": "timer0_int",
+            "usage": "RW",
+            "values": [
+              {
+                "name": "timer0_int_0",
+                "description": "无Timer0 中断产生",
+                "value": 0,
+                "default": false
+              },
+              {
+                "name": "timer0_int_1",
+                "description": "有Timer0 中断产生，写 1 清除",
+                "value": 1,
+                "default": false
+              }
+            ]
+          },
+          "reset": 0
+        }
+      ]
+    }
+  ]
+}
